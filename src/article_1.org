@@ -1,7 +1,7 @@
 # -*- mode: org; coding: utf-8 -*-
 #+TITLE: Janpanese macaque potato washing behaviour
 #+HUGO_SECTION: posts
-#+HUGO_BASE_DIR: ../public/
+#+HUGO_BASE_DIR: ./.
 #+HUGO_WEIGHT: auto
 #+HUGO_AUTO_SET_LASTMOD: t
 * 绪论
