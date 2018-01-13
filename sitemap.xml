@@ -30,6 +30,13 @@
   </url>
   
   <url>
+    <loc>http://localhost:1313/tags/macaque/</loc>
+    <lastmod>2018-01-11T00:00:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://localhost:1313/post/</loc>
     <lastmod>2018-01-11T00:00:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -37,7 +44,15 @@
   </url>
   
   <url>
+    <loc>http://localhost:1313/tags/primatology/</loc>
+    <lastmod>2018-01-11T00:00:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2018-01-11T00:00:00+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
