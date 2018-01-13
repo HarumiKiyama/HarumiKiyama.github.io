@@ -1,10 +1,11 @@
 +++
 title = "Janpanese macaque potato washing behaviour"
-date = 2018-01-11
+date = 2018-01-13
 draft = false
-description = "关于日本猕猴文化行为的读书笔记"
 tags = ["primatology", "macaque"]
 +++
+"关于日本猕猴文化行为的读书笔记"
+<!--more-->
 
 <div class="ox-hugo-toc toc">
 <div></div>
