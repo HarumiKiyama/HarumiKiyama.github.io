@@ -2,6 +2,7 @@
 title = "Janpanese macaque potato washing behaviour"
 date = 2018-01-11
 draft = false
+description = "关于日本猕猴文化行为的读书笔记"
 tags = ["primatology", "macaque"]
 +++
 
