@@ -2,6 +2,7 @@
 title = "Janpanese macaque potato washing behaviour"
 date = 2018-01-11
 draft = false
+tags = ["primatology", "macaque"]
 +++
 
 <div class="ox-hugo-toc toc">
