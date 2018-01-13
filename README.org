@@ -1,2 +1,2 @@
-#+TITLE: Blog Source File
-This is a org source file branch of my blog
+#+TITLE: HUGO file
+This is a hugo file for my static blog
