@@ -29,7 +29,7 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
   name = "About"
   weight = 20
   identifier = "about"
-  url = "/about/"
+  url = "/about"
 [[menu.main]]
   name = "Tags"
   weight = 40
