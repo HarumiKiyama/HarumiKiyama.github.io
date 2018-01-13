@@ -1,3 +1,6 @@
+"关于日本猕猴文化行为的读书笔记"
+<!--more-->
+
 <div class="ox-hugo-toc toc">
 <div></div>
 
