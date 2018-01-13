@@ -6,10 +6,19 @@
     <description>Recent content on Harumi Kiyama</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 11 Jan 2018 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 13 Jan 2018 18:51:42 +0800</lastBuildDate>
     
 	<atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>About</title>
+      <link>http://localhost:1313/about/</link>
+      <pubDate>Sat, 13 Jan 2018 18:51:42 +0800</pubDate>
+      
+      <guid>http://localhost:1313/about/</guid>
+      <description>时隔多年, 又开始写起了博客, 说起来之前也有过几次写博客的经验, 但是往往写了几周就渐渐的不太想写了. 毕竟是做事三分钟热度的人, 会这样也是情理之</description>
+    </item>
     
     <item>
       <title>Janpanese macaque potato washing behaviour</title>
