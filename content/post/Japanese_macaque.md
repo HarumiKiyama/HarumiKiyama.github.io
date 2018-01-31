@@ -1,5 +1,5 @@
 +++
-title = "Janpanese macaque potato washing behaviour"
+title = "The potato washing behaviour of Janpanese macaques"
 date = 2018-01-13
 draft = false
 tags = ["primatology", "macaque"]
