@@ -8,4 +8,4 @@ draft: false
 - 最近在努力补CS的基础中(操作系统学习中)
 - 养长发减肥计划执行中,希望能在25岁之前减重到可以女装的程度
 - 二十四歳、IT土方です（迫真）
-- GPG key fingerprint B77016C8B8ECEBE817DC0288CC09EA1921BDC71F
+- GPG key fingerprint `B77016C8B8ECEBE817DC0288CC09EA1921BDC71F`
