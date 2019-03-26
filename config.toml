@@ -59,7 +59,7 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
   gitRepo = ""
 
   # site info (optional)                                  # 站点信息（可选，不需要的可以直接注释掉）
-  logoTitle = "Harumi"        # default: the title value    # 默认值: 上面设置的title值
+  logoTitle = "Carpe diem"        # default: the title value    # 默认值: 上面设置的title值
   keywords = ["Harumi", "CS","Primatology"]
   description = ""
 
@@ -161,13 +161,13 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
 
   [params.social]                                         # 社交链接
     a-email = "mailto:h.kiyama0720@gmail.com"
+    b-stack-overflow = "https://stackoverflow.com/users/11258551/harumi-kiyama"
+    e-linkedin = "https://www.linkedin.com/in/lichao-wang-364234110/"
     g-github = "http://github.com/HarumiKiyama"
     i-zhihu = "https://www.zhihu.com/people/kiyama_harumi"
     # a-email = "mailto:your@email.com"
-    # b-stack-overflow = "http://localhost:1313"
     # c-twitter = "http://localhost:1313"
     # d-facebook = "http://localhost:1313"
-    # e-linkedin = "http://localhost:1313"
     # f-google = "http://localhost:1313"
     # g-github = "http://localhost:1313"
     # h-weibo = "http://localhost:1313"
