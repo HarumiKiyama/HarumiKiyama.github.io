@@ -1,5 +1,8 @@
+# Build the website
+script:
+  - binary/hugo
 deploy:
-  provider: hugo
+  provider: pages
   skip_cleanup: true
   github_token: $DEPLOY_TOKEN  # Set in the settings page of your repository, as a secure variable
   keep_history: true
