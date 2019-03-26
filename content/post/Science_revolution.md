@@ -5,6 +5,8 @@ date = 2019-03-26
 tags = ["Science Revolution", "Reading"]
 creator = "Emacs 26.1 (Org mode 9.2.2 + ox-hugo)"
 +++
+"关于科学革命的读书笔记"
+<!--more-->
 
 <div class="ox-hugo-toc toc">
 <div></div>
