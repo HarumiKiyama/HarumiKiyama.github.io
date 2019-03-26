@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Harumi&#39;s Chapel</title>
-    <link>http://localhost:1313/post/</link>
-    <description>Recent content in Posts on Harumi&#39;s Chapel</description>
+    <title>Science Revolution on Harumi&#39;s Chapel</title>
+    <link>http://localhost:1313/tags/science-revolution/</link>
+    <description>Recent content in Science Revolution on Harumi&#39;s Chapel</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Tue, 26 Mar 2019 00:00:00 +0800</lastBuildDate>
     
-	<atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://localhost:1313/tags/science-revolution/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -18,15 +18,6 @@
       
       <guid>http://localhost:1313/post/science_revolution/</guid>
       <description>Table of Contents 科学革命 前言 科学革命与科学史写作 文艺复兴与科学革命 科学的方法 法术与现代科学的起源 机械论哲学 宗教与科学 科学与广义文化 结语 科学革命 前言 本文</description>
-    </item>
-    
-    <item>
-      <title>The potato washing behaviour of Janpanese macaques</title>
-      <link>http://localhost:1313/post/japanese_macaque/</link>
-      <pubDate>Sat, 13 Jan 2018 00:00:00 +0800</pubDate>
-      
-      <guid>http://localhost:1313/post/japanese_macaque/</guid>
-      <description>&lt;p&gt;&amp;ldquo;关于日本猕猴文化行为的读书笔记&amp;rdquo;&lt;/p&gt;</description>
     </item>
     
   </channel>
