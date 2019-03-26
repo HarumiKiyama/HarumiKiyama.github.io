@@ -2,6 +2,7 @@
 dist: xenial
 install:
   - sudo snap install hugo
+  - git clone https://github.com/olOwOlo/hugo-theme-even themes/even
 script:
   - hugo
 deploy:
