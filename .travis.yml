@@ -1,6 +1,10 @@
 # Build the website
+language: go
+os: archlinux
+install:
+  - sudo pacman -S hugo
 script:
-  - binary/hugo
+  - hugo
 deploy:
   provider: pages
   skip_cleanup: true
