@@ -4,7 +4,6 @@ install:
   - sudo snap install hugo
   - git clone https://github.com/olOwOlo/hugo-theme-even themes/even
 script:
-  - echo 'Asia/Shanghai' | sudo tee /etc/timezone
   - hugo
 deploy:
   provider: pages
