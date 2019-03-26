@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>macaque on Harumi&#39;s Chapel</title>
-    <link>http://localhost:1313/tags/macaque/</link>
+    <link>http://harumikiyam.github.io/tags/macaque/</link>
     <description>Recent content in macaque on Harumi&#39;s Chapel</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sat, 13 Jan 2018 00:00:00 +0800</lastBuildDate>
     
-	<atom:link href="http://localhost:1313/tags/macaque/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://harumikiyam.github.io/tags/macaque/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>The potato washing behaviour of Janpanese macaques</title>
-      <link>http://localhost:1313/post/japanese_macaque/</link>
+      <link>http://harumikiyam.github.io/post/japanese_macaque/</link>
       <pubDate>Sat, 13 Jan 2018 00:00:00 +0800</pubDate>
       
-      <guid>http://localhost:1313/post/japanese_macaque/</guid>
+      <guid>http://harumikiyam.github.io/post/japanese_macaque/</guid>
       <description>&lt;p&gt;&amp;ldquo;关于日本猕猴文化行为的读书笔记&amp;rdquo;&lt;/p&gt;</description>
     </item>
     
