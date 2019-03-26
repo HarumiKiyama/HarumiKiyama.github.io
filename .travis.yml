@@ -1,8 +1,7 @@
 # Build the website
 language: go
-os: archlinux
 install:
-  - sudo pacman -S hugo
+  - sudo snap install hugo
 script:
   - hugo
 deploy:
