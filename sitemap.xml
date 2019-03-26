@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml-stylesheet type="text/xsl" href="http://harumikiyam.github.io/sitemap.xsl"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>http://harumikiyam.github.io/post/science_revolution/</loc>
+    <lastmod>2019-03-26T23:06:41+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://harumikiyam.github.io/about/</loc>
+    <lastmod>2019-03-27T00:10:34+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://harumikiyam.github.io/post/japanese_macaque/</loc>
+    <lastmod>2018-01-31T22:23:59+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://harumikiyam.github.io/categories/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://harumikiyam.github.io/</loc>
+    <lastmod>2019-03-26T23:06:41+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://harumikiyam.github.io/post/</loc>
+    <lastmod>2019-03-26T23:06:41+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://harumikiyam.github.io/tags/reading/</loc>
+    <lastmod>2019-03-26T23:06:41+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://harumikiyam.github.io/tags/science-revolution/</loc>
+    <lastmod>2019-03-26T23:06:41+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://harumikiyam.github.io/tags/</loc>
+    <lastmod>2019-03-26T23:06:41+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://harumikiyam.github.io/tags/macaque/</loc>
+    <lastmod>2018-01-31T22:23:59+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://harumikiyam.github.io/tags/primatology/</loc>
+    <lastmod>2018-01-31T22:23:59+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

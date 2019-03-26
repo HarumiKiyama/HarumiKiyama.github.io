@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: http://harumikiyam.github.io/sitemap.xml
