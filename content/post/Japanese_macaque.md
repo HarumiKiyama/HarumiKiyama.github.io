@@ -4,7 +4,7 @@ date = 2018-01-13
 draft = false
 tags = ["primatology", "macaque"]
 +++
-"关于日本猕猴文化行为的读书笔记"
+关于日本猕猴文化行为的读书笔记
 <!--more-->
 
 <div class="ox-hugo-toc toc">
