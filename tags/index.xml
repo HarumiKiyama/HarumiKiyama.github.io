@@ -6,15 +6,24 @@
     <description>Recent content in Tags on Harumi&#39;s Chapel</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 26 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 30 Mar 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://harumikiyam.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>CS</title>
+      <link>http://harumikiyam.github.io/tags/cs/</link>
+      <pubDate>Sat, 30 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://harumikiyam.github.io/tags/cs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Reading</title>
       <link>http://harumikiyam.github.io/tags/reading/</link>
-      <pubDate>Tue, 26 Mar 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 30 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>http://harumikiyam.github.io/tags/reading/</guid>
       <description></description>

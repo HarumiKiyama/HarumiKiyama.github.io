@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Reading on Harumi&#39;s Chapel</title>
-    <link>http://harumikiyam.github.io/tags/reading/</link>
-    <description>Recent content in Reading on Harumi&#39;s Chapel</description>
+    <title>CS on Harumi&#39;s Chapel</title>
+    <link>http://harumikiyam.github.io/tags/cs/</link>
+    <description>Recent content in CS on Harumi&#39;s Chapel</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sat, 30 Mar 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://harumikiyam.github.io/tags/reading/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://harumikiyam.github.io/tags/cs/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -18,15 +18,6 @@
       
       <guid>http://harumikiyam.github.io/post/computer_system/</guid>
       <description>&lt;p&gt;计算机系统核心概念及软硬件实现读书笔记&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>科学革命</title>
-      <link>http://harumikiyam.github.io/post/science_revolution/</link>
-      <pubDate>Tue, 26 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://harumikiyam.github.io/post/science_revolution/</guid>
-      <description>&lt;p&gt;关于科学革命的读书笔记&lt;/p&gt;</description>
     </item>
     
   </channel>
