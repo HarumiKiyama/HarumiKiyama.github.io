@@ -4,7 +4,10 @@ date = 2019-03-31
 publishDate = 2019-03-31T00:00:00+08:00
 draft = true
 creator = "Emacs 26.1 (Org mode 9.2.2 + ox-hugo)"
+tags = ["CS"]
 +++
+个人的 `xmonad` 配置
+<!--more-->
 
 虽然从刚刚开始当程序员的那一年就开始用xmonad了，但是对于xmonad的配置却一直不怎么会，今天花了几个小时，总算是稍微学了一些皮毛。本来是有计划系统的看一下xmonad的源代码的，但是考虑到最近要看 `SICP` 还有努力转行 `java` 估计又要拖很久了。
 把自己的配置附录一下吧。
