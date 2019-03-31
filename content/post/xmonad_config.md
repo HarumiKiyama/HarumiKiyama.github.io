@@ -2,7 +2,7 @@
 title = "xmonad的配置"
 date = 2019-03-31
 publishDate = 2019-03-31T00:00:00+08:00
-draft = true
+draft = false
 creator = "Emacs 26.1 (Org mode 9.2.2 + ox-hugo)"
 tags = ["CS"]
 +++
