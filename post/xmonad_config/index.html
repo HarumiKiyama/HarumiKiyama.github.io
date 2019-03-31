@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Worked three years - Harumi&#39;s Chapel</title>
+  <title>xmonad的配置 - Harumi&#39;s Chapel</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="Harumi Kiyama" /><meta name="description" content="工作三年的小小感受
+<meta name="author" content="Harumi Kiyama" /><meta name="description" content="个人的 xmonad 配置
 " /><meta name="keywords" content="Harumi, CS, Primatology" />
 
 
@@ -27,7 +27,7 @@
 <meta name="generator" content="Hugo 0.54.0 with even 4.0.0" />
 
 
-<link rel="canonical" href="http://harumikiyam.github.io/post/worked_three_years/" />
+<link rel="canonical" href="http://harumikiyam.github.io/post/xmonad_config/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -39,27 +39,27 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Worked three years" />
-<meta property="og:description" content="工作三年的小小感受" />
+<meta property="og:title" content="xmonad的配置" />
+<meta property="og:description" content="个人的 xmonad 配置" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://harumikiyam.github.io/post/worked_three_years/" />
-<meta property="article:published_time" content="2019-03-28T00:00:00&#43;00:00"/>
-<meta property="article:modified_time" content="2019-03-30T23:34:02&#43;08:00"/>
+<meta property="og:url" content="http://harumikiyam.github.io/post/xmonad_config/" />
+<meta property="article:published_time" content="2019-03-31T00:00:00&#43;08:00"/>
+<meta property="article:modified_time" content="2019-03-31T22:47:06&#43;08:00"/>
 
-<meta itemprop="name" content="Worked three years">
-<meta itemprop="description" content="工作三年的小小感受">
-
-
-<meta itemprop="datePublished" content="2019-03-28T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2019-03-30T23:34:02&#43;08:00" />
-<meta itemprop="wordCount" content="505">
+<meta itemprop="name" content="xmonad的配置">
+<meta itemprop="description" content="个人的 xmonad 配置">
 
 
+<meta itemprop="datePublished" content="2019-03-31T00:00:00&#43;08:00" />
+<meta itemprop="dateModified" content="2019-03-31T22:47:06&#43;08:00" />
+<meta itemprop="wordCount" content="245">
 
-<meta itemprop="keywords" content="personal life," />
+
+
+<meta itemprop="keywords" content="CS," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Worked three years"/>
-<meta name="twitter:description" content="工作三年的小小感受"/>
+<meta name="twitter:title" content="xmonad的配置"/>
+<meta name="twitter:description" content="个人的 xmonad 配置"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -122,10 +122,10 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">Worked three years</h1>
+      <h1 class="post-title">xmonad的配置</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2019-03-28 </span>
+        <span class="post-time"> 2019-03-31 </span>
         
         
       </div>
@@ -138,11 +138,68 @@
   </div>
 </div>
     <div class="post-content">
-      <p>工作三年的小小感受</p>
+      <p>个人的 <code>xmonad</code> 配置</p>
 
-<p>突然想起来今年已经是我正式开始工作的第三年了,离本科毕业也已经过去了快四年了.想起当年刚刚毕业的时候那种不知道自己以后要做什么,自己以后会是什么样的迷茫感,真是恍如隔世.读了一个生物类专业,考研二战放弃,然后转行当程序员.中间也经历了各种各样的事情,终于从那种境地中走出来了吧.总得来说转行当码农是在当时来看最正确的一个选择了,要是还是继续当生科狗的话,现在说不定还在为各种开支发愁呢.</p>
+<p>虽然从刚刚开始当程序员的那一年就开始用xmonad了，但是对于xmonad的配置却一直不怎么会，今天花了几个小时，总算是稍微学了一些皮毛。本来是有计划系统的看一下xmonad的源代码的，但是考虑到最近要看 <code>SICP</code> 还有努力转行 <code>java</code> 估计又要拖很久了。
+把自己的配置附录一下吧。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-haskell" data-lang="haskell"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-haskell" data-lang="haskell"><span class="kr">import</span> <span class="nn">XMonad</span>
+<span class="kr">import</span> <span class="nn">XMonad.Util.EZConfig</span><span class="p">(</span><span class="nf">additionalKeys</span><span class="p">)</span>
+<span class="kr">import</span> <span class="nn">XMonad.Util.Run</span><span class="p">(</span><span class="nf">spawnPipe</span><span class="p">)</span>
+<span class="kr">import</span> <span class="nn">XMonad.Config.Desktop</span>
+<span class="kr">import</span> <span class="nn">XMonad.Actions.SpawnOn</span>
 
-<p>3月初的时候,抽空去了一下自己16年第一份工作的旧址,当时工作的公司在18年初就已经倒闭了,现在入住那个写字楼的是某个和电子设备相关的公司,不知道是因为缺少改造经费还是什么,门上还留着上个公司的名字.去的时候看到原来公司的痕迹还留着,真的是百感交集,虽然是一个很小的外包公司,给的工资也很少,但是平时的工作量基本可以算是没有,上班没事的时候看电影都没有人会来说你,每天要做的就是到公司报道坐在电脑前,简直就像是给你钱来读书的一样.在这个公司上班的一年多时间里算是这三年来最开心的时间了,租房的房东人也挺不错的,离家也近,每周回家都没什么问题.现在虽然工资是当时的好几倍,但是还是时不时的会很怀念当时的生活.</p>
+<span class="nf">web</span> <span class="ow">=</span> <span class="s">&#34;web&#34;</span>
+<span class="nf">code</span> <span class="ow">=</span> <span class="s">&#34;code&#34;</span>
+<span class="nf">term</span> <span class="ow">=</span> <span class="s">&#34;terminal&#34;</span>
+<span class="nf">myWorkspaces</span> <span class="ow">=</span> <span class="p">[</span><span class="nf">web</span><span class="p">,</span> <span class="nf">code</span><span class="p">,</span> <span class="nf">term</span><span class="p">]</span> <span class="o">++</span> <span class="nf">map</span> <span class="nf">show</span> <span class="p">[</span><span class="mi">4</span><span class="o">..</span><span class="mi">9</span><span class="p">]</span>
+
+<span class="nf">main</span> <span class="ow">=</span> <span class="kr">do</span>
+  <span class="nf">xmproc</span> <span class="ow">&lt;-</span> <span class="nf">spawnPipe</span> <span class="s">&#34;xmobar&#34;</span>
+  <span class="nf">xmonad</span> <span class="o">$</span> <span class="nf">desktopConfig</span> <span class="p">{</span>
+    <span class="nf">startupHook</span> <span class="ow">=</span> <span class="kr">do</span>
+      <span class="nf">spawnOn</span> <span class="nf">web</span> <span class="s">&#34;firefox&#34;</span>
+      <span class="nf">spawnOn</span> <span class="nf">code</span> <span class="s">&#34;emacs&#34;</span>
+      <span class="nf">spawnOn</span> <span class="nf">term</span> <span class="s">&#34;termite&#34;</span>
+    <span class="p">,</span><span class="nf">terminal</span> <span class="ow">=</span> <span class="s">&#34;termite&#34;</span>
+    <span class="p">,</span><span class="nf">modMask</span> <span class="ow">=</span> <span class="nf">mod4Mask</span>
+    <span class="p">,</span><span class="nf">workspaces</span> <span class="ow">=</span> <span class="nf">myWorkspaces</span>
+    <span class="p">,</span><span class="nf">manageHook</span><span class="ow">=</span> <span class="nf">manageSpawn</span>
+  <span class="p">}</span> <span class="p">`</span><span class="nf">additionalKeys</span><span class="p">`</span> <span class="p">[</span>
+        <span class="p">((</span><span class="nf">mod4Mask</span><span class="p">,</span> <span class="nf">xK_Up</span><span class="p">),</span> <span class="nf">spawn</span> <span class="s">&#34;amixer set Master 2%+ unmute&#34;</span><span class="p">),</span>
+        <span class="p">((</span><span class="nf">mod4Mask</span><span class="p">,</span> <span class="nf">xK_Down</span><span class="p">),</span> <span class="nf">spawn</span> <span class="s">&#34;amixer set Master 2%- unmute&#34;</span><span class="p">)</span>
+    <span class="p">]</span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
 
     <div class="post-copyright">
@@ -153,8 +210,8 @@
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-        2019-03-30
-        <a href="/commit/a7f5c6080b1a52c11e218bc826d740f13c2effe8" title="rename posts">(a7f5c60)</a>
+        2019-03-31
+        <a href="/commit/2b00678f4e1e594a7c8812c5ec49c2e212b1270a" title="fix draft">(2b00678)</a>
     </span>
   </p>
   
@@ -165,16 +222,12 @@
 </div>
 <footer class="post-footer">
       <div class="post-tags">
-          <a href="/tags/personal-life/">personal life</a>
+          <a href="/tags/cs/">CS</a>
           </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/computer_system/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">计算机系统核心概念及软硬件实现</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
-        <a class="next" href="/post/science_revolution/">
-            <span class="next-text nav-default">科学革命</span>
+        
+        <a class="next" href="/post/computer_system/">
+            <span class="next-text nav-default">计算机系统核心概念及软硬件实现</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
