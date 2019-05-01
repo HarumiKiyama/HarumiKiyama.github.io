@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>xmonad的配置 - Harumi&#39;s Chapel</title>
+  <title>马六甲游记 - Harumi&#39;s Chapel</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,8 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="Harumi Kiyama" /><meta name="description" content="个人的 xmonad 配置
-" /><meta name="keywords" content="Harumi, CS, Primatology" />
+<meta name="author" content="Harumi Kiyama" /><meta name="description" content="4月中旬的时候因为是新加坡的一个公众假期，有三连休，公司内部就有人组织了一次马六甲之行。因为马来西亚入关的效率以及出关人数众多的问题，所以必" /><meta name="keywords" content="Harumi, CS, Primatology" />
 
 
 
@@ -27,7 +26,7 @@
 <meta name="generator" content="Hugo 0.55.4 with even 4.0.0" />
 
 
-<link rel="canonical" href="http://harumikiyam.github.io/post/xmonad_config/" />
+<link rel="canonical" href="http://harumikiyam.github.io/post/malacca_traveling/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -39,27 +38,27 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="xmonad的配置" />
-<meta property="og:description" content="个人的 xmonad 配置" />
+<meta property="og:title" content="马六甲游记" />
+<meta property="og:description" content="4月中旬的时候因为是新加坡的一个公众假期，有三连休，公司内部就有人组织了一次马六甲之行。因为马来西亚入关的效率以及出关人数众多的问题，所以必" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://harumikiyam.github.io/post/xmonad_config/" />
-<meta property="article:published_time" content="2019-03-31T00:00:00&#43;08:00"/>
-<meta property="article:modified_time" content="2019-03-31T22:47:06&#43;08:00"/>
+<meta property="og:url" content="http://harumikiyam.github.io/post/malacca_traveling/" />
+<meta property="article:published_time" content="2019-05-01T00:00:00&#43;08:00"/>
+<meta property="article:modified_time" content="2019-05-01T21:38:08&#43;08:00"/>
 
-<meta itemprop="name" content="xmonad的配置">
-<meta itemprop="description" content="个人的 xmonad 配置">
-
-
-<meta itemprop="datePublished" content="2019-03-31T00:00:00&#43;08:00" />
-<meta itemprop="dateModified" content="2019-03-31T22:47:06&#43;08:00" />
-<meta itemprop="wordCount" content="245">
+<meta itemprop="name" content="马六甲游记">
+<meta itemprop="description" content="4月中旬的时候因为是新加坡的一个公众假期，有三连休，公司内部就有人组织了一次马六甲之行。因为马来西亚入关的效率以及出关人数众多的问题，所以必">
 
 
+<meta itemprop="datePublished" content="2019-05-01T00:00:00&#43;08:00" />
+<meta itemprop="dateModified" content="2019-05-01T21:38:08&#43;08:00" />
+<meta itemprop="wordCount" content="965">
 
-<meta itemprop="keywords" content="CS," />
+
+
+<meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="xmonad的配置"/>
-<meta name="twitter:description" content="个人的 xmonad 配置"/>
+<meta name="twitter:title" content="马六甲游记"/>
+<meta name="twitter:description" content="4月中旬的时候因为是新加坡的一个公众假期，有三连休，公司内部就有人组织了一次马六甲之行。因为马来西亚入关的效率以及出关人数众多的问题，所以必"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -122,10 +121,10 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">xmonad的配置</h1>
+      <h1 class="post-title">马六甲游记</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2019-03-31 </span>
+        <span class="post-time"> 2019-05-01 </span>
         
         
       </div>
@@ -138,68 +137,12 @@
   </div>
 </div>
     <div class="post-content">
-      <p>个人的 <code>xmonad</code> 配置</p>
+      <p>4月中旬的时候因为是新加坡的一个公众假期，有三连休，公司内部就有人组织了一次马六甲之行。因为马来西亚入关的效率以及出关人数众多的问题，所以必须要在早上8点就坐上大巴车出发。从 <code>Tuas</code> 出关新加坡，然后在路上被堵了差不多3小时，大概12点的时候终于入关马来西亚的柔佛了。期间为了打发时间，拿起kindle看起了中岛敦的小说集。从柔佛到马六甲又是差不多4小时的车程。在下午4点多的时候，在我把小说快看完的时候，我们一行人终于到了此行的目的地，马六甲。<br />
+马六甲是一个很神奇的地方，一开始是马来人居住在马六甲，然后中国人来了，葡萄牙人来了，荷兰人来了，英国人来了，日本人来了，每一批外来人都带来了自己的文化，于是可以在马六甲看到这些纷繁的文化的交融。其中最有趣的莫过于两个教堂的历史沿革了，一个葡萄牙人建立的天主教堂，后来被荷兰人改作了改革宗的教堂。一个荷兰人建立的改革宗的教堂，后来又被英国人变成了圣公会的交通，可以说是天理循环报应不爽了。<br />
+去了马六甲最需要去的就是鸡场街了，街上不光有一些奇奇怪怪的博物馆，夜市更是必须要去的打卡地点，不过需要注意的是鸡场街的夜市只会在周五周六周日的晚上开放。我们一行人去马六甲的第一个晚上就去了鸡场街的夜市，有点像大学旁边的垃圾街，人们在这里摩肩接踵，随着人流从街的这端到街的那端。因为一直都是在新加坡工作生活，看到马六甲和中国差不多的物价就感觉和不要钱的一样，于是在夜市买了很多吃的，一路走一路吃，不过有点可惜的是貌似为了大众的安全考虑夜市里并没有榴莲。<br />
+第二天，又去了一次白天的鸡场街，去了一个娘惹峇峇博物馆，讲的是当年马六甲的土生华人的生活。这个博物馆就是当年的一个富商的住所，里面有很多一看就很贵的家具，比如镶嵌螺钿的红木桌子，一张雕刻华丽的婚床。出了博物馆之后，偶然走到一个有为了纪念中马建交各个大佬亲手植的树的小广场上，说是广场其实就是在两间房子之间的一小块空地，叫作郑和广场。马六甲对于郑和的纪念挺多的，因为郑和被尊称为三保太监所以会有一些三保宫纪念郑和。<br />
+第三天，就又是在车上8个小时直接回新加坡了，因为是下午2点才坐上车的，所以直到晚上11点才入关了新加坡。总得来说这次旅行还是很完美的，见到了小时候一直在书上看到的马六甲海峡，当年PANTA还以马六甲为题出了一个专辑，也算是日本摇滚史上的名盘了。</p>
 
-<p>虽然从刚刚开始当程序员的那一年就开始用xmonad了，但是对于xmonad的配置却一直不怎么会，今天花了几个小时，总算是稍微学了一些皮毛。本来是有计划系统的看一下xmonad的源代码的，但是考虑到最近要看 <code>SICP</code> 还有努力转行 <code>java</code> 估计又要拖很久了。
-把自己的配置附录一下吧。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-haskell" data-lang="haskell"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-haskell" data-lang="haskell"><span class="kr">import</span> <span class="nn">XMonad</span>
-<span class="kr">import</span> <span class="nn">XMonad.Util.EZConfig</span><span class="p">(</span><span class="nf">additionalKeys</span><span class="p">)</span>
-<span class="kr">import</span> <span class="nn">XMonad.Util.Run</span><span class="p">(</span><span class="nf">spawnPipe</span><span class="p">)</span>
-<span class="kr">import</span> <span class="nn">XMonad.Config.Desktop</span>
-<span class="kr">import</span> <span class="nn">XMonad.Actions.SpawnOn</span>
-
-<span class="nf">web</span> <span class="ow">=</span> <span class="s">&#34;web&#34;</span>
-<span class="nf">code</span> <span class="ow">=</span> <span class="s">&#34;code&#34;</span>
-<span class="nf">term</span> <span class="ow">=</span> <span class="s">&#34;terminal&#34;</span>
-<span class="nf">myWorkspaces</span> <span class="ow">=</span> <span class="p">[</span><span class="nf">web</span><span class="p">,</span> <span class="nf">code</span><span class="p">,</span> <span class="nf">term</span><span class="p">]</span> <span class="o">++</span> <span class="nf">map</span> <span class="nf">show</span> <span class="p">[</span><span class="mi">4</span><span class="o">..</span><span class="mi">9</span><span class="p">]</span>
-
-<span class="nf">main</span> <span class="ow">=</span> <span class="kr">do</span>
-  <span class="nf">xmproc</span> <span class="ow">&lt;-</span> <span class="nf">spawnPipe</span> <span class="s">&#34;xmobar&#34;</span>
-  <span class="nf">xmonad</span> <span class="o">$</span> <span class="nf">desktopConfig</span> <span class="p">{</span>
-    <span class="nf">startupHook</span> <span class="ow">=</span> <span class="kr">do</span>
-      <span class="nf">spawnOn</span> <span class="nf">web</span> <span class="s">&#34;firefox&#34;</span>
-      <span class="nf">spawnOn</span> <span class="nf">code</span> <span class="s">&#34;emacs&#34;</span>
-      <span class="nf">spawnOn</span> <span class="nf">term</span> <span class="s">&#34;termite&#34;</span>
-    <span class="p">,</span><span class="nf">terminal</span> <span class="ow">=</span> <span class="s">&#34;termite&#34;</span>
-    <span class="p">,</span><span class="nf">modMask</span> <span class="ow">=</span> <span class="nf">mod4Mask</span>
-    <span class="p">,</span><span class="nf">workspaces</span> <span class="ow">=</span> <span class="nf">myWorkspaces</span>
-    <span class="p">,</span><span class="nf">manageHook</span><span class="ow">=</span> <span class="nf">manageSpawn</span>
-  <span class="p">}</span> <span class="p">`</span><span class="nf">additionalKeys</span><span class="p">`</span> <span class="p">[</span>
-        <span class="p">((</span><span class="nf">mod4Mask</span><span class="p">,</span> <span class="nf">xK_Up</span><span class="p">),</span> <span class="nf">spawn</span> <span class="s">&#34;amixer set Master 2%+ unmute&#34;</span><span class="p">),</span>
-        <span class="p">((</span><span class="nf">mod4Mask</span><span class="p">,</span> <span class="nf">xK_Down</span><span class="p">),</span> <span class="nf">spawn</span> <span class="s">&#34;amixer set Master 2%- unmute&#34;</span><span class="p">)</span>
-    <span class="p">]</span></code></pre></td></tr></table>
-</div>
-</div>
     </div>
 
     <div class="post-copyright">
@@ -210,8 +153,8 @@
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-        2019-03-31
-        <a href="/commit/2b00678f4e1e594a7c8812c5ec49c2e212b1270a" title="fix draft">(2b00678)</a>
+        2019-05-01
+        <a href="/commit/ddb4222d62dd8763688ad8ea699575b99dbc51c8" title="add malacca traveling">(ddb4222)</a>
     </span>
   </p>
   
@@ -221,17 +164,11 @@
   </p>
 </div>
 <footer class="post-footer">
-      <div class="post-tags">
-          <a href="/tags/cs/">CS</a>
-          </div>
+      
       <nav class="post-nav">
-        <a class="prev" href="/post/armenia_church/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">新加坡的亚美尼亚使徒教会</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
-        <a class="next" href="/post/computer_system/">
-            <span class="next-text nav-default">计算机系统核心概念及软硬件实现</span>
+        
+        <a class="next" href="/post/japanese_cemetery_park/">
+            <span class="next-text nav-default">新加坡的日本人墓地公园</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
