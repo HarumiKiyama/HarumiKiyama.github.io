@@ -24,7 +24,7 @@
 <meta name="google-site-verification" content="UA-137902877-1" />
 
 
-<meta name="generator" content="Hugo 0.55.4 with even 4.0.0" />
+<meta name="generator" content="Hugo 0.62.2 with even 4.0.0" />
 
 
 <link rel="canonical" href="http://harumikiyam.github.io/post/xmonad_config/" />
@@ -43,21 +43,17 @@
 <meta property="og:description" content="个人的 xmonad 配置" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://harumikiyam.github.io/post/xmonad_config/" />
-<meta property="article:published_time" content="2019-03-31T00:00:00&#43;08:00"/>
-<meta property="article:modified_time" content="2019-03-31T22:47:06&#43;08:00"/>
-
+<meta property="article:published_time" content="2019-03-31T00:00:00+08:00" />
+<meta property="article:modified_time" content="2019-03-31T22:47:06+08:00" />
 <meta itemprop="name" content="xmonad的配置">
 <meta itemprop="description" content="个人的 xmonad 配置">
-
-
 <meta itemprop="datePublished" content="2019-03-31T00:00:00&#43;08:00" />
 <meta itemprop="dateModified" content="2019-03-31T22:47:06&#43;08:00" />
-<meta itemprop="wordCount" content="245">
+<meta itemprop="wordCount" content="246">
 
 
 
-<meta itemprop="keywords" content="CS," />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="CS," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="xmonad的配置"/>
 <meta name="twitter:description" content="个人的 xmonad 配置"/>
 
@@ -134,17 +130,16 @@
     <div class="post-toc" id="post-toc">
   <h2 class="post-toc-title">文章目录</h2>
   <div class="post-toc-content always-active">
-    
+    <nav id="TableOfContents"></nav>
   </div>
 </div>
     <div class="post-content">
       <p>个人的 <code>xmonad</code> 配置</p>
-
 <p>虽然从刚刚开始当程序员的那一年就开始用xmonad了，但是对于xmonad的配置却一直不怎么会，今天花了几个小时，总算是稍微学了一些皮毛。本来是有计划系统的看一下xmonad的源代码的，但是考虑到最近要看 <code>SICP</code> 还有努力转行 <code>java</code> 估计又要拖很久了。
 把自己的配置附录一下吧。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code class="language-haskell" data-lang="haskell"><span class="lnt"> 1
+<pre class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -170,34 +165,37 @@
 </span><span class="lnt">24
 </span><span class="lnt">25
 </span><span class="lnt">26
+</span><span class="lnt">27
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-haskell" data-lang="haskell"><span class="kr">import</span> <span class="nn">XMonad</span>
-<span class="kr">import</span> <span class="nn">XMonad.Util.EZConfig</span><span class="p">(</span><span class="nf">additionalKeys</span><span class="p">)</span>
-<span class="kr">import</span> <span class="nn">XMonad.Util.Run</span><span class="p">(</span><span class="nf">spawnPipe</span><span class="p">)</span>
+<span class="kr">import</span> <span class="nn">XMonad.Util.EZConfig</span><span class="p">(</span><span class="n">additionalKeys</span><span class="p">)</span>
+<span class="kr">import</span> <span class="nn">XMonad.Util.Run</span><span class="p">(</span><span class="n">spawnPipe</span><span class="p">)</span>
 <span class="kr">import</span> <span class="nn">XMonad.Config.Desktop</span>
 <span class="kr">import</span> <span class="nn">XMonad.Actions.SpawnOn</span>
 
-<span class="nf">web</span> <span class="ow">=</span> <span class="s">&#34;web&#34;</span>
-<span class="nf">code</span> <span class="ow">=</span> <span class="s">&#34;code&#34;</span>
-<span class="nf">term</span> <span class="ow">=</span> <span class="s">&#34;terminal&#34;</span>
-<span class="nf">myWorkspaces</span> <span class="ow">=</span> <span class="p">[</span><span class="nf">web</span><span class="p">,</span> <span class="nf">code</span><span class="p">,</span> <span class="nf">term</span><span class="p">]</span> <span class="o">++</span> <span class="nf">map</span> <span class="nf">show</span> <span class="p">[</span><span class="mi">4</span><span class="o">..</span><span class="mi">9</span><span class="p">]</span>
+<span class="nf">web</span> <span class="ow">=</span> <span class="s">&#34;</span><span class="s">web</span><span class="s">&#34;</span>
+<span class="nf">code</span> <span class="ow">=</span> <span class="s">&#34;</span><span class="s">code</span><span class="s">&#34;</span>
+<span class="nf">term</span> <span class="ow">=</span> <span class="s">&#34;</span><span class="s">terminal</span><span class="s">&#34;</span>
+<span class="nf">myWorkspaces</span> <span class="ow">=</span> <span class="p">[</span><span class="n">web</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">term</span><span class="p">]</span> <span class="o">++</span> <span class="n">map</span> <span class="n">show</span> <span class="p">[</span><span class="mi">4</span><span class="o">..</span><span class="mi">9</span><span class="p">]</span>
 
 <span class="nf">main</span> <span class="ow">=</span> <span class="kr">do</span>
-  <span class="nf">xmproc</span> <span class="ow">&lt;-</span> <span class="nf">spawnPipe</span> <span class="s">&#34;xmobar&#34;</span>
-  <span class="nf">xmonad</span> <span class="o">$</span> <span class="nf">desktopConfig</span> <span class="p">{</span>
-    <span class="nf">startupHook</span> <span class="ow">=</span> <span class="kr">do</span>
-      <span class="nf">spawnOn</span> <span class="nf">web</span> <span class="s">&#34;firefox&#34;</span>
-      <span class="nf">spawnOn</span> <span class="nf">code</span> <span class="s">&#34;emacs&#34;</span>
-      <span class="nf">spawnOn</span> <span class="nf">term</span> <span class="s">&#34;termite&#34;</span>
-    <span class="p">,</span><span class="nf">terminal</span> <span class="ow">=</span> <span class="s">&#34;termite&#34;</span>
-    <span class="p">,</span><span class="nf">modMask</span> <span class="ow">=</span> <span class="nf">mod4Mask</span>
-    <span class="p">,</span><span class="nf">workspaces</span> <span class="ow">=</span> <span class="nf">myWorkspaces</span>
-    <span class="p">,</span><span class="nf">manageHook</span><span class="ow">=</span> <span class="nf">manageSpawn</span>
-  <span class="p">}</span> <span class="p">`</span><span class="nf">additionalKeys</span><span class="p">`</span> <span class="p">[</span>
-        <span class="p">((</span><span class="nf">mod4Mask</span><span class="p">,</span> <span class="nf">xK_Up</span><span class="p">),</span> <span class="nf">spawn</span> <span class="s">&#34;amixer set Master 2%+ unmute&#34;</span><span class="p">),</span>
-        <span class="p">((</span><span class="nf">mod4Mask</span><span class="p">,</span> <span class="nf">xK_Down</span><span class="p">),</span> <span class="nf">spawn</span> <span class="s">&#34;amixer set Master 2%- unmute&#34;</span><span class="p">)</span>
-    <span class="p">]</span></code></pre></td></tr></table>
+  <span class="n">xmproc</span> <span class="ow">&lt;-</span> <span class="n">spawnPipe</span> <span class="s">&#34;</span><span class="s">xmobar</span><span class="s">&#34;</span>
+  <span class="n">xmonad</span> <span class="o">$</span> <span class="n">desktopConfig</span> <span class="p">{</span>
+    <span class="n">startupHook</span> <span class="ow">=</span> <span class="kr">do</span>
+      <span class="n">spawnOn</span> <span class="n">web</span> <span class="s">&#34;</span><span class="s">firefox</span><span class="s">&#34;</span>
+      <span class="n">spawnOn</span> <span class="n">code</span> <span class="s">&#34;</span><span class="s">emacs</span><span class="s">&#34;</span>
+      <span class="n">spawnOn</span> <span class="n">term</span> <span class="s">&#34;</span><span class="s">termite</span><span class="s">&#34;</span>
+    <span class="p">,</span><span class="n">terminal</span> <span class="ow">=</span> <span class="s">&#34;</span><span class="s">termite</span><span class="s">&#34;</span>
+    <span class="p">,</span><span class="n">modMask</span> <span class="ow">=</span> <span class="n">mod4Mask</span>
+    <span class="p">,</span><span class="n">workspaces</span> <span class="ow">=</span> <span class="n">myWorkspaces</span>
+    <span class="p">,</span><span class="n">manageHook</span><span class="ow">=</span> <span class="n">manageSpawn</span>
+  <span class="p">}</span> <span class="p">`</span><span class="n">additionalKeys</span><span class="p">`</span> <span class="p">[</span>
+        <span class="p">(</span><span class="p">(</span><span class="n">mod4Mask</span><span class="p">,</span> <span class="n">xK_Up</span><span class="p">)</span><span class="p">,</span> <span class="n">spawn</span> <span class="s">&#34;</span><span class="s">amixer set Master 2%+ unmute</span><span class="s">&#34;</span><span class="p">)</span><span class="p">,</span>
+        <span class="p">(</span><span class="p">(</span><span class="n">mod4Mask</span><span class="p">,</span> <span class="n">xK_Down</span><span class="p">)</span><span class="p">,</span> <span class="n">spawn</span> <span class="s">&#34;</span><span class="s">amixer set Master 2%- unmute</span><span class="s">&#34;</span><span class="p">)</span>
+    <span class="p">]</span>
+
+</code></pre></td></tr></table>
 </div>
 </div>
     </div>
@@ -282,7 +280,7 @@
   <span class="copyright-year">
     &copy; 
     2018 - 
-    2019
+    2020
     <span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>
