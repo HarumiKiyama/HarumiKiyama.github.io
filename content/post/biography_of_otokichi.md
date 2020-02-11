@@ -1,6 +1,5 @@
 +++
 title = "音吉生平"
-author = ["Harumi Kiyama"]
 date = 2020-02-11
 publishDate = 2020-02-10T00:00:00+08:00
 draft = false
