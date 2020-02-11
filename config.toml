@@ -1,5 +1,5 @@
 baseURL = "http://harumikiyam.github.io/"
-languageCode = "en"
+languageCode = "zh-cn"
 defaultContentLanguage = "zh-cn"                             # en / zh-cn / ... (This field determines which i18n file to use)
 title = "Harumi's Chapel"
 preserveTaxonomyNames = true
@@ -165,8 +165,6 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
     e-linkedin = "https://www.linkedin.com/in/lichao-wang-364234110/"
     g-github = "http://github.com/HarumiKiyama"
     i-zhihu = "https://www.zhihu.com/people/kiyama_harumi"
-    # a-email = "mailto:your@email.com"
-    # c-twitter = "http://localhost:1313"
     # d-facebook = "http://localhost:1313"
     # f-google = "http://localhost:1313"
     # g-github = "http://localhost:1313"
@@ -174,9 +172,6 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
     # i-zhihu = "http://localhost:1313"
     # j-douban = "http://localhost:1313"
     # k-pocket = "http://localhost:1313"
-    # l-tumblr = "http://localhost:1313"
-    # m-instagram = "http://localhost:1313"
-    # n-gitlab = "http://localhost:1313"
     # o-bilibili = "http://localhost:1313"
 
 # See https://gohugo.io/about/hugo-and-gdpr/
