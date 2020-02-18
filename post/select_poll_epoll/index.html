@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>What are select, poll and epoll(1. Waht is select) - Harumi&#39;s Chapel</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Harumi Kiyama" /><meta name="description" content="什么是 select
+" /><meta name="keywords" content="Harumi, CS, Primatology" />
+
+
+
+<meta name="google-site-verification" content="UA-137902877-1" />
+
+
+<meta name="generator" content="Hugo 0.64.1 with theme even" />
+
+
+<link rel="canonical" href="http://harumikiyam.github.io/post/select_poll_epoll/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="What are select, poll and epoll(1. Waht is select)" />
+<meta property="og:description" content="什么是 select" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://harumikiyam.github.io/post/select_poll_epoll/" />
+<meta property="article:published_time" content="2020-02-07T00:00:00+08:00" />
+<meta property="article:modified_time" content="2020-02-19T00:32:14+08:00" />
+<meta itemprop="name" content="What are select, poll and epoll(1. Waht is select)">
+<meta itemprop="description" content="什么是 select">
+<meta itemprop="datePublished" content="2020-02-07T00:00:00&#43;08:00" />
+<meta itemprop="dateModified" content="2020-02-19T00:32:14&#43;08:00" />
+<meta itemprop="wordCount" content="1744">
+
+
+
+<meta itemprop="keywords" content="UNIX,CS," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="What are select, poll and epoll(1. Waht is select)"/>
+<meta name="twitter:description" content="什么是 select"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Carpe diem</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Carpe diem</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">What are select, poll and epoll(1. Waht is select)</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-02-19 </span>
+        
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#select-是什么">select 是什么</a></li>
+    <li><a href="#为什么需要-select">为什么需要 select</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>什么是 select</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<ul>
+<li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
+<li><a href="#select-%E6%98%AF%E4%BB%80%E4%B9%88">select 是什么</a></li>
+<li><a href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81-select">为什么需要 select</a></li>
+</ul>
+<!-- raw HTML omitted -->
+<h2 id="前言">前言</h2>
+<p>select, poll 还有 epoll 是什么, 这个问题一直能够时不时的看到, 网上找了很多资料要么是语焉不详, 要么就是在解释这些api是如何处理IO多路复用的(<code>IO multiplexing</code>), 然后再对IO多路复用做一些以其昏昏使人昭昭的解释. 从某种角度来说这个问题也和某个函数式编程当中的经常有初学者问的问题, 即什么是 <em>monad</em> 一样, 网上有很多种解释, 但是如果没有去使用过是完全不会明白 <em>monad</em> 是什么的. 这也是工科和理科最大的一个区别吧, 站在工科的视角来看, 对于概念的定义并没有那么重要, 关键是如果讲这些概念应用到实际问题上去. 而理科的话则是需要死扣定义, 因为只有定义清晰了, 才可以创造出一个共同的语境(<code>context</code>), 这之后对于这个概念的讨论才有意义, 这方面最严谨的莫过于近现代数学公理化之后留下的遗产了.</p>
+<p>select, poll 还有 epoll 是什么, 这个问题可以分成两部分, 第一部分, 这三个 api 在文档中是怎么定义的; 第二部分, 这三个 api 的实现是什么.
+这里我只阐述这三个 api 是什么, 对于这三个 api 的实现是什么, 不做阐述, 特别的, 对于这三个 api 的文档特指, <em>POSIX Programmer&rsquo;s Manual</em> 这可能和 <em>Linux Programmer&rsquo;s Manual</em> 有所出入, 读者需要特别注意. 由于篇幅问题, 我这里将把对每个 api 的描述单独放到一篇文章中. 首先当然是排行第一的 <em>select</em>.</p>
+<h2 id="select-是什么">select 是什么</h2>
+<p>这个问题或许是最好回答的了, 如前所述, 代码的定义以及实现都是明明白白写在文档以及代码中的. 这里只做摘录以及必要的解释
+select的规范是写在 <em>POSIX Programmer&rsquo;s Manual</em> 中的, 如果读者使用的是内核为 <em>linux</em> 的操作系统的话, 可以在 <em>shell</em> 中输入 <code>man select</code> 或者 <code>man 3 select</code> 就会进入 select 的 <em>POSIX Programmer&rsquo;s Manual</em> 页面 (<strong>注意输入</strong> <code>man 2 select</code> <strong>会进入到</strong> <em>Linux Programmer&rsquo;s Manual</em> <strong>中</strong>). 我们注意到在该页面中, <em>DESCRIPTION</em> 中写到 <em>refer to pselect()</em>, 于是我们再在 <em>shell</em> 中运行 <code>man pselect</code> 转跳到 <em>pselect</em> 的页面中.</p>
+<p>在 <em>pselect</em> 的页面中, 我们可以看到 <em>select</em> 和 <em>pselect</em> 的函数签名, <em>pselect</em> 的签名如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">int</span> <span class="nf">pselect</span><span class="p">(</span><span class="kt">int</span> <span class="n">nfds</span><span class="p">,</span> <span class="n">fd_set</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">readfds</span><span class="p">,</span> <span class="n">fd_set</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">writefds</span><span class="p">,</span>
+            <span class="n">fd_set</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">errorfds</span><span class="p">,</span> <span class="k">const</span> <span class="k">struct</span> <span class="n">timespec</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">timeout</span><span class="p">,</span>
+            <span class="k">const</span> <span class="n">sigset_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">sigmask</span><span class="p">)</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>其中, <code>sigmask</code> 的作用为</p>
+<blockquote>
+<p>If sigmask is not a null pointer, then the pselect() function shall replace the signal mask of the caller by the set of signals pointed to by sigmask before examining the descriptors, and shall restore the signal mask of the calling thread before
+returning.</p>
+</blockquote>
+<p><em>select</em> 的函数签名如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">int</span> <span class="nf">select</span> <span class="p">(</span><span class="kt">int</span> <span class="n">NFDS</span><span class="p">,</span> <span class="n">fd_set</span> <span class="o">*</span><span class="n">READ</span><span class="o">-</span><span class="n">FDS</span><span class="p">,</span> <span class="n">fd_set</span> <span class="o">*</span><span class="n">WRITE</span><span class="o">-</span><span class="n">FDS</span><span class="p">,</span>
+          <span class="n">fd_set</span> <span class="o">*</span><span class="n">EXCEPT</span><span class="o">-</span><span class="n">FDS</span><span class="p">,</span> <span class="k">struct</span> <span class="n">timeval</span> <span class="o">*</span><span class="n">TIMEOUT</span><span class="p">)</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>其中, <code>nfds</code> 参数为需要检验的文件描述符的范围, 在每一个 <em>xxFDS</em> 中, 只校验 0 到 nfds - 1 的文件描述符. (<strong>注意</strong> <code>linux</code> <strong>内核中并没有完全实现这个逻辑,详情可见</strong> <code>man 2 select</code> <strong>摘录如下</strong>)</p>
+<blockquote>
+<p>According  to  POSIX, select() should check all specified file descriptors in the three file descriptor sets, up to the limit
+nfds-1.  However, the current implementation ignores any file descriptor in these sets that is greater than the maximum  file
+descriptor number that the process currently has open.  According to POSIX, any such file descriptor that is specified in one
+of the sets should result in the error EBADF.</p>
+</blockquote>
+<p>fd_set 为一个 <em>bit array</em>, 在 <em>POSIX Programmer&rsquo;s Manual</em> 中没有明确定义, 但是在 <em>linux</em> 的内核代码中有实现, 如下所示</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cp">#</span><span class="cp">define __FD_SETSIZE 1024</span><span class="cp">
+</span><span class="cp"></span><span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
+  <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">fds_bits</span><span class="p">[</span><span class="n">__FD_SETSIZE</span> <span class="o">/</span> <span class="p">(</span><span class="mi">8</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">long</span><span class="p">)</span><span class="p">)</span><span class="p">]</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">__kernel_fd_set</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>然后在 <em>DESCRIPTION</em> 中, 写明了 <em>pselect</em> , <em>select</em> 执行了什么功能, 以及 <em>pselect</em>, <em>select</em> 分别有什么区别, 简单摘要如下</p>
+<blockquote>
+<p>The pselect() function shall examine the file descriptor sets whose addresses are passed in the readfds, writefds,
+and  errorfds  parameters  to see whether some of their descriptors are ready for reading, are ready for writing,
+or have an exceptional condition pending, respectively.
+The select() function shall be equivalent to the pselect() function, except as follows:</p>
+<ul>
+<li>For the select() function, the timeout period is given in seconds  and  microseconds  in  an  argument  of  type  struct
+timeval,  whereas  for  the  pselect() function the timeout period is given in seconds and nanoseconds in an argument of
+type struct timespec.</li>
+<li>The select() function has no sigmask argument; it shall behave as pselect() does when sigmask is a null pointer.</li>
+<li>Upon successful completion, the select() function may modify the object pointed to by the timeout argument.</li>
+</ul>
+</blockquote>
+<p>简而言之, <em>select</em> 和 <em>select</em> 都是执行类似的功能的, 即对传入的参数 <em>readfds</em>, <em>writefds</em>, <em>errorfds</em> 做校验, 判断是否处于 <em>ready</em> 状态.
+他们的差别在与</p>
+<ol>
+<li>timeout 的参数的类型不同</li>
+<li><em>select</em> 不需要传入 <code>sigmask</code> 作为参数</li>
+<li>在执行完之后, <em>select</em> 会更新 <code>timeval</code> 的值, 新的值表示还有多少时间剩下来. 而 <em>pselect</em> 则不会.</li>
+</ol>
+<p><em>select</em> 和 <em>pselect</em> 的差别就阐述到这里, 接下来就以 <em>select</em> 为例, 来看看 <em>select</em> 的行为是怎么定义的</p>
+<blockquote>
+<p>If the readfds, writefds, and errorfds arguments are all null pointers and the timeout argument is not a null pointer, the
+pselect() or select() function shall block for the time specified, or  until  interrupted  by  a  signal.  If  the  readfds,
+writefds, and errorfds arguments are all null pointers and the timeout argument is a null pointer, the pselect() or select()
+function shall block until interrupted by a signal.</p>
+</blockquote>
+<p>当 <em>select</em> 程序运行成功时</p>
+<blockquote>
+<p>Upon successful completion, the pselect() or select() function shall modify the objects pointed to by the readfds, writefds,
+and errorfds arguments to indicate which file descriptors are ready for reading, ready for writing, or have an error
+condition pending, respectively, and shall return the total number of ready descriptors in all the output sets. For each file
+descriptor less than nfds, the corresponding bit shall be set upon successful completion if it was set on input and the
+associated condition is true for that file descriptor.</p>
+</blockquote>
+<p>当 <em>select</em> 程序运行遇到错误时</p>
+<blockquote>
+<p>On failure, the objects pointed to by the readfds, writefds, and errorfds arguments shall not be modified. If the timeout
+interval expires without the specified condition being true for any of the specified file descriptors, the  objects  pointed
+to by the readfds, writefds, and errorfds arguments shall have all bits set to 0.
+−1 shall be returned, and errno shall be set to indicate the error.</p>
+</blockquote>
+<h2 id="为什么需要-select">为什么需要 select</h2>
+<p>select 在1983年被首次引入 BSD 中, 用于实现IO多路复用(<code>IO multiplexing</code>). 多路复用早期是一个通信行业的词汇, 指的是将多种信号合并通过同一媒介传播, 在计算机科学中多路复用指的是</p>
+<blockquote>
+<p>monitoring multiple file descriptors, waiting until one or more of the file descriptors
+become &ldquo;ready&rdquo; for some class of I/O operation (e.g., input possible)</p>
+</blockquote>
+<p>在80年代服务器面对的客户端开始增多, 早期的一个线程对应一个输入信号的做法已经渐渐跟不上潮流, 于是一种更加高效的监听IO事件的 <em>system call</em> 被开发了出来.</p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">Harumi Kiyama</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2020-02-19
+        <a href="/commit/74e299ca58e9748f208a69d71b8e24111b0c8687" title="add toc info">(74e299c)</a>
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/unix/">UNIX</a>
+          <a href="/tags/cs/">CS</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/biography_of_otokichi/">
+            <span class="next-text nav-default">音吉生平</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'https-harumikiyama-github-io';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:h.kiyama0720@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/11258551/harumi-kiyama" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://www.linkedin.com/in/lichao-wang-364234110/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://github.com/HarumiKiyama" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.zhihu.com/people/kiyama_harumi" class="iconfont icon-zhihu" title="zhihu"></a>
+  <a href="http://harumikiyam.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Harumi Kiyama</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+      TeX: {equationNumbers: {autoNumber: "AMS"}},
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"  integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-137902877-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

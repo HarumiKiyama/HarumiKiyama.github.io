@@ -6,10 +6,19 @@
     <description>Recent content on Harumi&#39;s Chapel</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 11 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 19 Feb 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://harumikiyam.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>What are select, poll and epoll(1. Waht is select)</title>
+      <link>http://harumikiyam.github.io/post/select_poll_epoll/</link>
+      <pubDate>Wed, 19 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://harumikiyam.github.io/post/select_poll_epoll/</guid>
+      <description>&lt;p&gt;什么是 select&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>音吉生平</title>
