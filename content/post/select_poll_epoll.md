@@ -1,5 +1,5 @@
 +++
-title = "Waht is select"
+title = "What is select"
 date = 2020-02-19
 publishDate = 2020-02-07T00:00:00+08:00
 tags = ["UNIX", "CS"]
