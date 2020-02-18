@@ -1,5 +1,5 @@
 +++
-title = "What are select, poll and epoll(1. Waht is select)"
+title = "Waht is select"
 date = 2020-02-19
 publishDate = 2020-02-07T00:00:00+08:00
 tags = ["UNIX", "CS"]
