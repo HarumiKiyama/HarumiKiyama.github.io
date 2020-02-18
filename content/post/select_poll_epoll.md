@@ -2,10 +2,25 @@
 title = "What are select, poll and epoll(1. Waht is select)"
 date = 2020-02-19
 publishDate = 2020-02-07T00:00:00+08:00
-tags = ["CS", "OS"]
+tags = ["UNIX", "CS"]
 draft = false
 creator = "Emacs 26.3 (Org mode N/A + ox-hugo)"
 +++
+什么是 select
+<!--more-->
+
+<div class="ox-hugo-toc toc">
+<div></div>
+
+<div class="heading">Table of Contents</div>
+
+- [前言](#前言)
+- [select 是什么](#select-是什么)
+- [为什么需要 select](#为什么需要-select)
+
+</div>
+<!--endtoc-->
+
 
 ## 前言 {#前言}
 
