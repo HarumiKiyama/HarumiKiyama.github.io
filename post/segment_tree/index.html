@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Segment Tree - Harumi&#39;s Chapel</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Harumi Kiyama" /><meta name="description" content="什么是线段树
+" /><meta name="keywords" content="Harumi, CS, Primatology" />
+
+
+
+<meta name="google-site-verification" content="UA-137902877-1" />
+
+
+<meta name="generator" content="Hugo 0.65.1 with theme even" />
+
+
+<link rel="canonical" href="http://harumikiyam.github.io/post/segment_tree/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Segment Tree" />
+<meta property="og:description" content="什么是线段树" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://harumikiyam.github.io/post/segment_tree/" />
+<meta property="article:published_time" content="2020-02-19T00:00:00+08:00" />
+<meta property="article:modified_time" content="2020-02-22T13:27:19+08:00" />
+<meta itemprop="name" content="Segment Tree">
+<meta itemprop="description" content="什么是线段树">
+<meta itemprop="datePublished" content="2020-02-19T00:00:00&#43;08:00" />
+<meta itemprop="dateModified" content="2020-02-22T13:27:19&#43;08:00" />
+<meta itemprop="wordCount" content="1473">
+
+
+
+<meta itemprop="keywords" content="Algorithm," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Segment Tree"/>
+<meta name="twitter:description" content="什么是线段树"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Carpe diem</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Carpe diem</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Segment Tree</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-02-22 </span>
+        
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#线段树的性质">线段树的性质</a></li>
+    <li><a href="#如何实现一个线段树">如何实现一个线段树</a></li>
+    <li><a href="#线段树的区间查询">线段树的区间查询</a></li>
+    <li><a href="#线段树的区间修改与惰性标记">线段树的区间修改与惰性标记</a></li>
+    <li><a href="#应当在什么时候使用线段树">应当在什么时候使用线段树</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>什么是线段树</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<ul>
+<li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
+<li><a href="#%E7%BA%BF%E6%AE%B5%E6%A0%91%E7%9A%84%E6%80%A7%E8%B4%A8">线段树的性质</a></li>
+<li><a href="#%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E7%BA%BF%E6%AE%B5%E6%A0%91">如何实现一个线段树</a></li>
+<li><a href="#%E7%BA%BF%E6%AE%B5%E6%A0%91%E7%9A%84%E5%8C%BA%E9%97%B4%E6%9F%A5%E8%AF%A2">线段树的区间查询</a></li>
+<li><a href="#%E7%BA%BF%E6%AE%B5%E6%A0%91%E7%9A%84%E5%8C%BA%E9%97%B4%E4%BF%AE%E6%94%B9%E4%B8%8E%E6%83%B0%E6%80%A7%E6%A0%87%E8%AE%B0">线段树的区间修改与惰性标记</a></li>
+<li><a href="#%E5%BA%94%E5%BD%93%E5%9C%A8%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E4%BD%BF%E7%94%A8%E7%BA%BF%E6%AE%B5%E6%A0%91">应当在什么时候使用线段树</a></li>
+</ul>
+<!-- raw HTML omitted -->
+<h2 id="前言">前言</h2>
+<p>本文主要从三个方面来讲述线段树 (<em>segment tree</em>) 是什么. 即, 线段树的特性, 线段树的实现方式, 以及线段树可以解决什么问题这三个方面.</p>
+<h2 id="线段树的性质">线段树的性质</h2>
+<p>按照 <em>oi-wiki</em> <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> 的说法</p>
+<blockquote>
+<p>线段树可以在 \(O(\log N)\) 的时间复杂度内实现单点修改、区间修改、区间查询（区间求和，求区间最大值，求区间最小值）等操作。</p>
+</blockquote>
+<h2 id="如何实现一个线段树">如何实现一个线段树</h2>
+<p>设有一大小为 \(5\) 的数组 \(a=\{10,11,12,13,14\}\) 其所转化为的线段树如下图</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">digraph G {
+a[label=&#34;d[1]=60(0~4)&#34;];
+b[label=&#34;d[2]=33(0~2)&#34;];
+d[label=&#34;d[4]=21(0~1)&#34;];
+e[label=&#34;d[5]=12(2~2)&#34;];
+f[label=&#34;d[6]=13(3~3)&#34;];
+g[label=&#34;d[7]=14(4~4)&#34;];
+h[label=&#34;d[8]=10(0~0)&#34;];
+i[label=&#34;d[9]=11(1~1)&#34;];
+c[label=&#34;d[3]=27(3~4)&#34;];
+
+a-&gt;{b c};
+b-&gt;{d e};
+c-&gt;{f g};
+d-&gt;{h i};
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>其中, 线段树 \(d\) 的每个节点代表 \((a, b)\) 范围内的 \(a\) 每个元素的和.
+如果以递归的方式实现线段树的话会比较简单, 如下, 代码参考 <em>oi-wiki</em></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">void</span> <span class="nf">build</span><span class="p">(</span><span class="kt">int</span> <span class="n">s</span><span class="p">,</span> <span class="kt">int</span> <span class="n">t</span><span class="p">,</span> <span class="kt">int</span> <span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// 对 [s,t] 区间建立线段树,当前根的编号为 p
+</span><span class="c1"></span>  <span class="k">if</span> <span class="p">(</span><span class="n">s</span> <span class="o">==</span> <span class="n">t</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">d</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">s</span><span class="p">];</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">s</span> <span class="o">+</span> <span class="n">t</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="n">build</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">p</span> <span class="o">*</span> <span class="mi">2</span><span class="p">),</span> <span class="n">build</span><span class="p">(</span><span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">p</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+  <span class="c1">// 递归对左右区间建树
+</span><span class="c1"></span>  <span class="n">d</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="n">p</span> <span class="o">*</span> <span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">d</span><span class="p">[(</span><span class="n">p</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这里使用的是堆式存储, 即对数组下标 \(i\) , 右孩子的下标是 \(i\times2+1\), 左孩子的下标是 \(i\times2\). 特别的, 如果 \(d[i]\) 表示的是区间 \([s,t]\) 的话, 那么 \(d[i]\) 的左儿子节点表示的区间是 \([s, \frac{s+t}{2}]\), \(d[i]\) 的右孩子表示的是区间 \([\frac{s+t}{2}+1, t]\)</p>
+<h2 id="线段树的区间查询">线段树的区间查询</h2>
+<p>一般的, 如果要查询区间, \([l,r]\) 则可以将其拆成最多为 \(O(\log n)\) 个极大的区间, 合并这些区间即可求出 \([l,r]\) 的答案.
+代码如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="nf">getsum</span><span class="p">(</span><span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span><span class="p">,</span> <span class="kt">int</span> <span class="n">s</span><span class="p">,</span> <span class="kt">int</span> <span class="n">t</span><span class="p">,</span> <span class="kt">int</span> <span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// [l,r] 为查询区间,[s,t] 为当前节点包含的区间,p 为当前节点的编号
+</span><span class="c1"></span>  <span class="k">if</span> <span class="p">(</span><span class="n">l</span> <span class="o">&lt;=</span> <span class="n">s</span> <span class="o">&amp;&amp;</span> <span class="n">t</span> <span class="o">&lt;=</span> <span class="n">r</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">d</span><span class="p">[</span><span class="n">p</span><span class="p">];</span>  <span class="c1">// 当前区间为询问区间的子集时直接返回当前区间的和
+</span><span class="c1"></span>  <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">s</span> <span class="o">+</span> <span class="n">t</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">l</span> <span class="o">&lt;=</span> <span class="n">m</span><span class="p">)</span> <span class="n">sum</span> <span class="o">+=</span> <span class="n">getsum</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">p</span> <span class="o">*</span> <span class="mi">2</span><span class="p">);</span>
+  <span class="c1">// 如果左儿子代表的区间 [l,m] 与询问区间有交集,则递归查询左儿子
+</span><span class="c1"></span>  <span class="k">if</span> <span class="p">(</span><span class="n">r</span> <span class="o">&gt;</span> <span class="n">m</span><span class="p">)</span> <span class="n">sum</span> <span class="o">+=</span> <span class="n">getsum</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">p</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+  <span class="c1">// 如果右儿子代表的区间 [m+1,r] 与询问区间有交集,则递归查询右儿子
+</span><span class="c1"></span>  <span class="k">return</span> <span class="n">sum</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="线段树的区间修改与惰性标记">线段树的区间修改与惰性标记</h2>
+<p>当修改了 \([l,r]\) 中的至少一个元素时, 需要把所有包含了 \([l,r]\) 中的节点的线段树节点进行更新, 时间复杂度太大, 难以承受.
+这里可以使用惰性标记来优化时间复杂度. 设置一个数组 \(b\), 其中 \(b[i]\) 为 \(d[i]\) 的惰性标记. 当要查询时就把惰性标记向下传递
+区间修改(区间加上某个值)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">void</span> <span class="nf">update</span><span class="p">(</span><span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span><span class="p">,</span> <span class="kt">int</span> <span class="n">c</span><span class="p">,</span> <span class="kt">int</span> <span class="n">s</span><span class="p">,</span> <span class="kt">int</span> <span class="n">t</span><span class="p">,</span> <span class="kt">int</span> <span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// [l,r] 为修改区间,c 为被修改的元素的变化量,[s,t] 为当前节点包含的区间,p
+</span><span class="c1"></span>  <span class="c1">// 为当前节点的编号
+</span><span class="c1"></span>  <span class="k">if</span> <span class="p">(</span><span class="n">l</span> <span class="o">&lt;=</span> <span class="n">s</span> <span class="o">&amp;&amp;</span> <span class="n">t</span> <span class="o">&lt;=</span> <span class="n">r</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">d</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">+=</span> <span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="n">s</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">c</span><span class="p">,</span> <span class="n">b</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">+=</span> <span class="n">c</span><span class="p">;</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>  <span class="c1">// 当前区间为修改区间的子集时直接修改当前节点的值,然后打标记,结束修改
+</span><span class="c1"></span>  <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">s</span> <span class="o">+</span> <span class="n">t</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="n">s</span> <span class="o">!=</span> <span class="n">t</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 如果当前节点的懒标记非空,则更新当前节点两个子节点的值和懒标记值
+</span><span class="c1"></span>    <span class="n">d</span><span class="p">[</span><span class="n">p</span> <span class="o">*</span> <span class="mi">2</span><span class="p">]</span> <span class="o">+=</span> <span class="n">b</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="n">s</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">d</span><span class="p">[</span><span class="n">p</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">b</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="n">m</span><span class="p">);</span>
+    <span class="n">b</span><span class="p">[</span><span class="n">p</span> <span class="o">*</span> <span class="mi">2</span><span class="p">]</span> <span class="o">+=</span> <span class="n">b</span><span class="p">[</span><span class="n">p</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="n">p</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">b</span><span class="p">[</span><span class="n">p</span><span class="p">];</span>  <span class="c1">// 将标记下传给子节点
+</span><span class="c1"></span>    <span class="n">b</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>                                <span class="c1">// 清空当前节点的标记
+</span><span class="c1"></span>  <span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">l</span> <span class="o">&lt;=</span> <span class="n">m</span><span class="p">)</span> <span class="n">update</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">p</span> <span class="o">*</span> <span class="mi">2</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">r</span> <span class="o">&gt;</span> <span class="n">m</span><span class="p">)</span> <span class="n">update</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">p</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+  <span class="n">d</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="n">p</span> <span class="o">*</span> <span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">d</span><span class="p">[</span><span class="n">p</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>区间查询(区间求和)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-cpp" data-lang="cpp"><span class="kt">int</span> <span class="nf">getsum</span><span class="p">(</span><span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span><span class="p">,</span> <span class="kt">int</span> <span class="n">s</span><span class="p">,</span> <span class="kt">int</span> <span class="n">t</span><span class="p">,</span> <span class="kt">int</span> <span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// [l,r] 为修改区间,c 为被修改的元素的变化量,[s,t] 为当前节点包含的区间,p
+</span><span class="c1"></span>  <span class="c1">// 为当前节点的编号
+</span><span class="c1"></span>  <span class="k">if</span> <span class="p">(</span><span class="n">l</span> <span class="o">&lt;=</span> <span class="n">s</span> <span class="o">&amp;&amp;</span> <span class="n">t</span> <span class="o">&lt;=</span> <span class="n">r</span><span class="p">)</span> <span class="k">return</span> <span class="n">d</span><span class="p">[</span><span class="n">p</span><span class="p">];</span>
+  <span class="c1">// 当前区间为询问区间的子集时直接返回当前区间的和
+</span><span class="c1"></span>  <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">s</span> <span class="o">+</span> <span class="n">t</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">p</span><span class="p">])</span> <span class="p">{</span>
+    <span class="c1">// 如果当前节点的懒标记非空,则更新当前节点两个子节点的值和懒标记值
+</span><span class="c1"></span>    <span class="n">d</span><span class="p">[</span><span class="n">p</span> <span class="o">*</span> <span class="mi">2</span><span class="p">]</span> <span class="o">+=</span> <span class="n">b</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="n">s</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">d</span><span class="p">[</span><span class="n">p</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">b</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="n">m</span><span class="p">),</span>
+        <span class="n">b</span><span class="p">[</span><span class="n">p</span> <span class="o">*</span> <span class="mi">2</span><span class="p">]</span> <span class="o">+=</span> <span class="n">b</span><span class="p">[</span><span class="n">p</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="n">p</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">b</span><span class="p">[</span><span class="n">p</span><span class="p">];</span>  <span class="c1">// 将标记下传给子节点
+</span><span class="c1"></span>    <span class="n">b</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>                                    <span class="c1">// 清空当前节点的标记
+</span><span class="c1"></span>  <span class="p">}</span>
+  <span class="kt">int</span> <span class="n">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">l</span> <span class="o">&lt;=</span> <span class="n">m</span><span class="p">)</span> <span class="n">sum</span> <span class="o">=</span> <span class="n">getsum</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">p</span> <span class="o">*</span> <span class="mi">2</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">r</span> <span class="o">&gt;</span> <span class="n">m</span><span class="p">)</span> <span class="n">sum</span> <span class="o">+=</span> <span class="n">getsum</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">p</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">sum</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="应当在什么时候使用线段树">应当在什么时候使用线段树</h2>
+<p>具体主要应用在对区间进行诸如求和,求最大值,求最小值操作的场景</p>
+<ol>
+<li><em>Sum Of Given Range</em> <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></li>
+<li><em>Range Minimum Query</em> <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></li>
+<li><em>Number of Longest Increasing Subsequence</em> <sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></li>
+</ol>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p><a href="https://oi-wiki.org/ds/seg/">https://oi-wiki.org/ds/seg/</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p><a href="https://www.geeksforgeeks.org/segment-tree-set-1-sum-of-given-range/">https://www.geeksforgeeks.org/segment-tree-set-1-sum-of-given-range/</a> <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p><a href="https://www.geeksforgeeks.org/segment-tree-set-1-range-minimum-query/">https://www.geeksforgeeks.org/segment-tree-set-1-range-minimum-query/</a> <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4" role="doc-endnote">
+<p><a href="https://leetcode-cn.com/problems/number-of-longest-increasing-subsequence/">https://leetcode-cn.com/problems/number-of-longest-increasing-subsequence/</a> <a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">Harumi Kiyama</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2020-02-22
+        <a href="/commit/0d94c361f4c195c096edbcaa7170e3bf418da2be" title="update segment tree">(0d94c36)</a>
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/algorithm/">Algorithm</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/select_poll_epoll/">
+            <span class="next-text nav-default">What is select</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'https-harumikiyama-github-io';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:h.kiyama0720@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/11258551/harumi-kiyama" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://www.linkedin.com/in/lichao-wang-364234110/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://github.com/HarumiKiyama" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.zhihu.com/people/kiyama_harumi" class="iconfont icon-zhihu" title="zhihu"></a>
+  <a href="http://harumikiyam.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Harumi Kiyama</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+      TeX: {equationNumbers: {autoNumber: "AMS"}},
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"  integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-137902877-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>

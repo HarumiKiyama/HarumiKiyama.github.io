@@ -6,10 +6,19 @@
     <description>Recent content on Harumi&#39;s Chapel</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 19 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 13 Jan 2020 18:51:42 +0800</lastBuildDate>
     
 	<atom:link href="http://harumikiyam.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Segment Tree</title>
+      <link>http://harumikiyam.github.io/post/segment_tree/</link>
+      <pubDate>Sat, 22 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://harumikiyam.github.io/post/segment_tree/</guid>
+      <description>&lt;p&gt;什么是线段树&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>What is select</title>

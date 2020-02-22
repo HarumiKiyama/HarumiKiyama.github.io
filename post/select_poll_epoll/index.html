@@ -24,7 +24,7 @@
 <meta name="google-site-verification" content="UA-137902877-1" />
 
 
-<meta name="generator" content="Hugo 0.64.1 with theme even" />
+<meta name="generator" content="Hugo 0.65.1 with theme even" />
 
 
 <link rel="canonical" href="http://harumikiyam.github.io/post/select_poll_epoll/" />
@@ -49,7 +49,7 @@
 <meta itemprop="description" content="什么是 select">
 <meta itemprop="datePublished" content="2020-02-07T00:00:00&#43;08:00" />
 <meta itemprop="dateModified" content="2020-02-19T00:37:43&#43;08:00" />
-<meta itemprop="wordCount" content="1744">
+<meta itemprop="wordCount" content="1745">
 
 
 
@@ -166,7 +166,7 @@ select的规范是写在 <em>POSIX Programmer&rsquo;s Manual</em> 中的, 如果
 <td class="lntd">
 <pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">int</span> <span class="nf">pselect</span><span class="p">(</span><span class="kt">int</span> <span class="n">nfds</span><span class="p">,</span> <span class="n">fd_set</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">readfds</span><span class="p">,</span> <span class="n">fd_set</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">writefds</span><span class="p">,</span>
             <span class="n">fd_set</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">errorfds</span><span class="p">,</span> <span class="k">const</span> <span class="k">struct</span> <span class="n">timespec</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">timeout</span><span class="p">,</span>
-            <span class="k">const</span> <span class="n">sigset_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">sigmask</span><span class="p">)</span><span class="p">;</span>
+            <span class="k">const</span> <span class="n">sigset_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">sigmask</span><span class="p">);</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>其中, <code>sigmask</code> 的作用为</p>
@@ -182,7 +182,7 @@ returning.</p>
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">int</span> <span class="nf">select</span> <span class="p">(</span><span class="kt">int</span> <span class="n">NFDS</span><span class="p">,</span> <span class="n">fd_set</span> <span class="o">*</span><span class="n">READ</span><span class="o">-</span><span class="n">FDS</span><span class="p">,</span> <span class="n">fd_set</span> <span class="o">*</span><span class="n">WRITE</span><span class="o">-</span><span class="n">FDS</span><span class="p">,</span>
-          <span class="n">fd_set</span> <span class="o">*</span><span class="n">EXCEPT</span><span class="o">-</span><span class="n">FDS</span><span class="p">,</span> <span class="k">struct</span> <span class="n">timeval</span> <span class="o">*</span><span class="n">TIMEOUT</span><span class="p">)</span><span class="p">;</span>
+          <span class="n">fd_set</span> <span class="o">*</span><span class="n">EXCEPT</span><span class="o">-</span><span class="n">FDS</span><span class="p">,</span> <span class="k">struct</span> <span class="n">timeval</span> <span class="o">*</span><span class="n">TIMEOUT</span><span class="p">);</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>其中, <code>nfds</code> 参数为需要检验的文件描述符的范围, 在每一个 <em>xxFDS</em> 中, 只校验 0 到 nfds - 1 的文件描述符. (<strong>注意</strong> <code>linux</code> <strong>内核中并没有完全实现这个逻辑,详情可见</strong> <code>man 2 select</code> <strong>摘录如下</strong>)</p>
@@ -201,9 +201,9 @@ of the sets should result in the error EBADF.</p>
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-c" data-lang="c"><span class="cp">#</span><span class="cp">define __FD_SETSIZE 1024</span><span class="cp">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="cp">#define __FD_SETSIZE 1024
 </span><span class="cp"></span><span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
-  <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">fds_bits</span><span class="p">[</span><span class="n">__FD_SETSIZE</span> <span class="o">/</span> <span class="p">(</span><span class="mi">8</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">long</span><span class="p">)</span><span class="p">)</span><span class="p">]</span><span class="p">;</span>
+  <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">fds_bits</span><span class="p">[</span><span class="n">__FD_SETSIZE</span> <span class="o">/</span> <span class="p">(</span><span class="mi">8</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">long</span><span class="p">))];</span>
 <span class="p">}</span> <span class="n">__kernel_fd_set</span><span class="p">;</span>
 </code></pre></td></tr></table>
 </div>
@@ -283,7 +283,11 @@ become &ldquo;ready&rdquo; for some class of I/O operation (e.g., input possible
           <a href="/tags/cs/">CS</a>
           </div>
       <nav class="post-nav">
-        
+        <a class="prev" href="/post/segment_tree/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Segment Tree</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
         <a class="next" href="/post/biography_of_otokichi/">
             <span class="next-text nav-default">音吉生平</span>
             <span class="next-text nav-mobile">下一篇</span>

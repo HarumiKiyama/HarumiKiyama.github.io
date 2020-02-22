@@ -24,7 +24,7 @@
 <meta name="google-site-verification" content="UA-137902877-1" />
 
 
-<meta name="generator" content="Hugo 0.64.1 with theme even" />
+<meta name="generator" content="Hugo 0.65.1 with theme even" />
 
 
 <link rel="canonical" href="http://harumikiyam.github.io/post/xmonad_config/" />
@@ -174,25 +174,25 @@
 <span class="kr">import</span> <span class="nn">XMonad.Config.Desktop</span>
 <span class="kr">import</span> <span class="nn">XMonad.Actions.SpawnOn</span>
 
-<span class="nf">web</span> <span class="ow">=</span> <span class="s">&#34;</span><span class="s">web</span><span class="s">&#34;</span>
-<span class="nf">code</span> <span class="ow">=</span> <span class="s">&#34;</span><span class="s">code</span><span class="s">&#34;</span>
-<span class="nf">term</span> <span class="ow">=</span> <span class="s">&#34;</span><span class="s">terminal</span><span class="s">&#34;</span>
+<span class="nf">web</span> <span class="ow">=</span> <span class="s">&#34;web&#34;</span>
+<span class="nf">code</span> <span class="ow">=</span> <span class="s">&#34;code&#34;</span>
+<span class="nf">term</span> <span class="ow">=</span> <span class="s">&#34;terminal&#34;</span>
 <span class="nf">myWorkspaces</span> <span class="ow">=</span> <span class="p">[</span><span class="n">web</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">term</span><span class="p">]</span> <span class="o">++</span> <span class="n">map</span> <span class="n">show</span> <span class="p">[</span><span class="mi">4</span><span class="o">..</span><span class="mi">9</span><span class="p">]</span>
 
 <span class="nf">main</span> <span class="ow">=</span> <span class="kr">do</span>
-  <span class="n">xmproc</span> <span class="ow">&lt;-</span> <span class="n">spawnPipe</span> <span class="s">&#34;</span><span class="s">xmobar</span><span class="s">&#34;</span>
+  <span class="n">xmproc</span> <span class="ow">&lt;-</span> <span class="n">spawnPipe</span> <span class="s">&#34;xmobar&#34;</span>
   <span class="n">xmonad</span> <span class="o">$</span> <span class="n">desktopConfig</span> <span class="p">{</span>
     <span class="n">startupHook</span> <span class="ow">=</span> <span class="kr">do</span>
-      <span class="n">spawnOn</span> <span class="n">web</span> <span class="s">&#34;</span><span class="s">firefox</span><span class="s">&#34;</span>
-      <span class="n">spawnOn</span> <span class="n">code</span> <span class="s">&#34;</span><span class="s">emacs</span><span class="s">&#34;</span>
-      <span class="n">spawnOn</span> <span class="n">term</span> <span class="s">&#34;</span><span class="s">termite</span><span class="s">&#34;</span>
-    <span class="p">,</span><span class="n">terminal</span> <span class="ow">=</span> <span class="s">&#34;</span><span class="s">termite</span><span class="s">&#34;</span>
+      <span class="n">spawnOn</span> <span class="n">web</span> <span class="s">&#34;firefox&#34;</span>
+      <span class="n">spawnOn</span> <span class="n">code</span> <span class="s">&#34;emacs&#34;</span>
+      <span class="n">spawnOn</span> <span class="n">term</span> <span class="s">&#34;termite&#34;</span>
+    <span class="p">,</span><span class="n">terminal</span> <span class="ow">=</span> <span class="s">&#34;termite&#34;</span>
     <span class="p">,</span><span class="n">modMask</span> <span class="ow">=</span> <span class="n">mod4Mask</span>
     <span class="p">,</span><span class="n">workspaces</span> <span class="ow">=</span> <span class="n">myWorkspaces</span>
     <span class="p">,</span><span class="n">manageHook</span><span class="ow">=</span> <span class="n">manageSpawn</span>
   <span class="p">}</span> <span class="p">`</span><span class="n">additionalKeys</span><span class="p">`</span> <span class="p">[</span>
-        <span class="p">(</span><span class="p">(</span><span class="n">mod4Mask</span><span class="p">,</span> <span class="n">xK_Up</span><span class="p">)</span><span class="p">,</span> <span class="n">spawn</span> <span class="s">&#34;</span><span class="s">amixer set Master 2%+ unmute</span><span class="s">&#34;</span><span class="p">)</span><span class="p">,</span>
-        <span class="p">(</span><span class="p">(</span><span class="n">mod4Mask</span><span class="p">,</span> <span class="n">xK_Down</span><span class="p">)</span><span class="p">,</span> <span class="n">spawn</span> <span class="s">&#34;</span><span class="s">amixer set Master 2%- unmute</span><span class="s">&#34;</span><span class="p">)</span>
+        <span class="p">((</span><span class="n">mod4Mask</span><span class="p">,</span> <span class="n">xK_Up</span><span class="p">),</span> <span class="n">spawn</span> <span class="s">&#34;amixer set Master 2%+ unmute&#34;</span><span class="p">),</span>
+        <span class="p">((</span><span class="n">mod4Mask</span><span class="p">,</span> <span class="n">xK_Down</span><span class="p">),</span> <span class="n">spawn</span> <span class="s">&#34;amixer set Master 2%- unmute&#34;</span><span class="p">)</span>
     <span class="p">]</span>
 
 </code></pre></td></tr></table>
