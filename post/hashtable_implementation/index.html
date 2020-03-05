@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>hash table implementation - Harumi&#39;s Chapel</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Harumi Kiyama" /><meta name="description" content="哈希表是什么
+" /><meta name="keywords" content="Harumi, CS, Primatology" />
+
+
+
+<meta name="google-site-verification" content="UA-137902877-1" />
+
+
+<meta name="generator" content="Hugo 0.65.3 with theme even" />
+
+
+<link rel="canonical" href="http://harumikiyam.github.io/post/hashtable_implementation/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="hash table implementation" />
+<meta property="og:description" content="哈希表是什么" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://harumikiyam.github.io/post/hashtable_implementation/" />
+<meta property="article:published_time" content="2020-02-29T00:00:00+08:00" />
+<meta property="article:modified_time" content="2020-03-05T23:34:14+08:00" />
+<meta itemprop="name" content="hash table implementation">
+<meta itemprop="description" content="哈希表是什么">
+<meta itemprop="datePublished" content="2020-02-29T00:00:00&#43;08:00" />
+<meta itemprop="dateModified" content="2020-03-05T23:34:14&#43;08:00" />
+<meta itemprop="wordCount" content="1753">
+
+
+
+<meta itemprop="keywords" content="CS," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="hash table implementation"/>
+<meta name="twitter:description" content="哈希表是什么"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Carpe diem</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/about">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Carpe diem</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">hash table implementation</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-03-05 </span>
+        
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#拉链法">拉链法</a></li>
+    <li><a href="#开放地址法">开放地址法</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <p>哈希表是什么</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<ul>
+<li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
+<li><a href="#%E6%8B%89%E9%93%BE%E6%B3%95">拉链法</a></li>
+<li><a href="#%E5%BC%80%E6%94%BE%E5%9C%B0%E5%9D%80%E6%B3%95">开放地址法</a></li>
+</ul>
+<!-- raw HTML omitted -->
+<h2 id="前言">前言</h2>
+<p>哈希表(<code>hash table</code>)是一种非常常用的数据结构, 它是以 <em>key-value</em> 的形式存储数据
+的, 所谓的 <em>key-value</em> 指的是, 任一 <em>key</em> 都对应到内存中的某个位置. 可以认为哈希
+表就是一种高级数组, 可以通过给定的 <em>key</em> 计算出数组对应的下标. 由于这个特性, 哈
+希表的插入速度是 \(\Theta(1)\), 查找速度也是 \(\Theta(1)\).</p>
+<p>使用 <em>key</em> 计算出对应下标的这个函数叫作哈希函数(<code>hash function</code>). 最简单的一个哈
+希函数便是把 <em>key</em> 转换成字符串, 然后返回这个字符串的长度.如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">hash</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>早期的 <em>php</em> 在对核心函数生成哈希表时, 使用就是使用函数名长度作为哈希值的, 这个
+也是 <em>php</em> 经常被人诟病的一个点.为什么使用字符串长度作为哈希值会有问题呢? 具体原
+因是这样的, 为了防止两个不同的 <em>key</em> 生成同样的哈希值(这一现象被成为哈希碰撞
+(<code>collision</code>)), 早期 <em>php</em> 的核心函数中函数命名非常的不一致, 导致要记忆常用的一
+些函数也变成了一种负担.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<p>由此, 一个新的问题出现了, 既然使用字符串长度作为哈希值会有哈希碰撞的问题, 那用其
+他的方法就不会吗? 办法是有的, 这种办法的核心思路就是在足够大的空间中生成哈希值,
+举个例子. 如果我们假定 <em>key</em> 由小写的英文组成的字符串, 那么按照下述方法生成的哈
+希值是一定不 会有碰撞的.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">hash</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+    <span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+    <span class="n">rv</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">length</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">rv</span> <span class="o">+=</span> <span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">key</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">-</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">))</span> <span class="o">*</span> <span class="mi">26</span> <span class="o">**</span> <span class="p">(</span><span class="n">length</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">rv</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这个方法的实质是将一串小写英文字符串视作26进制的整数, 并将这个整数化为10进制. 以
+比较简单的字符串 &ldquo;abc&rdquo; 为例, <code>hash(&quot;abc&quot;)</code> 返回的结果为 <code>28</code>. 如果基于这样的哈希
+函数来实现我们的不会碰撞的哈希表的话, 将会是这样的.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">HashTable</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_l</span><span class="o">=</span><span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">hash</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">key</span><span class="p">):</span>
+        <span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+        <span class="n">rv</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">length</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">rv</span> <span class="o">+=</span> <span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">key</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">-</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">))</span> <span class="o">*</span> <span class="mi">26</span> <span class="o">**</span> <span class="p">(</span><span class="n">length</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">i</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">rv</span>
+
+    <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+        <span class="n">hash_v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hash</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_l</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">hash_v</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">hash_v</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_l</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_l</span><span class="p">[</span><span class="n">hash_v</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="n">hash_v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hash</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_l</span><span class="p">[</span><span class="n">hash_v</span><span class="p">]</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>注意, 我们这里限制了key为小写英文字符构成的字符串</strong></p>
+<p>事实上 <strong>小写英文字符构成的字符串</strong> 的这个限制是可以取消的, 把这个算法推广就是:</p>
+<p>如果在内存无限的情况下, 我们可以根据 <em>key</em> 得到一个整数, 然后我们可以说, 该整数
+就是这个key所对应的下标, 那这样, 确实是可以实现一个不会碰撞的哈希表. 但是问题在
+于在物理世界哈希表的空间是有限的, 于是哈希碰撞便是不可避免的. 现实当中的哈希表要
+不就是在一开始就分配好内存的大小, 要不就是动态更新内存的大小. 并且在根据 <em>key</em>
+得到哈希值之后, 会对这个哈希值根据哈希表的容量取余或者根据哈希表的容量减一进行与
+操作. (一般是进行与操作因为 <em>bitwise operation</em> 的会更加快)
+比如在 <em>Python</em> 当 中每个新创建的 <em>dict</em> 会有8个 <em>slot</em> (即是说储存哈希元素的列
+表长度), 然后会把哈希值和 <em>dict</em> 的长度减一做一个与操作得到下标, 在储存的元素大
+于哈希表长度的 \(\frac{2}{3}\) 时会对哈希表进行一次扩容
+<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
+<p>为了解决哈希碰撞的问题, 目前大致有两种解决方案:</p>
+<ol>
+<li>拉链法(<code>open hashing</code>)</li>
+<li>开放地址法(<code>open addressing</code>)</li>
+</ol>
+<h2 id="拉链法">拉链法</h2>
+<p>所谓的链地址法就是说, 既然哈希碰撞是一定会发生的, 那么在每个哈希值对应的下标处储
+存的不是该哈希值对应的元素, 而是一个链表, 在链表中的每个储存了, <em>key</em>, <em>value</em>
+的信息, 查询链表就是在哈希值对应的下标中, 遍历整个链表, 比对每个 <em>key</em> 如果有和
+查询的 <em>key</em> 一致的节点就返回. 而插入操作也是类似的, 先通过查询得到该 <em>key</em> 是否
+已经存在的信息, 如果有就更新那个节点, 如果没有就在链表的最后插入一个新的节点. 代
+码如下<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-c" data-lang="c"><span class="k">const</span> <span class="kt">int</span> <span class="n">SIZE</span> <span class="o">=</span> <span class="mi">1000000</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">M</span> <span class="o">=</span> <span class="mi">999997</span><span class="p">;</span>
+<span class="k">struct</span> <span class="n">HashTable</span> <span class="p">{</span>
+  <span class="k">struct</span> <span class="n">Node</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">next</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">key</span><span class="p">;</span>
+  <span class="p">}</span> <span class="n">data</span><span class="p">[</span><span class="n">SIZE</span><span class="p">];</span>
+  <span class="kt">int</span> <span class="n">head</span><span class="p">[</span><span class="n">M</span><span class="p">],</span> <span class="n">size</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="nf">f</span><span class="p">(</span><span class="kt">int</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">key</span> <span class="o">%</span> <span class="n">M</span><span class="p">;</span> <span class="p">}</span>
+  <span class="kt">int</span> <span class="nf">get</span><span class="p">(</span><span class="kt">int</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">p</span> <span class="o">=</span> <span class="n">head</span><span class="p">[</span><span class="n">f</span><span class="p">(</span><span class="n">key</span><span class="p">)];</span> <span class="n">p</span><span class="p">;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">p</span><span class="p">].</span><span class="n">next</span><span class="p">)</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">p</span><span class="p">].</span><span class="n">key</span> <span class="o">==</span> <span class="n">key</span><span class="p">)</span> <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="n">p</span><span class="p">].</span><span class="n">value</span><span class="p">;</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kt">int</span> <span class="nf">modify</span><span class="p">(</span><span class="kt">int</span> <span class="n">key</span><span class="p">,</span> <span class="kt">int</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">p</span> <span class="o">=</span> <span class="n">head</span><span class="p">[</span><span class="n">f</span><span class="p">(</span><span class="n">key</span><span class="p">)];</span> <span class="n">p</span><span class="p">;</span> <span class="n">p</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">p</span><span class="p">].</span><span class="n">next</span><span class="p">)</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">p</span><span class="p">].</span><span class="n">key</span> <span class="o">==</span> <span class="n">key</span><span class="p">)</span> <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="n">p</span><span class="p">].</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="kt">int</span> <span class="nf">add</span><span class="p">(</span><span class="kt">int</span> <span class="n">key</span><span class="p">,</span> <span class="kt">int</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="n">data</span><span class="p">[</span><span class="o">++</span><span class="n">size</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">Node</span><span class="p">){</span><span class="n">head</span><span class="p">[</span><span class="n">f</span><span class="p">(</span><span class="n">key</span><span class="p">)],</span> <span class="n">value</span><span class="p">,</span> <span class="n">key</span><span class="p">};</span>
+    <span class="n">head</span><span class="p">[</span><span class="n">f</span><span class="p">(</span><span class="n">key</span><span class="p">)]</span> <span class="o">=</span> <span class="n">size</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">value</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="开放地址法">开放地址法</h2>
+<p>开放地址法的实现会相对于拉链法要难, 其解决哈希碰撞的思路是, 先根据哈希值得到对应
+的下标, 然后如果对应的下标没有元素就在下标处插入 <em>key</em>, <em>value</em>, 如果对应的下标
+已经被占据了, 那么一般有两种策略来解决这个问题, 一种是线性查找(<code>linear probing</code>), 即以该下标为起始点, 遍历哈希表, 查找是否有空位置, 另一种是平方探测法
+(<code>quadratic probing</code>), 即以该下标为起点, 在第 \(i\) 次查找时, 每次增加 \(i^2\) 直到
+找到为空位置.
+关于线性查找和平方查找的优劣是学术界中一个经典的问题, 这里就不做展开了, 具体可以
+看这两篇文章
+<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup><!-- raw HTML omitted -->, <!-- raw HTML omitted --><sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>.
+但是比较奇怪的是 <em>Python</em> 选择了这两种常见方法之外的方法, 随机查找(<code>random probe</code>) 来解决哈希碰撞的问题. 主要的原因是因为 <em>Python</em> 的哈希函数本身的随机性不
+太好, 如 <code>map(hash, (0,1,2))</code> 的值为
+<code>[0,1,2]</code><sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>.</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p><a href="https://zhuanlan.zhihu.com/p/27288770">https://zhuanlan.zhihu.com/p/27288770</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p><a href="https://stackoverflow.com/questions/327311/how-are-pythons-built-in-dictionaries-implemented">https://stackoverflow.com/questions/327311/how-are-pythons-built-in-dictionaries-implemented</a> <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p><a href="https://oi-wiki.org/ds/hash/">https://oi-wiki.org/ds/hash/</a> <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4" role="doc-endnote">
+<p><a href="https://www.cnblogs.com/hongshijie/p/9432838.html">https://www.cnblogs.com/hongshijie/p/9432838.html</a> <a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5" role="doc-endnote">
+<p><a href="https://www.cnblogs.com/hongshijie/p/9432838.html">https://www.cnblogs.com/hongshijie/p/9432838.html</a> <a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6" role="doc-endnote">
+<p><a href="https://hg.python.org/cpython/file/52f68c95e025/Objects/dictobject.c#l33">https://hg.python.org/cpython/file/52f68c95e025/Objects/dictobject.c#l33</a> <a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">Harumi Kiyama</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2020-03-05
+        <a href="/commit/70cd05a51b1883f17ad10d6094726b69ae4ff365" title="update python dict implementation">(70cd05a)</a>
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/cs/">CS</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/segment_tree/">
+            <span class="next-text nav-default">Segment Tree</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    (function() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'https-harumikiyama-github-io';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:h.kiyama0720@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://stackoverflow.com/users/11258551/harumi-kiyama" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="https://www.linkedin.com/in/lichao-wang-364234110/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://github.com/HarumiKiyama" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.zhihu.com/people/kiyama_harumi" class="iconfont icon-zhihu" title="zhihu"></a>
+  <a href="http://harumikiyam.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2018 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Harumi Kiyama</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+      TeX: {equationNumbers: {autoNumber: "AMS"}},
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"  integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-137902877-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+
+
+
+</body>
+</html>
