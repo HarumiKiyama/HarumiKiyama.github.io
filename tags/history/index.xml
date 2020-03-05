@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>History on Harumi&#39;s Chapel</title>
+    <link>http://harumikiyam.github.io/tags/history/</link>
+    <description>Recent content in History on Harumi&#39;s Chapel</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 11 Feb 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://harumikiyam.github.io/tags/history/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>音吉生平</title>
+      <link>http://harumikiyam.github.io/post/biography_of_otokichi/</link>
+      <pubDate>Tue, 11 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://harumikiyam.github.io/post/biography_of_otokichi/</guid>
+      <description>&lt;p&gt;第一个到达新加坡的日本人&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>马六甲游记</title>
+      <link>http://harumikiyam.github.io/post/malacca_traveling/</link>
+      <pubDate>Wed, 01 May 2019 21:37:00 +0800</pubDate>
+      
+      <guid>http://harumikiyam.github.io/post/malacca_traveling/</guid>
+      <description>&lt;p&gt;人生第一次到达马六甲&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>新加坡的日本人墓地公园</title>
+      <link>http://harumikiyam.github.io/post/japanese_cemetery_park/</link>
+      <pubDate>Wed, 17 Apr 2019 23:51:00 +0800</pubDate>
+      
+      <guid>http://harumikiyam.github.io/post/japanese_cemetery_park/</guid>
+      <description>&lt;p&gt;日本人墓地公园游记&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>新加坡的亚美尼亚使徒教会</title>
+      <link>http://harumikiyam.github.io/post/armenia_church/</link>
+      <pubDate>Sun, 14 Apr 2019 20:47:00 +0800</pubDate>
+      
+      <guid>http://harumikiyam.github.io/post/armenia_church/</guid>
+      <description>&lt;p&gt;新加坡的东方正教会&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>科学革命</title>
+      <link>http://harumikiyam.github.io/post/science_revolution/</link>
+      <pubDate>Tue, 26 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://harumikiyam.github.io/post/science_revolution/</guid>
+      <description>&lt;p&gt;科学革命与现代科学的起源的读书笔记&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -12,20 +12,20 @@
     
     
     <item>
-      <title>CS</title>
-      <link>http://harumikiyam.github.io/tags/cs/</link>
+      <title>Algorithms</title>
+      <link>http://harumikiyam.github.io/tags/algorithms/</link>
       <pubDate>Thu, 05 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://harumikiyam.github.io/tags/cs/</guid>
+      <guid>http://harumikiyam.github.io/tags/algorithms/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Algorithm</title>
-      <link>http://harumikiyam.github.io/tags/algorithm/</link>
-      <pubDate>Sat, 22 Feb 2020 00:00:00 +0000</pubDate>
+      <title>OS</title>
+      <link>http://harumikiyam.github.io/tags/os/</link>
+      <pubDate>Wed, 19 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://harumikiyam.github.io/tags/algorithm/</guid>
+      <guid>http://harumikiyam.github.io/tags/os/</guid>
       <description></description>
     </item>
     
@@ -39,6 +39,33 @@
     </item>
     
     <item>
+      <title>History</title>
+      <link>http://harumikiyam.github.io/tags/history/</link>
+      <pubDate>Tue, 11 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://harumikiyam.github.io/tags/history/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Workflow</title>
+      <link>http://harumikiyam.github.io/tags/workflow/</link>
+      <pubDate>Sun, 31 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://harumikiyam.github.io/tags/workflow/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Compiler</title>
+      <link>http://harumikiyam.github.io/tags/compiler/</link>
+      <pubDate>Sat, 30 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://harumikiyam.github.io/tags/compiler/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Reading</title>
       <link>http://harumikiyam.github.io/tags/reading/</link>
       <pubDate>Sat, 30 Mar 2019 00:00:00 +0000</pubDate>
@@ -48,16 +75,16 @@
     </item>
     
     <item>
-      <title>macaque</title>
-      <link>http://harumikiyam.github.io/tags/macaque/</link>
-      <pubDate>Sat, 13 Jan 2018 00:00:00 +0000</pubDate>
+      <title>Science</title>
+      <link>http://harumikiyam.github.io/tags/science/</link>
+      <pubDate>Tue, 26 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://harumikiyam.github.io/tags/macaque/</guid>
+      <guid>http://harumikiyam.github.io/tags/science/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>primatology</title>
+      <title>Primatology</title>
       <link>http://harumikiyam.github.io/tags/primatology/</link>
       <pubDate>Sat, 13 Jan 2018 00:00:00 +0000</pubDate>
       
