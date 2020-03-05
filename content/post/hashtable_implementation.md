@@ -154,9 +154,14 @@ probing`), 即以该下标为起始点, 遍历哈希表, 查找是否有空位�
 关于线性查找和平方查找的优劣是学术界中一个经典的问题, 这里就不做展开了, 具体可以
 看这两篇文章
 [^fn:4]<sup>, </sup>[^fn:5].
+但是比较奇怪的是 _Python_ 选择了这两种常见方法之外的方法, 随机查找(`random
+probe`) 来解决哈希碰撞的问题. 主要的原因是因为 _Python_ 的哈希函数本身的随机性不
+太好, 如 `map(hash, (0,1,2))` 的值为
+`[0,1,2]`[^fn:6].
 
 [^fn:1]: <https://zhuanlan.zhihu.com/p/27288770>
 [^fn:2]: <https://stackoverflow.com/questions/327311/how-are-pythons-built-in-dictionaries-implemented>
 [^fn:3]: <https://oi-wiki.org/ds/hash/>
 [^fn:4]: <https://www.cnblogs.com/hongshijie/p/9432838.html>
 [^fn:5]: <https://www.cnblogs.com/hongshijie/p/9432838.html>
+[^fn:6]: <https://hg.python.org/cpython/file/52f68c95e025/Objects/dictobject.c#l33>
