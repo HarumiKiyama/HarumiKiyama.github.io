@@ -4,6 +4,7 @@ date = 2019-04-17T23:51:00+08:00
 publishDate = 2019-04-17T00:00:00+08:00
 draft = false
 creator = "Emacs 26.2 (Org mode 9.2.3 + ox-hugo)"
+tags = ["History"]
 +++
 日本人墓地公园游记
 <!--more-->

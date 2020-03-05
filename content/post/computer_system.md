@@ -1,7 +1,7 @@
 +++
 title = "计算机系统核心概念及软硬件实现"
 date = 2019-03-30
-tags = ["Reading", "CS"]
+tags = ["Reading", "OS", "Compiler"]
 draft = false
 creator = "Emacs 26.1 (Org mode 9.2.2 + ox-hugo)"
 +++

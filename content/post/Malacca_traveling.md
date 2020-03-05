@@ -4,6 +4,7 @@ date = 2019-05-01T21:37:00+08:00
 publishDate = 2019-05-01T00:00:00+08:00
 draft = false
 creator = "Emacs 26.2 (Org mode 9.2.3 + ox-hugo)"
+tags = ["History"]
 +++
 人生第一次到达马六甲
 <!--more-->

@@ -4,6 +4,8 @@ date = 2020-02-11
 publishDate = 2020-02-10T00:00:00+08:00
 draft = false
 creator = "Emacs 26.3 (Org mode N/A + ox-hugo)"
+tags = ["History"]
+
 +++
 第一个到达新加坡的日本人
 <!--more-->

@@ -3,6 +3,7 @@ title = "科学革命"
 draft = false
 date = 2019-03-26
 creator = "Emacs 26.1 (Org mode 9.2.2 + ox-hugo)"
+tags = ["Science", "History"]
 +++
 科学革命与现代科学的起源的读书笔记
 <!--more-->

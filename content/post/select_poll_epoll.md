@@ -2,7 +2,7 @@
 title = "What is select"
 date = 2020-02-19
 publishDate = 2020-02-07T00:00:00+08:00
-tags = ["UNIX", "CS"]
+tags = ["UNIX", "OS"]
 draft = false
 creator = "Emacs 26.3 (Org mode N/A + ox-hugo)"
 +++

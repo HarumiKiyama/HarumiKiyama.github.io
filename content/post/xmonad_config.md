@@ -4,7 +4,7 @@ date = 2019-03-31
 publishDate = 2019-03-31T00:00:00+08:00
 draft = false
 creator = "Emacs 26.1 (Org mode 9.2.2 + ox-hugo)"
-tags = ["CS"]
+tags = ["Workflow"]
 +++
 个人的 `xmonad` 配置
 <!--more-->

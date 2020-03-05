@@ -4,6 +4,7 @@ date = 2019-04-14T20:47:00+08:00
 publishDate = 2019-04-08T00:00:00+08:00
 draft = false
 creator = "Emacs 26.1 (Org mode 9.2.2 + ox-hugo)"
+tags = ["History"]
 +++
 新加坡的东方正教会
 <!--more-->

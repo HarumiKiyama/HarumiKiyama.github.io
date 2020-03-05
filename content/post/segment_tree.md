@@ -2,7 +2,7 @@
 title = "Segment Tree"
 date = 2020-02-22
 publishDate = 2020-02-19T00:00:00+08:00
-tags = ["Algorithm"]
+tags = ["Algorithms"]
 draft = false
 creator = "Emacs 26.3 (Org mode N/A + ox-hugo)"
 +++

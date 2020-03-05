@@ -2,7 +2,7 @@
 title = "Hash Table"
 date = 2020-03-05
 publishDate = 2020-02-29T00:00:00+08:00
-tags = ["CS"]
+tags = ["Algorithms"]
 draft = false
 creator = "Emacs 26.3 (Org mode N/A + ox-hugo)"
 +++
