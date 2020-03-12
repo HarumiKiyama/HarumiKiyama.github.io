@@ -6,10 +6,19 @@
     <description>Recent content in Workflow on Harumi&#39;s Chapel</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 31 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 13 Mar 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://harumikiyam.github.io/tags/workflow/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>zsh overview</title>
+      <link>http://harumikiyam.github.io/post/zsh_overview/</link>
+      <pubDate>Fri, 13 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://harumikiyam.github.io/post/zsh_overview/</guid>
+      <description>前言 zsh 的历史 zsh 的配置文件 Options of zsh zsh 的内置命令 前言 从几年前开始用 archlinux 时就在用 zsh 作为默认的 shell (因为 zsh 是 archlinux 的安装镜像中默认的 shell), 但是因为一直都是用的 oh-my-zsh, 这</description>
+    </item>
     
     <item>
       <title>xmonad的配置</title>
