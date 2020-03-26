@@ -44,11 +44,11 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://harumikiyam.github.io/post/hashtable_implementation/" />
 <meta property="article:published_time" content="2020-02-29T00:00:00+08:00" />
-<meta property="article:modified_time" content="2020-03-26T20:57:49+08:00" />
+<meta property="article:modified_time" content="2020-03-26T22:52:26+08:00" />
 <meta itemprop="name" content="hash table implementation">
 <meta itemprop="description" content="哈希表是什么">
 <meta itemprop="datePublished" content="2020-02-29T00:00:00&#43;08:00" />
-<meta itemprop="dateModified" content="2020-03-26T20:57:49&#43;08:00" />
+<meta itemprop="dateModified" content="2020-03-26T22:52:26&#43;08:00" />
 <meta itemprop="wordCount" content="1819">
 
 
@@ -248,19 +248,10 @@
 </div>
 </div><p><strong>注意, 我们这里限制了key为小写英文字符构成的字符串</strong></p>
 <p>事实上 <strong>小写英文字符构成的字符串</strong> 的这个限制是可以取消的, 把这个算法推广就是:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-latex" data-lang="latex">对于一个元素个数为 <span class="s">$</span><span class="nb">n</span><span class="s">$</span> 的有限集合 <span class="s">$</span><span class="nb">s</span><span class="s">$</span>, 若有序序列 <span class="s">$</span><span class="nb">key</span><span class="s">$</span>, 对于 <span class="s">$</span><span class="nv">\forall</span><span class="nb"> x</span><span class="nv">\in</span><span class="nb">
-</span><span class="nb">key</span><span class="s">$</span> 有 <span class="s">$</span><span class="nb">x</span><span class="nv">\in</span><span class="nb"> s</span><span class="s">$</span>, 则可以把 <span class="s">$</span><span class="nb">key</span><span class="s">$</span> 视为一个 <span class="s">$</span><span class="nb">n</span><span class="o">+</span><span class="m">1</span><span class="s">$</span> 进制的整数(之所以是 <span class="s">$</span><span class="nb">n</span><span class="o">+</span><span class="m">1</span><span class="s">$</span> 是因为
-会有 /leading-zero/ 的问题)
-</code></pre></td></tr></table>
-</div>
-</div><p>如果在内存无限的情况下, 我们可以根据 <em>key</em> 得到一个整数, 然后我们可以说, 该整数
+<p>对于一个元素个数为 $n$ 的有限集合 $s$, 若有序序列 $key$, 对于 $\forall x\in
+key$ 有 $x\in s$, 则可以把 $key$ 视为一个 $n+1$ 进制的整数(之所以是 $n+1$ 是因为
+会有 /leading-zero/ 的问题)</p>
+<p>如果在内存无限的情况下, 我们可以根据 <em>key</em> 得到一个整数, 然后我们可以说, 该整数
 就是这个key所对应的下标, 那这样, 确实是可以实现一个不会碰撞的哈希表. 但是问题在
 于在物理世界哈希表的空间是有限的, 于是哈希碰撞便是不可避免的. 现实当中的哈希表要
 不就是在一开始就分配好内存的大小, 要不就是动态更新内存的大小. 并且在根据 <em>key</em>
@@ -382,7 +373,7 @@
     <span class="item-title">上次更新</span>
     <span class="item-content">
         2020-03-26
-        <a href="/commit/0089071ae1fef529c827164fc66eb2a1133a380c" title="update hash table">(0089071)</a>
+        <a href="/commit/2f5222e0b72207fda2b058cad55bd691943e96e0" title="remove latex code">(2f5222e)</a>
     </span>
   </p>
   
