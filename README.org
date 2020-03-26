@@ -1,2 +1,2 @@
-#+TITLE: HUGO file
-This is a hugo file for my static blog
+#+TITLE: HUGO files
+This is a bunch of hugo files for my static blog
