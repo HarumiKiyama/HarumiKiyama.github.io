@@ -5,7 +5,7 @@ title = "Harumi's Chapel"
 preserveTaxonomyNames = true
 enableRobotsTXT = true
 enableEmoji = true
-theme = "github.com/olOwOlo/hugo-theme-even"
+theme = "even"
 enableGitInfo = true # use git commit log to generate lastmod record # 可根据 Git 中的提交生成最近更新记录。
 
 # Syntax highlighting by Chroma. NOTE: Don't enable `highlightInClient` and `chroma` at the same time!
@@ -20,9 +20,6 @@ paginate = 5                                              # 首页每页显示�
 googleAnalytics = "UA-137902877-1"      # UA-XXXXXXXX-X
 copyright = ""            # default: author.name ↓        # 默认为下面配置的author.name ↓
 
-[module]
-  [[module.imports]]
-    path = 'github.com/olOwOlo/hugo-theme-even'
     
 [author]                  # essential                     # 必需
   name = "Harumi Kiyama"
