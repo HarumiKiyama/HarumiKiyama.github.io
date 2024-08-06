@@ -20,6 +20,10 @@ paginate = 5                                              # 首页每页显示�
 googleAnalytics = "UA-137902877-1"      # UA-XXXXXXXX-X
 copyright = ""            # default: author.name ↓        # 默认为下面配置的author.name ↓
 
+[module]
+  [[module.imports]]
+    path = 'github.com/olOwOlo/hugo-theme-even'
+    
 [author]                  # essential                     # 必需
   name = "Harumi Kiyama"
 
