@@ -46,12 +46,10 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
-      - name: Install Node.js dependencies
-        run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
       - name: clone theme
         run: "git clone https://github.com/michaelneuper/hugo-texify3.git themes/hugo-texify3"
-      - name: install dependencies
-        run: "cd themes/hugo-texify3 && npm install"
+      - name: Install Node.js dependencies
+        run: "cd themes/hugo-texify3 && [[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
       - name: Build with Hugo
         env:
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
