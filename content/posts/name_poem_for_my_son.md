@@ -2,7 +2,8 @@
 title = "秋兰操"
 author = ["Harumi Kiyama"]
 date = 2024-08-06
-draft = true
+tags = ["Life"]
+draft = false
 creator = "Emacs 31.0.50 (Org mode 9.7.9 + ox-hugo)"
 +++
 
