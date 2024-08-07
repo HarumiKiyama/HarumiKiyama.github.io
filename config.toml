@@ -71,10 +71,8 @@ numberedSubtitles = true
   """
 
   [params.sharingbuttons]
-  facebook = true
   twitter = true
   email = true
-  linkedin = true
   reddit = true
   whatsapp = true
   hackernews = true
