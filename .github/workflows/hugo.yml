@@ -48,6 +48,8 @@ jobs:
         uses: actions/configure-pages@v5
       - name: clone theme
         run: "git clone https://github.com/michaelneuper/hugo-texify3.git themes/hugo-texify3"
+      - name: install postcss-cli
+        run: "npm install postcss-cli"
       - name: Install Node.js dependencies
         run: "cd themes/hugo-texify3 && [[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
       - name: Build with Hugo
