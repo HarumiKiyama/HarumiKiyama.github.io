@@ -48,12 +48,10 @@ jobs:
         uses: actions/configure-pages@v5
       - name: Install Node.js dependencies
         run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
-      - name: Install postcss-cli
-        run: npm install postcss-cli
-      - name: Install autoprefixer
-        run:  npm install autoprefixer
       - name: clone theme
         run: "git clone https://github.com/michaelneuper/hugo-texify3.git themes/hugo-texify3"
+      - name: install dependencies
+        run: "cd themes/hugo-texify && npm install"
       - name: Build with Hugo
         env:
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
