@@ -1,2 +1,0 @@
-#+TITLE: HUGO files
-This is a bunch of hugo files for my static blog
