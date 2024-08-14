@@ -168,7 +168,7 @@ footer {
 
 
 /* Footnotes */
-
-#footnotes, #footnotes * {
-    all: initial;
+.footpara {
+    display: inline;
 }
+
