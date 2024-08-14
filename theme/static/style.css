@@ -485,10 +485,27 @@
    margin-bottom: 0.8rem;
  }
 
+/* custom config */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--cl-border);
+  padding: 10px 30px;
+  margin-bottom: 40px;
+}
+header h1 { font-size: 24px; }
+
+
 header nav {
   display: flex;
   align-items: center;
 }
+
+header nav ul li {
+  display: inline;
+}
+
 
 /* helper classes */
 .visually-hidden {
