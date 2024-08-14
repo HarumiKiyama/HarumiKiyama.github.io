@@ -485,6 +485,17 @@
    margin-bottom: 0.8rem;
  }
 
+header nav {
+  display: flex;
+  align-items: center;
+}
+
+/* helper classes */
+.visually-hidden {
+  display: none;
+}
+
+
 .menu li {
   padding-left: 50px;
   cursor: pointer;
