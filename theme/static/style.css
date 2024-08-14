@@ -502,6 +502,12 @@ header nav {
   align-items: center;
 }
 
+header nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+
 header nav ul li {
   display: inline;
 }
