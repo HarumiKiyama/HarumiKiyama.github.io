@@ -34,6 +34,7 @@
 
 ;; Generate blog posts
 (weblorg-route
+ :site-name "Harumi's Chapel"
  :name "posts"
  :input-pattern "src/posts/*.org"
  :template "post.html"
@@ -43,6 +44,7 @@
 ;; Generate pages
 (weblorg-route
  :name "pages"
+ :site-name "Harumi's Chapel"
  :input-pattern "src/pages/*.org"
  :template "page.html"
  :output "docs/{{ slug }}/index.html"
@@ -51,6 +53,7 @@
 ;; Generate posts summary
 (weblorg-route
  :name "index"
+ :site-name "Harumi's Chapel"
  :input-pattern "src/posts/*.org"
  :input-aggregate #'weblorg-input-aggregate-all-desc
  :template "blog.html"
