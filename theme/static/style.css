@@ -1,486 +1,486 @@
-@charset "UTF-8";
-
-/* Import ET Book styles
-   adapted from https://github.com/edwardtufte/et-book/blob/gh-pages/et-book.css */
-
-@font-face {
-    font-family: "et-book";
-    src: url("et-book/et-book-roman-line-figures/et-book-roman-line-figures.eot");
-    src: url("et-book/et-book-roman-line-figures/et-book-roman-line-figures.eot?#iefix") format("embedded-opentype"), url("et-book/et-book-roman-line-figures/et-book-roman-line-figures.woff") format("woff"), url("et-book/et-book-roman-line-figures/et-book-roman-line-figures.ttf") format("truetype"), url("et-book/et-book-roman-line-figures/et-book-roman-line-figures.svg#etbookromanosf") format("svg");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "et-book";
-    src: url("et-book/et-book-display-italic-old-style-figures/et-book-display-italic-old-style-figures.eot");
-    src: url("et-book/et-book-display-italic-old-style-figures/et-book-display-italic-old-style-figures.eot?#iefix") format("embedded-opentype"), url("et-book/et-book-display-italic-old-style-figures/et-book-display-italic-old-style-figures.woff") format("woff"), url("et-book/et-book-display-italic-old-style-figures/et-book-display-italic-old-style-figures.ttf") format("truetype"), url("et-book/et-book-display-italic-old-style-figures/et-book-display-italic-old-style-figures.svg#etbookromanosf") format("svg");
-    font-weight: normal;
-    font-style: italic;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "et-book";
-    src: url("et-book/et-book-bold-line-figures/et-book-bold-line-figures.eot");
-    src: url("et-book/et-book-bold-line-figures/et-book-bold-line-figures.eot?#iefix") format("embedded-opentype"), url("et-book/et-book-bold-line-figures/et-book-bold-line-figures.woff") format("woff"), url("et-book/et-book-bold-line-figures/et-book-bold-line-figures.ttf") format("truetype"), url("et-book/et-book-bold-line-figures/et-book-bold-line-figures.svg#etbookromanosf") format("svg");
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "et-book-roman-old-style";
-    src: url("et-book/et-book-roman-old-style-figures/et-book-roman-old-style-figures.eot");
-    src: url("et-book/et-book-roman-old-style-figures/et-book-roman-old-style-figures.eot?#iefix") format("embedded-opentype"), url("et-book/et-book-roman-old-style-figures/et-book-roman-old-style-figures.woff") format("woff"), url("et-book/et-book-roman-old-style-figures/et-book-roman-old-style-figures.ttf") format("truetype"), url("et-book/et-book-roman-old-style-figures/et-book-roman-old-style-figures.svg#etbookromanosf") format("svg");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
-/* Tufte CSS styles */
-html {
-    font-size: 15px;
-}
-
-body {
-    width: 87.5%;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 12.5%;
-    font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
-    background-color: #fffff8;
-    color: #111;
-    max-width: 1400px;
-    counter-reset: sidenote-counter;
-}
-
-/* Adds dark mode */
-@media (prefers-color-scheme: dark) {
-    body {
-        background-color: #151515;
-        color: #ddd;
-    }
-}
-
-h1 {
-    font-weight: 400;
-    margin-top: 4rem;
-    margin-bottom: 1.5rem;
-    font-size: 3.2rem;
-    line-height: 1;
-}
-
-h2 {
-    font-style: italic;
-    font-weight: 400;
-    margin-top: 2.1rem;
-    margin-bottom: 1.4rem;
-    font-size: 2.2rem;
-    line-height: 1;
-}
-
-h3 {
-    font-style: italic;
-    font-weight: 400;
-    font-size: 1.7rem;
-    margin-top: 2rem;
-    margin-bottom: 1.4rem;
-    line-height: 1;
-}
-
-hr {
-    display: block;
-    height: 1px;
-    width: 55%;
-    border: 0;
-    border-top: 1px solid #ccc;
-    margin: 1em 0;
-    padding: 0;
-}
-
-p.subtitle {
-    font-style: italic;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    font-size: 1.8rem;
-    display: block;
-    line-height: 1;
-}
-
-.numeral {
-    font-family: et-book-roman-old-style;
-}
-
-.danger {
-    color: red;
-}
-
-article {
-    padding: 5rem 0rem;
-}
-
-section {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-}
-
-p,
-dl,
-ol,
-ul {
-    font-size: 1.4rem;
-    line-height: 2rem;
-}
-
-p {
-    margin-top: 1.4rem;
-    margin-bottom: 1.4rem;
-    padding-right: 0;
-    vertical-align: baseline;
-}
-
-/* Chapter Epigraphs */
-div.epigraph {
-    margin: 5em 0;
-}
-
-div.epigraph > blockquote {
-    margin-top: 3em;
-    margin-bottom: 3em;
-}
-
-div.epigraph > blockquote,
-div.epigraph > blockquote > p {
-    font-style: italic;
-}
-
-div.epigraph > blockquote > footer {
-    font-style: normal;
-}
-
-div.epigraph > blockquote > footer > cite {
-    font-style: italic;
-}
-/* end chapter epigraphs styles */
-
-blockquote {
-    font-size: 1.4rem;
-}
-
-blockquote p {
-    width: 55%;
-    margin-right: 40px;
-}
-
-blockquote footer {
-    width: 55%;
-    font-size: 1.1rem;
-    text-align: right;
-}
-
-section > p,
-section > footer,
-section > table {
-    width: 55%;
-}
-
-/* 50 + 5 == 55, to be the same width as paragraph */
-section > dl,
-section > ol,
-section > ul {
-    width: 50%;
-    -webkit-padding-start: 5%;
-}
-
-dt:not(:first-child),
-li:not(:first-child) {
-    margin-top: 0.25rem;
-}
-
-figure {
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
-    max-width: 55%;
-    -webkit-margin-start: 0;
-    -webkit-margin-end: 0;
-    margin: 0 0 3em 0;
-}
-
-figcaption {
-    float: right;
-    clear: right;
-    margin-top: 0;
-    margin-bottom: 0;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    vertical-align: baseline;
-    position: relative;
-    max-width: 40%;
-}
-
-figure.fullwidth figcaption {
-    margin-right: 24%;
-}
-
-/* Links: replicate underline that clears descenders */
-a:link,
-a:visited {
-    color: inherit;
-}
-
-.no-tufte-underline:link {
-    background: unset;
-    text-shadow: unset;
-}
-
-a:link, .tufte-underline, .hover-tufte-underline:hover {
-    text-decoration: none;
-    background: -webkit-linear-gradient(#fffff8, #fffff8), -webkit-linear-gradient(#fffff8, #fffff8), -webkit-linear-gradient(currentColor, currentColor);
-    background: linear-gradient(#fffff8, #fffff8), linear-gradient(#fffff8, #fffff8), linear-gradient(currentColor, currentColor);
-    -webkit-background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
-    -moz-background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
-    background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
-    background-repeat: no-repeat, no-repeat, repeat-x;
-    text-shadow: 0.03em 0 #fffff8, -0.03em 0 #fffff8, 0 0.03em #fffff8, 0 -0.03em #fffff8, 0.06em 0 #fffff8, -0.06em 0 #fffff8, 0.09em 0 #fffff8, -0.09em 0 #fffff8, 0.12em 0 #fffff8, -0.12em 0 #fffff8, 0.15em 0 #fffff8, -0.15em 0 #fffff8;
-    background-position: 0% 93%, 100% 93%, 0% 93%;
-}
-
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
-    a:link, .tufte-underline, .hover-tufte-underline:hover {
-        background-position-y: 87%, 87%, 87%;
-    }
-}
-
-/* Adds dark mode */
-@media (prefers-color-scheme: dark) {
-    a:link, .tufte-underline, .hover-tufte-underline:hover {
-        text-shadow: 0.03em 0 #151515, -0.03em 0 #151515, 0 0.03em #151515, 0 -0.03em #151515, 0.06em 0 #151515, -0.06em 0 #151515, 0.09em 0 #151515, -0.09em 0 #151515, 0.12em 0 #151515, -0.12em 0 #151515, 0.15em 0 #151515, -0.15em 0 #151515;
-    }
-}
-
-a:link::selection,
-a:link::-moz-selection {
-    text-shadow: 0.03em 0 #b4d5fe, -0.03em 0 #b4d5fe, 0 0.03em #b4d5fe, 0 -0.03em #b4d5fe, 0.06em 0 #b4d5fe, -0.06em 0 #b4d5fe, 0.09em 0 #b4d5fe, -0.09em 0 #b4d5fe, 0.12em 0 #b4d5fe, -0.12em 0 #b4d5fe, 0.15em 0 #b4d5fe, -0.15em 0 #b4d5fe;
-    background: #b4d5fe;
-}
-
-/* Sidenotes, margin notes, figures, captions */
-img {
-    max-width: 100%;
-}
-
-.sidenote,
-.marginnote {
-    float: right;
-    clear: right;
-    margin-right: -60%;
-    width: 50%;
-    margin-top: 0.3rem;
-    margin-bottom: 0;
-    font-size: 1.1rem;
-    line-height: 1.3;
-    vertical-align: baseline;
-    position: relative;
-}
-
-.sidenote-number {
-    counter-increment: sidenote-counter;
-}
-
-.sidenote-number:after,
-.sidenote:before {
-    font-family: et-book-roman-old-style;
-    position: relative;
-    vertical-align: baseline;
-}
-
-.sidenote-number:after {
-    content: counter(sidenote-counter);
-    font-size: 1rem;
-    top: -0.5rem;
-    left: 0.1rem;
-}
-
-.sidenote:before {
-    content: counter(sidenote-counter) " ";
-    font-size: 1rem;
-    top: -0.5rem;
-}
-
-blockquote .sidenote,
-blockquote .marginnote {
-    margin-right: -82%;
-    min-width: 59%;
-    text-align: left;
-}
-
-div.fullwidth,
-table.fullwidth {
-    width: 100%;
-}
-
-div.table-wrapper {
-    overflow-x: auto;
-    font-family: "Trebuchet MS", "Gill Sans", "Gill Sans MT", sans-serif;
-}
-
-.sans {
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
-    letter-spacing: .03em;
-}
-
-code, pre > code {
-    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
-    font-size: 1.0rem;
-    line-height: 1.42;
-    -webkit-text-size-adjust: 100%; /* Prevent adjustments of font size after orientation changes in iOS. See https://github.com/edwardtufte/tufte-css/issues/81#issuecomment-261953409 */
-}
-
-.sans > code {
-    font-size: 1.2rem;
-}
-
-h1 > code,
-h2 > code,
-h3 > code {
-    font-size: 0.80em;
-}
-
-.marginnote > code,
-.sidenote > code {
-    font-size: 1rem;
-}
-
-pre > code {
-    font-size: 0.9rem;
-    width: 52.5%;
-    margin-left: 2.5%;
-    overflow-x: auto;
-    display: block;
-}
-
-pre.fullwidth > code {
-    width: 90%;
-}
-
-.fullwidth {
-    max-width: 90%;
-    clear:both;
-}
-
-span.newthought {
-    font-variant: small-caps;
-    font-size: 1.2em;
-}
-
-input.margin-toggle {
-    display: none;
-}
-
-label.sidenote-number {
-    display: inline-block;
-    max-height: 2rem; /* should be less than or equal to paragraph line-height */
-}
-
-label.margin-toggle:not(.sidenote-number) {
-    display: none;
-}
-
-.iframe-wrapper {
-    position: relative;
-    padding-bottom: 56.25%; /* 16:9 */
-    padding-top: 25px;
-    height: 0;
-}
-
-.iframe-wrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-@media (max-width: 760px) {
-    body {
-        width: 84%;
-        padding-left: 8%;
-        padding-right: 8%;
-    }
-
-    hr,
-    section > p,
-    section > footer,
-    section > table {
-        width: 100%;
-    }
-
-    pre > code {
-        width: 97%;
-    }
-
-    section > dl,
-    section > ol,
-    section > ul {
-        width: 90%;
-    }
-
-    figure {
-        max-width: 90%;
-    }
-
-    figcaption,
-    figure.fullwidth figcaption {
-        margin-right: 0%;
-        max-width: none;
-    }
-
-    blockquote {
-        margin-left: 1.5em;
-        margin-right: 0em;
-    }
-
-    blockquote p,
-    blockquote footer {
-        width: 100%;
-    }
-
-    label.margin-toggle:not(.sidenote-number) {
-        display: inline;
-    }
-
-    .sidenote,
-    .marginnote {
-        display: none;
-    }
-
-    .margin-toggle:checked + .sidenote,
-    .margin-toggle:checked + .marginnote {
-        display: block;
-        float: left;
-        left: 1rem;
-        clear: both;
-        width: 95%;
-        margin: 1rem 2.5%;
-        vertical-align: baseline;
-        position: relative;
-    }
-
-    label {
-        cursor: pointer;
-    }
-
-    div.table-wrapper,
-    table {
-        width: 85%;
-    }
-
-    img {
-        width: 100%;
-    }
-}
+ /*!
+  * LaTeX.css (https://latex.now.sh/)
+  *
+  * Source: https://github.com/vincentdoerig/latex-css
+  * Licensed under MIT (https://github.com/vincentdoerig/latex-css/blob/master/LICENSE)
+ */
+
+ /* Box sizing rules */
+ *,
+ *::before,
+ *::after {
+   box-sizing: border-box;
+ }
+
+ /* Remove default margin */
+ body,
+ h1,
+ h2,
+ h3,
+ h4,
+ p,
+ ul[class],
+ ol[class],
+ li,
+ figure,
+ figcaption,
+ dl,
+ dd {
+   margin: 0;
+ }
+ 
+ /* Make default font-size 1rem and add smooth scrolling to anchors */
+ html {
+   font-size: 1rem;
+   scroll-behavior: smooth;
+ }
+ 
+ body.libertinus {
+   font-family: 'Libertinus', Georgia, Cambria, 'Times New Roman', Times, serif;
+ }
+ 
+ body {
+   font-family: 'Latin Modern', Georgia, Cambria, 'Times New Roman', Times, serif;
+   line-height: 1.8;
+ 
+   max-width: 80ch;
+   min-height: 100vh;
+   overflow-x: hidden;
+   margin: 0 auto;
+   padding: 2rem 1.25rem;
+ 
+   counter-reset: theorem;
+   counter-reset: definition;
+   counter-reset: sidenote-counter;
+ 
+   color: hsl(0, 5%, 10%);
+   background-color: hsl(210, 20%, 98%);
+ 
+   text-rendering: optimizeLegibility;
+ }
+ 
+ /* Justify and hyphenate all paragraphs */
+ p {
+   text-align: justify;
+   hyphens: auto;
+   -webkit-hyphens: auto;
+   -moz-hyphens: auto;
+   margin-top: 1rem;
+ }
+ 
+ /* A elements that don't have a class get default styles */
+ a:not([class]) {
+   text-decoration-skip-ink: auto;
+ }
+ 
+ /* Make links red */
+ a,
+ a:visited {
+   color: #a00;
+ }
+ 
+ a:focus {
+   outline-offset: 2px;
+   outline: 2px solid hsl(220, 90%, 52%);
+ }
+ 
+ /* Make images easier to work with */
+ img {
+   max-width: 100%;
+   height: auto;
+   display: block;
+ }
+ 
+ /* Inherit fonts for inputs and buttons */
+ input,
+ button,
+ textarea,
+ select {
+   font: inherit;
+ }
+ 
+ /* Prevent textarea from overflowing */
+ textarea {
+   width: 100%;
+ }
+ 
+ /* Natural flow and rhythm in articles by default */
+ article > * + * {
+   margin-top: 1em;
+ }
+ 
+ /* Styles for inline code or code snippets */
+ code,
+ pre,
+ kbd {
+   font-family: Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+     monospace;
+   font-size: 85%;
+ }
+ pre {
+   padding: 1rem 1.4rem;
+   max-width: 100%;
+   overflow: auto;
+   border-radius: 4px;
+   background: hsl(210, 28%, 93%);
+ }
+ pre code {
+   font-size: 95%;
+   position: relative;
+ }
+ kbd {
+   background: hsl(210, 5%, 100%);
+   border: 1px solid hsl(210, 5%, 70%);
+   border-radius: 2px;
+   padding: 2px 4px;
+   font-size: 75%;
+ }
+ 
+ /* Better tables */
+ table {
+   border-collapse: collapse;
+   border-spacing: 0;
+   width: auto;
+   max-width: 100%;
+   border-top: 2.27px solid black;
+   border-bottom: 2.27px solid black;
+   /* display: block; */
+   overflow-x: auto; /* does not work because element is not block */
+   /* white-space: nowrap; */
+   counter-increment: caption;
+ }
+ /* add bottom border on column table headings  */
+ table tr > th[scope='col'] {
+   border-bottom: 1.36px solid black;
+ }
+ /* add right border on row table headings  */
+ table tr > th[scope='row'] {
+   border-right: 1.36px solid black;
+ }
+ table > tbody > tr:first-child > td,
+ table > tbody > tr:first-child > th {
+   border-top: 1.36px solid black;
+ }
+ table > tbody > tr:last-child > td,
+ table > tbody > tr:last-child > th {
+   border-bottom: 1.36px solid black;
+ }
+ 
+ th,
+ td {
+   text-align: left;
+   padding: 0.5rem;
+   line-height: 1.1;
+ }
+ /* Table caption */
+ caption {
+   text-align: left;
+   font-size: 0.923em;
+   /* border-bottom: 2pt solid #000; */
+   padding: 0 0.25em 0.25em;
+   width: 100%;
+   margin-left: 0;
+ }
+ 
+ caption::before {
+   content: 'Table ' counter(caption) '. ';
+   font-weight: bold;
+ }
+ 
+ /* allow scroll on the x-axis */
+ .scroll-wrapper {
+   overflow-x: auto;
+ }
+ 
+ /* if a table is wrapped in a scroll wrapper,
+   the table cells shouldn't wrap */
+ .scroll-wrapper > table td {
+   white-space: nowrap;
+ }
+ 
+ /* Center align the title */
+ h1:first-child {
+   text-align: center;
+ }
+ 
+ /* Nested ordered list for ToC */
+ nav ol {
+   counter-reset: item;
+   padding-left: 2rem;
+ }
+ nav li {
+   display: block;
+ }
+ nav li:before {
+   content: counters(item, '.') ' ';
+   counter-increment: item;
+   padding-right: 0.85rem;
+ }
+ 
+ /* Center definitions (most useful for display equations) */
+ dl dd {
+   text-align: center;
+ }
+ 
+ /* Theorem */
+ .theorem {
+   counter-increment: theorem;
+   display: block;
+   margin: 12px 0;
+   font-style: italic;
+ }
+ .theorem::before {
+   content: 'Theorem ' counter(theorem) '. ';
+   font-weight: bold;
+   font-style: normal;
+ }
+ 
+ /* Lemma */
+ .lemma {
+   counter-increment: theorem;
+   display: block;
+   margin: 12px 0;
+   font-style: italic;
+ }
+ .lemma::before {
+   content: 'Lemma ' counter(theorem) '. ';
+   font-weight: bold;
+   font-style: normal;
+ }
+ 
+ /* Proof */
+ .proof {
+   display: block;
+   margin: 12px 0;
+   font-style: normal;
+   position: relative;
+ }
+ .proof::before {
+   content: 'Proof. ' attr(title);
+   font-style: italic;
+ }
+ .proof:after {
+   content: '◾️';
+   position: absolute;
+   right: -12px;
+   bottom: -2px;
+ }
+ 
+ /* Definition */
+ .definition {
+   counter-increment: definition;
+   display: block;
+   margin: 12px 0;
+   font-style: normal;
+ }
+ .definition::before {
+   content: 'Definition ' counter(definition) '. ';
+   font-weight: bold;
+   font-style: normal;
+ }
+ 
+ /* Center align author name, use small caps and add vertical spacing  */
+ .author {
+   margin: 0.85rem 0;
+   font-variant-caps: small-caps;
+   text-align: center;
+ }
+ 
+ /* Sidenotes */
+ 
+ .sidenote {
+   font-size: 0.8rem;
+   float: right;
+   clear: right;
+   width: 18vw;
+   margin-right: -20vw;
+   margin-bottom: 1em;
+ }
+ 
+ .sidenote.left {
+   float: left;
+   margin-left: -20vw;
+   margin-bottom: 1em;
+ }
+ 
+ /* (WIP) add border when a sidenote is clicked on */
+ .sidenote:target {
+   border: hsl(55, 55%, 70%) 1.5px solid;
+   padding: 0 .5rem;
+   scroll-margin-block-start: 10rem;
+ }
+ 
+ /* sidenote counter */
+ .sidenote-number {
+   counter-increment: sidenote-counter;
+ }
+ 
+ .sidenote-number::after,
+ .sidenote::before {
+   position: relative;
+   vertical-align: baseline;
+ }
+ 
+ /* add number in main content */
+ .sidenote-number::after {
+   content: counter(sidenote-counter);
+   font-size: 0.7rem;
+   top: -0.5rem;
+   left: 0.1rem;
+ }
+ 
+ /* add number in front of the sidenote */
+ .sidenote-number ~ .sidenote::before {
+   content: counter(sidenote-counter) ' ';
+   font-size: 0.7rem;
+   top: -0.5rem;
+ }
+ 
+ label.sidenote-toggle:not(.sidenote-number) {
+   display: none;
+ }
+ 
+ /* sidenotes inside blockquotes are indented more */
+ blockquote .sidenote {
+   margin-right: -24vw;
+   width: 18vw;
+ }
+ 
+ 
+ label.sidenote-toggle {
+   display: inline;
+   cursor: pointer;
+ }
+ 
+ input.sidenote-toggle {
+   display: none;
+ }
+ 
+ @media (max-width: 1050px) {
+   label.sidenote-toggle:not(.sidenote-number) {
+     display: inline;
+   }
+   .sidenote {
+     display: none;
+   }
+   .sidenote-toggle:checked + .sidenote {
+     display: block;
+     margin: 0.5rem 1.25rem 1rem 0.5rem;
+     float: left;
+     left: 1rem;
+     clear: both;
+     width: 95%;
+   }
+   /* tweak indentation of sidenote inside a blockquote */
+   blockquote .sidenote {
+     margin-right: -25vw;
+     width: 16vw;
+   }
+ }
+ 
+ /* Make footnote text smaller and left align it (looks bad with long URLs) */
+ .footnotes p {
+   text-align: left;
+   line-height: 1.5;
+   font-size: 85%;
+   margin-bottom: 0.4rem;
+ }
+ .footnotes {
+   border-top: 1px solid hsl(0, 0%, 39%);
+ }
+ 
+ /* Center title and paragraph */
+ .abstract,
+ .abstract p {
+   text-align: center;
+   margin-top: 0;
+ }
+ .abstract {
+   margin: 2.25rem 0;
+ }
+ .abstract > h2 {
+   font-size: 1rem;
+   margin-bottom: -0.2rem;
+ }
+ 
+ /* Format the LaTeX symbol correctly (a higher up, e lower) */
+ .latex span:nth-child(1) {
+   text-transform: uppercase;
+   font-size: 0.75em;
+   vertical-align: 0.28em;
+   margin-left: -0.48em;
+   margin-right: -0.15em;
+   line-height: 1ex;
+ }
+ 
+ .latex span:nth-child(2) {
+   text-transform: uppercase;
+   vertical-align: -0.5ex;
+   margin-left: -0.1667em;
+   margin-right: -0.125em;
+   line-height: 1ex;
+ }
+ 
+ /* Heading typography */
+ h1 {
+   font-size: 2.5rem;
+   line-height: 3.25rem;
+   margin-bottom: 1.625rem;
+ }
+ 
+ h2 {
+   font-size: 1.7rem;
+   line-height: 2rem;
+   margin-top: 3rem;
+ }
+ 
+ h3 {
+   font-size: 1.4rem;
+   margin-top: 2.5rem;
+ }
+ 
+ h4 {
+   font-size: 1.2rem;
+   margin-top: 2rem;
+ }
+ 
+ h5 {
+   font-size: 1rem;
+   margin-top: 1.8rem;
+ }
+ 
+ h6 {
+   font-size: 1rem;
+   font-style: italic;
+   font-weight: normal;
+   margin-top: 2.5rem;
+ }
+ 
+ h3,
+ h4,
+ h5,
+ h6 {
+   line-height: 1.625rem;
+ }
+ 
+ h1 + h2 {
+   margin-top: 1.625rem;
+ }
+ 
+ h2 + h3,
+ h3 + h4,
+ h4 + h5 {
+   margin-top: 0.8rem;
+ }
+ 
+ h5 + h6 {
+   margin-top: -0.8rem;
+ }
+ 
+ h2,
+ h3,
+ h4,
+ h5,
+ h6 {
+   margin-bottom: 0.8rem;
+ }
