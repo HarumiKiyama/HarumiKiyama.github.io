@@ -538,3 +538,49 @@ footer {
   align-items: center;
   justify-content: center;
 }
+
+
+/* custom.css */
+
+/* Style for the footnotes section */
+#footnotes {
+    border-top: 1px solid #ddd;
+    margin-top: 20px;
+    padding-top: 10px;
+}
+
+/* Style for the footnotes heading */
+#footnotes h2.footnotes {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Style for the footnote references in the main text */
+sup.footnote-ref, .footnum {
+    font-size: 0.8em;
+    vertical-align: super;
+    color: #007bff; /* Change color to blue */
+    text-decoration: none;
+}
+
+/* Style for individual footnotes */
+.footdef {
+    margin-bottom: 10px;
+}
+
+/* Style for the footnote paragraphs */
+.footpara {
+    font-size: 0.9em;
+    margin-left: 20px;
+}
+
+/* Style for the footnote links */
+.footpara a {
+    color: #007bff; /* Change color to blue */
+    text-decoration: none;
+}
+
+.footpara a:hover {
+    text-decoration: underline;
+}
