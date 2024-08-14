@@ -1,5 +1,6 @@
-# Created 2024-08-14 Wed 10:17
+# Created 2024-08-14 Wed 10:26
 #+title: 科学革命
+#+date: 2024-08-14
 #+author: Harumi Kiyama
 #+creator: Emacs 31.0.50 (Org mode 9.7.9)
 * 前言
