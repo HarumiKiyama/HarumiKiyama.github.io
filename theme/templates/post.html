@@ -52,8 +52,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script>
       document.addEventListener('DOMContentLoaded', (event) => {
-          document.querySelectorAll('pre.src').forEach((block) => {
-              hljs.highlightElement(block);
+          document.querySelectorAll('pre.src').forEach((element) => {
+              const classes = element.className.split(' ')
+              classes.forEach(cls => {
+                  if (cls.startsWith('src-')) {
+                      // Replace 'src-' with 'language-'
+                      const newClass = cls.replace('src-', 'language-');
+                      // Add the new class
+                      element.classList.add(newClass);
+        }
+              })
+              hljs.highlightElement(element);
           });
       });
     </script>
