@@ -170,5 +170,5 @@ footer {
 /* Footnotes */
 
 #footnotes, #footnotes * {
-    all: : initial;;
+    all: initial;
 }
