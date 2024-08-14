@@ -32,9 +32,17 @@
 (if (string= (getenv "ENV") "local")
     (setq weblorg-default-url "http://localhost:8000"))
 
+(setq weblorg-site-name "Harumi's Chapel"
+      weblorg-site-owner "Harumi Kiyama"
+      weblorg-site-description "A place for blog my life")
+
+;; Generate site
+(weblorg-site :template-vars
+              '(("site_name" . "Harumi's Chapel")
+                ("site_owner" . "HarumiKiyama <h.kiyama0720@gmail.com>")
+                ("site_description" . "A place for blog my life")))
 ;; Generate blog posts
 (weblorg-route
- :site-name "Harumi's Chapel"
  :name "posts"
  :input-pattern "src/posts/*.org"
  :template "post.html"
@@ -44,7 +52,6 @@
 ;; Generate pages
 (weblorg-route
  :name "pages"
- :site-name "Harumi's Chapel"
  :input-pattern "src/pages/*.org"
  :template "page.html"
  :output "docs/{{ slug }}/index.html"
@@ -53,7 +60,6 @@
 ;; Generate posts summary
 (weblorg-route
  :name "index"
- :site-name "Harumi's Chapel"
  :input-pattern "src/posts/*.org"
  :input-aggregate #'weblorg-input-aggregate-all-desc
  :template "blog.html"
