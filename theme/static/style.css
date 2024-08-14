@@ -509,7 +509,11 @@ header nav ul {
 
 
 header nav ul li {
-  display: inline;
+    display: inline;
+}
+
+header nav ul li:before {
+    display: none;
 }
 
 
