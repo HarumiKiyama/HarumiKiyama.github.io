@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-08-18 Sun 19:30 -->
+<!-- 2024-08-18 Sun 20:31 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>What is select</title>
@@ -215,14 +215,14 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org141d338">1. 前言</a></li>
-<li><a href="#org4c586a1">2. select 是什么</a></li>
-<li><a href="#org6210080">3. 为什么需要 select</a></li>
+<li><a href="#org682bb25">1. 前言</a></li>
+<li><a href="#orgd338d93">2. select 是什么</a></li>
+<li><a href="#org7f1cd6d">3. 为什么需要 select</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org141d338" class="outline-2">
-<h2 id="org141d338"><span class="section-number-2">1.</span> 前言</h2>
+<div id="outline-container-org682bb25" class="outline-2">
+<h2 id="org682bb25"><span class="section-number-2">1.</span> 前言</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 select, poll 还有 epoll 是什么, 这个问题一直能够时不时的看到, 网上找了很多资料要么是语焉不详, 要么就是在解释这些 api 是如何处理 IO 多路复用的(<code>IO multiplexing</code>), 然后再对 IO 多路复用做一些以其昏昏使人昭昭的解释. 从某种角度来说这个问题也和某个函数式编程当中的经常有初学者问的问题, 即什么是 <i>monad</i> 一样, 网上有很多种解释, 但是如果没有去使用过是完全不会明白 <i>monad</i> 是什么的. 这也是工科和理科最大的一个区别吧, 站在工科的视角来看, 对于概念的定义并没有那么重要, 关键是如果讲这些概念应用到实际问题上去. 而理科的话则是需要死扣定义, 因为只有定义清晰了, 才可以创造出一个共同的语境(<code>context</code>), 这之后对于这个概念的讨论才有意义, 这方面最严谨的莫过于近现代数学公理化之后留下的遗产了.
@@ -234,8 +234,8 @@ select, poll 还有 epoll 是什么, 这个问题可以分成两部分, 第一�
 </p>
 </div>
 </div>
-<div id="outline-container-org4c586a1" class="outline-2">
-<h2 id="org4c586a1"><span class="section-number-2">2.</span> select 是什么</h2>
+<div id="outline-container-orgd338d93" class="outline-2">
+<h2 id="orgd338d93"><span class="section-number-2">2.</span> select 是什么</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 这个问题或许是最好回答的了, 如前所述, 代码的定义以及实现都是明明白白写在文档以及代码中的. 这里只做摘录以及必要的解释
@@ -357,8 +357,8 @@ to by the readfds, writefds, and errorfds arguments shall have all bits set to 0
 </blockquote>
 </div>
 </div>
-<div id="outline-container-org6210080" class="outline-2">
-<h2 id="org6210080"><span class="section-number-2">3.</span> 为什么需要 select</h2>
+<div id="outline-container-org7f1cd6d" class="outline-2">
+<h2 id="org7f1cd6d"><span class="section-number-2">3.</span> 为什么需要 select</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 select 在 1983 年被首次引入 BSD 中, 用于实现 IO 多路复用(<code>IO multiplexing</code>). 多路复用早期是一个通信行业的词汇, 指的是将多种信号合并通过同一媒介传播, 在计算机科学中多路复用指的是

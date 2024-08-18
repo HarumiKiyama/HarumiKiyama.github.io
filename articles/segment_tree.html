@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-08-18 Sun 19:30 -->
+<!-- 2024-08-18 Sun 20:31 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Segment Tree</title>
@@ -243,29 +243,29 @@
 <h1 class="title">Segment Tree</h1>
 <div class="post-status"><span><i class='bx bx-calendar'></i>
 <span>2024-08-14</span></span>
-<span><i class='bx bx-edit'></i><span>2024-08-18 Sun 19:27</span></span></div><div id="table-of-contents" role="doc-toc">
+<span><i class='bx bx-edit'></i><span>2024-08-18 Sun 20:31</span></span></div><div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org88c6fb4">1. 前言</a></li>
-<li><a href="#org84183ef">2. 线段树的性质</a></li>
-<li><a href="#orgb07b9d2">3. 如何实现一个线段树</a></li>
-<li><a href="#org752f68b">4. 线段树的区间查询</a></li>
-<li><a href="#org6e3fb6a">5. 线段树的区间修改与惰性标记</a></li>
-<li><a href="#orgc1f9c67">6. 应当在什么时候使用线段树</a></li>
+<li><a href="#org08edd12">1. 前言</a></li>
+<li><a href="#org0ce7070">2. 线段树的性质</a></li>
+<li><a href="#orgc6aaa03">3. 如何实现一个线段树</a></li>
+<li><a href="#orgbbd720a">4. 线段树的区间查询</a></li>
+<li><a href="#orgfccab15">5. 线段树的区间修改与惰性标记</a></li>
+<li><a href="#orgbb1696f">6. 应当在什么时候使用线段树</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org88c6fb4" class="outline-2">
-<h2 id="org88c6fb4"><span class="section-number-2">1.</span> 前言</h2>
+<div id="outline-container-org08edd12" class="outline-2">
+<h2 id="org08edd12"><span class="section-number-2">1.</span> 前言</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 本文主要从三个方面来讲述线段树 (<i>segment tree</i>) 是什么. 即, 线段树的特性, 线段树的实现方式, 以及线段树可以解决什么问题这三个方面. 另, 本文主要参考了 <i>oi-wiki</i><sup><label for="fnr.1" class="footref">1</label></sup><input id="fnr.1" class="footref-toggle" type="checkbox">.
 </p>
 </div>
 </div>
-<div id="outline-container-org84183ef" class="outline-2">
-<h2 id="org84183ef"><span class="section-number-2">2.</span> 线段树的性质</h2>
+<div id="outline-container-org0ce7070" class="outline-2">
+<h2 id="org0ce7070"><span class="section-number-2">2.</span> 线段树的性质</h2>
 <div class="outline-text-2" id="text-2">
 <blockquote>
 <p>
@@ -274,30 +274,16 @@
 </blockquote>
 </div>
 </div>
-<div id="outline-container-orgb07b9d2" class="outline-2">
-<h2 id="orgb07b9d2"><span class="section-number-2">3.</span> 如何实现一个线段树</h2>
+<div id="outline-container-orgc6aaa03" class="outline-2">
+<h2 id="orgc6aaa03"><span class="section-number-2">3.</span> 如何实现一个线段树</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 设有一大小为 \(5\) 的数组 \(a=\{10,11,12,13,14\}\) 其所转化为的线段树如下图
 </p>
-<div class="org-src-container">
-<pre class="src src-dot"><code>digraph G {
-a[label="d[1]=60(0~4)"];
-b[label="d[2]=33(0~2)"];
-d[label="d[4]=21(0~1)"];
-e[label="d[5]=12(2~2)"];
-f[label="d[6]=13(3~3)"];
-g[label="d[7]=14(4~4)"];
-h[label="d[8]=10(0~0)"];
-i[label="d[9]=11(1~1)"];
-c[label="d[3]=27(3~4)"];
 
-a-&gt;{b c};
-b-&gt;{d e};
-c-&gt;{f g};
-d-&gt;{h i};
-}
-</code></pre>
+<div id="org97ad42d" class="figure">
+<p><img src="tree.png" alt="tree.png" />
+</p>
 </div>
 
 <p>
@@ -323,8 +309,8 @@ d-&gt;{h i};
 </p>
 </div>
 </div>
-<div id="outline-container-org752f68b" class="outline-2">
-<h2 id="org752f68b"><span class="section-number-2">4.</span> 线段树的区间查询</h2>
+<div id="outline-container-orgbbd720a" class="outline-2">
+<h2 id="orgbbd720a"><span class="section-number-2">4.</span> 线段树的区间查询</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 一般的, 如果要查询区间, \([l,r]\) 则可以将其拆成最多为 \(O(\log n)\) 个极大的区间, 合并这些区间即可求出 \([l,r]\) 的答案.
@@ -346,8 +332,8 @@ d-&gt;{h i};
 </div>
 </div>
 </div>
-<div id="outline-container-org6e3fb6a" class="outline-2">
-<h2 id="org6e3fb6a"><span class="section-number-2">5.</span> 线段树的区间修改与惰性标记</h2>
+<div id="outline-container-orgfccab15" class="outline-2">
+<h2 id="orgfccab15"><span class="section-number-2">5.</span> 线段树的区间修改与惰性标记</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 当修改了 \([l,r]\) 中的至少一个元素时, 需要把所有包含了 \([l,r]\) 中的节点的线段树节点进行更新, 时间复杂度太大, 难以承受.
@@ -400,8 +386,8 @@ d-&gt;{h i};
 </div>
 </div>
 </div>
-<div id="outline-container-orgc1f9c67" class="outline-2">
-<h2 id="orgc1f9c67"><span class="section-number-2">6.</span> 应当在什么时候使用线段树</h2>
+<div id="outline-container-orgbb1696f" class="outline-2">
+<h2 id="orgbb1696f"><span class="section-number-2">6.</span> 应当在什么时候使用线段树</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 具体主要应用在对区间进行诸如求和,求最大值,求最小值操作的场景
@@ -447,7 +433,7 @@ d-&gt;{h i};
                                    <div class="info">
                                      <span class="author">Author: Harumi Kiyama (<a href="mailto:wanglc@tbamc.com">wanglc@tbamc.com</a>)</span>
                                      <span class="date">Create Date: 2024-08-14</span>
-                                     <span class="date">Last modified: 2024-08-18 Sun 19:27</span>
+                                     <span class="date">Last modified: 2024-08-18 Sun 20:31</span>
                                      <span>Creator: Emacs 31.0.50 (Org mode 9.7.9)</span>
                                    </div>
 </div>
