@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-08-18 Sun 20:31 -->
+<!-- 2024-08-18 Sun 20:50 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Segment Tree</title>
@@ -247,25 +247,25 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org08edd12">1. 前言</a></li>
-<li><a href="#org0ce7070">2. 线段树的性质</a></li>
-<li><a href="#orgc6aaa03">3. 如何实现一个线段树</a></li>
-<li><a href="#orgbbd720a">4. 线段树的区间查询</a></li>
-<li><a href="#orgfccab15">5. 线段树的区间修改与惰性标记</a></li>
-<li><a href="#orgbb1696f">6. 应当在什么时候使用线段树</a></li>
+<li><a href="#org9e5a97d">1. 前言</a></li>
+<li><a href="#orgb6d904b">2. 线段树的性质</a></li>
+<li><a href="#org967c0d4">3. 如何实现一个线段树</a></li>
+<li><a href="#orgf26dc84">4. 线段树的区间查询</a></li>
+<li><a href="#orgba8a552">5. 线段树的区间修改与惰性标记</a></li>
+<li><a href="#org4127ffe">6. 应当在什么时候使用线段树</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org08edd12" class="outline-2">
-<h2 id="org08edd12"><span class="section-number-2">1.</span> 前言</h2>
+<div id="outline-container-org9e5a97d" class="outline-2">
+<h2 id="org9e5a97d"><span class="section-number-2">1.</span> 前言</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 本文主要从三个方面来讲述线段树 (<i>segment tree</i>) 是什么. 即, 线段树的特性, 线段树的实现方式, 以及线段树可以解决什么问题这三个方面. 另, 本文主要参考了 <i>oi-wiki</i><sup><label for="fnr.1" class="footref">1</label></sup><input id="fnr.1" class="footref-toggle" type="checkbox">.
 </p>
 </div>
 </div>
-<div id="outline-container-org0ce7070" class="outline-2">
-<h2 id="org0ce7070"><span class="section-number-2">2.</span> 线段树的性质</h2>
+<div id="outline-container-orgb6d904b" class="outline-2">
+<h2 id="orgb6d904b"><span class="section-number-2">2.</span> 线段树的性质</h2>
 <div class="outline-text-2" id="text-2">
 <blockquote>
 <p>
@@ -274,14 +274,14 @@
 </blockquote>
 </div>
 </div>
-<div id="outline-container-orgc6aaa03" class="outline-2">
-<h2 id="orgc6aaa03"><span class="section-number-2">3.</span> 如何实现一个线段树</h2>
+<div id="outline-container-org967c0d4" class="outline-2">
+<h2 id="org967c0d4"><span class="section-number-2">3.</span> 如何实现一个线段树</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 设有一大小为 \(5\) 的数组 \(a=\{10,11,12,13,14\}\) 其所转化为的线段树如下图
 </p>
 
-<div id="org97ad42d" class="figure">
+<div id="org43b718e" class="figure">
 <p><img src="tree.png" alt="tree.png" />
 </p>
 </div>
@@ -309,8 +309,8 @@
 </p>
 </div>
 </div>
-<div id="outline-container-orgbbd720a" class="outline-2">
-<h2 id="orgbbd720a"><span class="section-number-2">4.</span> 线段树的区间查询</h2>
+<div id="outline-container-orgf26dc84" class="outline-2">
+<h2 id="orgf26dc84"><span class="section-number-2">4.</span> 线段树的区间查询</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 一般的, 如果要查询区间, \([l,r]\) 则可以将其拆成最多为 \(O(\log n)\) 个极大的区间, 合并这些区间即可求出 \([l,r]\) 的答案.
@@ -332,8 +332,8 @@
 </div>
 </div>
 </div>
-<div id="outline-container-orgfccab15" class="outline-2">
-<h2 id="orgfccab15"><span class="section-number-2">5.</span> 线段树的区间修改与惰性标记</h2>
+<div id="outline-container-orgba8a552" class="outline-2">
+<h2 id="orgba8a552"><span class="section-number-2">5.</span> 线段树的区间修改与惰性标记</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 当修改了 \([l,r]\) 中的至少一个元素时, 需要把所有包含了 \([l,r]\) 中的节点的线段树节点进行更新, 时间复杂度太大, 难以承受.
@@ -386,8 +386,8 @@
 </div>
 </div>
 </div>
-<div id="outline-container-orgbb1696f" class="outline-2">
-<h2 id="orgbb1696f"><span class="section-number-2">6.</span> 应当在什么时候使用线段树</h2>
+<div id="outline-container-org4127ffe" class="outline-2">
+<h2 id="org4127ffe"><span class="section-number-2">6.</span> 应当在什么时候使用线段树</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 具体主要应用在对区间进行诸如求和,求最大值,求最小值操作的场景
@@ -415,20 +415,20 @@
 </div>
 </div></div>
 <script src="https://giscus.app/client.js"
-          data-repo="HarumiKiyama/HarumiKiyama.github.io"
-          data-repo-id="MDEwOlJlcG9zaXRvcnkyOTgxNjM5ODg="
-          data-category="Announcements"
-          data-category-id="DIC_kwDOEcWfFM4Cdz5V"
-          data-mapping="pathname"
-          data-strict="0"
-          data-reactions-enabled="1"
-          data-emit-metadata="0"
-          data-input-position="top"
-          data-theme="light"
-          data-lang="zh-CN"
-          crossorigin="anonymous"
-          async>
-  </script><div id="postamble" class="status">
+        data-repo="HarumiKiyama/HarumiKiyama.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkxMTcxMjczMjQ="
+        data-category="[ENTER CATEGORY NAME HERE]"
+        data-category-id="[ENTER CATEGORY ID HERE]"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="light_high_contrast"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+   </script><div id="postamble" class="status">
 <hr class="Solid">
                                    <div class="info">
                                      <span class="author">Author: Harumi Kiyama (<a href="mailto:wanglc@tbamc.com">wanglc@tbamc.com</a>)</span>
