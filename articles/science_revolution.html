@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-08-18 Sun 11:39 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>科学革命</title>
+<meta name="author" content="Harumi Kiyama" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+                                    <link rel="stylesheet" type="text/css" href="/css/htmlize.css" />
+                                    <script src="/scripts/script.js"></script>
+                                    <script src="/scripts/toc.js"></script>
+</head>
+<body>
+<div id="preamble" class="status">
+<nav class="nav">
+                                     <a href="/index.html" class="button">Home</a>
+                                     <a href="/rss.xml" class="button">RSS</a>
+                                     <a href="/about_me.html" class="button">About</a>
+                                   </nav>
+                                   <hr>
+</div>
+<div id="content" class="content">
+<h1 class="title">科学革命</h1>
+<div class="post-status"><span><i class='bx bx-calendar'></i>
+<span>2024-08-14</span></span>
+<span><i class='bx bx-edit'></i><span>2024-08-18 Sun 11:22</span></span><span><i class='bx bx-history'></i><span><a href="https://github.com/Elilif/Elilif.github.io/commits/master/orgs/science_revolution.org">history</a></span></span></div><div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org6485d67">1. 前言</a></li>
+<li><a href="#org7208be5">2. 科学革命与科学史写作</a></li>
+<li><a href="#orgbef0b00">3. 文艺复兴与科学革命</a></li>
+<li><a href="#org850b961">4. 科学的方法</a>
+<ul>
+<li><a href="#org5bca857">4.1. 世界图像的数学化</a></li>
+<li><a href="#orgd93a8bb">4.2. 经验与实验</a></li>
+</ul>
+</li>
+<li><a href="#org19a31bc">5. 法术与现代科学的起源</a></li>
+<li><a href="#org085032c">6. 机械论哲学</a></li>
+<li><a href="#org38702d5">7. 宗教与科学</a></li>
+<li><a href="#org5716694">8. 科学与广义文化</a></li>
+<li><a href="#org99a227f">9. 结语</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6485d67" class="outline-2">
+<h2 id="org6485d67"><span class="section-number-2">1.</span> 前言</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+本文是对于&lt;科学革命与现代科学的起源&gt;一书的读书笔记,.在阅读该书时,我受益良多,很多从小就困扰我的问题获得了解答,所以在这里写了一点读书笔记性质的东西,也算是对这本书的一种推荐吧.
+</p>
+</div>
+</div>
+<div id="outline-container-org7208be5" class="outline-2">
+<h2 id="org7208be5"><span class="section-number-2">2.</span> 科学革命与科学史写作</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+科学革命,指欧洲史的一个时期，历史学家认为正是这个时期，真正奠定了现代科学在概念方面、方法论方面、机制方面的根基。
+</p>
+
+<p>
+17 世纪与 15 世纪欧洲人对自然知识的态度的差别:
+</p>
+<ol class="org-ol">
+<li>"全然思辨性的、基本上受之亚里士多德思想的自然哲学"转变为"关于自然的知识有实际的用途"</li>
+<li>"仰赖古人的权威，以之为知识的神圣之源"转变为"要获取有关自然世界的知识，只能第一手的研究这个世界，或是细致的观察，或是精心设计的调查实验"</li>
+<li>逐渐认为数学是揭示自然现象运行所必需的手段</li>
+<li>开始要以具体确切的法则来丰富"自然法"</li>
+<li>"自然物品与人造的物品的对立"转变为"以与人为进程类比的角度来理解自然",具体的，不再相信卫星之下的一切由土、水、气、火四元素组成,而是认为天上的与地上的并非截然有别，一切事物都是由看不见的小微粒组成，都从属相同的、普遍的自然法则。</li>
+<li>不再信奉有限的、以地球为中心的宇宙，而是无限的宇宙，太阳不过是群星之一。</li>
+</ol>
+
+<p>
+辉格史学:关注以前的时候，只是盯着后来被证明是重要的那部分。依据现在来判断过去。
+</p>
+
+<p>
+科学革命简单概括就是:中世纪的自然哲学，原本不想沾染数学以及其他更实用或更依赖实验的技艺与科学，最终却还是与这些方法合在一起形成了对自然的分析，导致了与我们现在的科学概念更相近的东西。
+</p>
+</div>
+</div>
+<div id="outline-container-orgbef0b00" class="outline-2">
+<h2 id="orgbef0b00"><span class="section-number-2">3.</span> 文艺复兴与科学革命</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+文艺复兴产生的原因:
+</p>
+<ol class="org-ol">
+<li>罗马天主教会和所谓的神圣罗马帝国愈来愈不能够给有组织的精神生活和物质生活提供必要的稳定性。</li>
+<li>自治市、地区力量和民族力量的兴起</li>
+<li>地方封建司法权的出现</li>
+<li>以私人资本为基础的商业的发展,出现了银行体系</li>
+<li>发现并且开发了新世界</li>
+<li>文化相对主义的概念</li>
+</ol>
+
+<p>
+大量古代文献被重新发现，动摇了中世纪以来亚里士多德在哲学方面的统治地位,作为替代的哲学体系繁荣发展，由此出现的一个深远的变化是，越来越多的强调个人对真理的寻找应出自个人的经验和努力。于此同时，路德提出“信徒皆祭司”，敦促个人自己去寻找整理，回到源头也就是圣经中去寻找真理。而在同时代，自然界被人为是“上帝的另一本书”。由此诞生了科学革命的一个代表特征，全新地强调经验和观察是寻找真理的手段。
+科学革命的另外一个代表特征是，关于自然的知识肯定有益于人类生活的改善。这点导致了对于数学科学和法术技能的重视。
+科学革命的第三个特征是，越来越多的运用数学来理解自然世界的运作。(柏拉图认为数学是获得特定知识极好的手段)
+</p>
+</div>
+</div>
+<div id="outline-container-org850b961" class="outline-2">
+<h2 id="org850b961"><span class="section-number-2">4.</span> 科学的方法</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+科学的方法有两个主要的基本内容:
+</p>
+<ol class="org-ol">
+<li>运用数学和计量以精确测度世界及其各个部分是怎样运作的</li>
+<li>运用观察、经验以及人为控制的实验来理解自然</li>
+</ol>
+</div>
+<div id="outline-container-org5bca857" class="outline-3">
+<h3 id="org5bca857"><span class="section-number-3">4.1.</span> 世界图像的数学化</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+工具主义者(instrumentalists): 认为数学所得出的理论只是假设而已，关键还是要利用数学得出的计算与预测。(亚里士多德的主张，数学分析给不出因果解释，所以也就无益于自然哲学)
+为实论者(realists): 认为数学分析揭示了事情怎么就必定是那样子的,如果计算是正确的，那么这说明说设想的理论是接近与真实的。
+从工具主义的观点转变为为实论的观点是科学革命的一个重要的内容，即世界图像的数学化。
+</p>
+
+<p>
+哥白尼通过计算给出了日心说，他认为，不管这一点怎么样抵触了自然哲学，也必定是真实的，因为这是数学所要求的结果。这一点是革命性的。
+在 1600 年之前，只有 10 位思想家认可了哥白尼的理论是自然真理，其余的都把哥白尼的理论看作是一种为了方便计算而给出的模型。
+</p>
+
+<p>
+数学地位的提高不只出现在天文领域，还出现在了更加实用的领域诸如(航海，测量和绘图),这些都促成了早期数学家们地位的提高，以及恩主阶层里的成员对于数学有越来越浓厚的兴趣。
+</p>
+
+<p>
+自然哲学的数学原理的出版标志着自然哲学数学化的完成。牛顿在本书中，虽然采用了胡克的假设，但是当时的人们都普遍认为相对与牛顿依据精确的数学说进行的工作相比胡克的假设委实渺小.
+</p>
+</div>
+</div>
+<div id="outline-container-orgd93a8bb" class="outline-3">
+<h3 id="orgd93a8bb"><span class="section-number-3">4.2.</span> 经验与实验</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+数学家们想要确立他们理解世界的方法的有效性,就得确立新的核定标准,新的权威原则.
+科学革命的一个代表特征就是,用途明确的实验(experiments)所论证的知识概念取代了自明的经验(experience).
+数学传统是 17 世纪科学的实验方法的一个主要来源
+文艺复兴时期的学者们越来越多地注意到了杰出的技工们的实用知识,这也是实验方法得以形成的一个重要因素.
+炼金术的那种实验主义扩展到了自然哲学家,内科医生和其他由于数学,自然史,解剖学和医学领域里的发展而信服经验思想的人当中.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org19a31bc" class="outline-2">
+<h2 id="org19a31bc"><span class="section-number-2">5.</span> 法术与现代科学的起源</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+法术最重要的一个部分即,自然法术,在科学革命时期,其归属变成了自然哲学.科学世界观脱胎于自然哲学同自然法术那实用的经验传统的联姻.
+自然法术(natural magic)的基础是这一假设:有些事物暗藏着能够影响其他事物的力量,从而导致一些让亚里士多德哲学无从解释的现象.自然法术人士的成功,取决于有关自然的知识,要了解物体相互间是怎么作用的以便实现其所要的结果.
+对于现代早期的思想家而言,法术的效果在于对自然对象和过程的控制,对他们而言只有上帝才能够实现超自然的事件.
+开普勒进行宇宙论工作的一个主要的动力,是他想解答为什么只有六个行星这一问题,即数字 6 何以如此重要,以至于上帝用的是这个而不是别的数字作为行星的数目.这一想法的背后是这样一种信念,上帝的创造就承载着对于人类有意义及有用的符号.
+法术信奉"痕迹",信奉创造之梯中各个层级间的呼应,这是细致观察,记录矿物,植物和动物的主要动力.
+</p>
+</div>
+</div>
+<div id="outline-container-org085032c" class="outline-2">
+<h2 id="org085032c"><span class="section-number-2">6.</span> 机械论哲学</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+机械论哲学标志着与过去的明确断裂,给科学革命盖上了结实的封印.
+机械论哲学即是说,用形状,尺寸,量和运动来解释所有现象.
+机械论哲学把自然界的运动比作机械,之所以有变化,是由于物体间的啮合,好似钟表里的齿轮,抑或一个物体撞击另一个物体而传递了运动.不再援用有生命的原则或者目的论的说法进行解释.
+机械论的基础是这样的假设: 物体都是由肉眼看不到的小原子或者粒子构成的.
+机械论哲学中,最让人佩服的是,笛卡尔的哲学体系:
+</p>
+<ol class="org-ol">
+<li>整合了数学与物理学,依据一种全新的形而上学只从广延的角度定义物质.由此他提出物理学的基础可以是对运动中的有广延的物体的几何分析.</li>
+<li>世界必然是全满的,之所以会有运动是因为发生了"失位",物质为了填补失位于是于是发生了运动</li>
+<li>运动的总量是守恒的</li>
+<li>区别与传统的看法,认为人为的进程取决于自然现象,与此同时理解自然现象也可以运用人工制造品的运作</li>
+<li>笛卡尔在展开体系的时候也运用了实验,但是在支持论证方面,实验明显居于从属地位.</li>
+</ol>
+<p>
+英国的实验主义哲学,催生出了新的一种机械论哲学:
+不认为物质是完全被动的,完全惰性的,物质的微粒很有可能也赋有一些"活动的原则",从而可以解释包括磁与引力在内的玄妙现象.以及各种化学属性
+</p>
+
+<p>
+虽然活体论的很多说法主导了之后的生命科学史,却依然被看做只不过是用新瓶子装盛着一种完全"非科学的"观点,迟早还是会简化为一种更"机械论"的解释.
+</p>
+</div>
+</div>
+<div id="outline-container-org38702d5" class="outline-2">
+<h2 id="org38702d5"><span class="section-number-2">7.</span> 宗教与科学</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+科学与宗教这两种世界观,相互间确实一直有冲突,但这并非全部实情.
+宗教方面的关怀对于这些主要的思想家们来说是很重要的,为他们的自然哲学提供了普遍的动机,并塑造了很多具体的细节.
+机械论哲学家主要关心的是,表面上帝究竟是怎么与这个机械世界相互作用的,通过坚持认为上帝在创世之初赋予物质以一个内部的运动原则,来为上帝在机械论哲学中找到了位置.
+</p>
+
+<p>
+唯意志论神学:
+</p>
+<ol class="org-ol">
+<li>上帝的意志是上帝的主要特征</li>
+<li>上帝的意志不可被限制</li>
+<li>凡上帝意愿皆是善</li>
+<li>不能允许世界可以从理性的角度被重构,上帝的武断意志可以引进任何的偶然事件</li>
+</ol>
+
+<p>
+唯理智论神学:
+</p>
+<ol class="org-ol">
+<li>上帝的理性是上帝的主要特征</li>
+<li>有某种永恒的或者先定存在的真理在引导着上帝</li>
+<li>上帝也必然要意愿那本是善的东西</li>
+<li>能够"在上帝之后思考上帝的思想", 从而有可能最终做到从理性的角度理解世界</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org5716694" class="outline-2">
+<h2 id="org5716694"><span class="section-number-2">8.</span> 科学与广义文化</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+科学革命在很大程度上同步于现代资本注意的兴起, 经济方面的因素在科学兴起的过程中确实起到了重要作用.
+科学史学家对于科学史的叙述分成了两派,一派把科学看成是一门自然哲学,视其为一桩哲学事业,旨在理解自然说运行的那些方法.另一派把科学看成一组为了理解并控制自然的工艺技术或者工艺程序.
+培根实验主义的古怪性质,来源于培根相信可以用法庭审理案件的相同模式来研究自然,以英国普通法的方式为模型,通过结合具体的当地经验,背景知识,技能,专业知识和理性来获得有关自然事务的"彻底的确定性",实验要由绅士来做可靠的见证,这是确立有关自然世界的"实际的事情"的唯一可信途径.
+政治方面的考虑对 17 世纪英国实验方法的发展确实是有影响的
+上帝创造了自然世界和社会世界,每一级都有着相同的秩序,这是现代早期的思想家们说信奉的,所谓政治领域就是在恰当组织的情况下复现自然领域的观点,通常被当作证据,证明政治领域里一切都运行良好.
+呼应:上帝创世的各个不同部分分别呼应着其他部分,从而透露出了上帝的意旨.
+在托勒密的体系中,太阳是国王的象征,却也只是行星之一.暗示国王与贵族共享政治权威.而哥白尼的日心说,被视为更容易支持更集权的君主制.
+为什么在中世纪或者现代早期不曾有自我约束或者反馈的装置.希腊化时代的&lt;气动学&gt;已经提到了反馈装置了.
+</p>
+<ol class="org-ol">
+<li>钟表隐喻,自 13 世纪机械钟表被发明以来,钟表越来越成为关于世界秩序和规律的隐喻,上帝被看做一位造钟表者,钟表的运行展现了一个人要完成其所被安排的角色,并遵守体系之权威的重要性.</li>
+<li>英国人在 18 世纪发展出了自我消解,自我约束的装置用在各种机械上,和英国的政治和经济理论在光荣革命以后经常被说成是"制衡",平衡不无关系</li>
+</ol>
+
+<p>
+把法术的和经院的世界观看作一种整体论,活体论的世界观,机械论以前的世界观说流露出的主要是一种女性气质,而机械论的世界观是操纵性的,掠夺性的和男性的.科学是一项男性事业,是一种男性喜欢做而且可以做得很好的事情,女性则不大合适.
+如果想要尽可能完全地理解科学革命,就必须不仅考察自然哲学思考以及与科学知识任何一个方面相关联的各种专业思考本身,还要考察宗教,神学,政治,经济,形而上学,方法论,修辞,尤其是所有这些因素之间的复杂的相互作用,只有这样才能希望理解这个被视为"现代世界以及现代精神的真正起源"的文化现象.
+</p>
+</div>
+</div>
+<div id="outline-container-org99a227f" class="outline-2">
+<h2 id="org99a227f"><span class="section-number-2">9.</span> 结语</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+在文艺复兴时期,主要由于发现了大量从前只闻其名的古代著作,亚里士多德屹立在自然哲学领域的权威逐渐坍塌了,其结果当然不只是亚里士多德权威的终结,所谓真理能从权威人物的论断里得到的观念也随之终结.为寻求能够替代亚里士多德学说的东西,有志于理解自然世界性质的人求助于各种不同的传统.这些传统带来了自然世界概念方面的明显变化,以及获取自然知识方法上的明显变化.在理解自然方面所出现的变化也受到了宗教与神学方面骚乱的驱使.
+</p>
+</div>
+</div>
+</div>
+<script src="https://giscus.app/client.js"
+          data-repo="Elilif/Elilif.github.io"
+          data-repo-id="MDEwOlJlcG9zaXRvcnkyOTgxNjM5ODg="
+          data-category="Announcements"
+          data-category-id="DIC_kwDOEcWfFM4Cdz5V"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="top"
+          data-theme="light"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+  </script><div id="postamble" class="status">
+<hr class="Solid">
+                                   <div class="info">
+                                     <span class="author">Author: Harumi Kiyama (<a href="mailto:wanglc@tbamc.com">wanglc@tbamc.com</a>)</span>
+                                     <span class="date">Create Date: 2024-08-14</span>
+                                     <span class="date">Last modified: 2024-08-18 Sun 11:22</span>
+                                     <span>Creator: Emacs 31.0.50 (Org mode 9.7.9)</span>
+                                   </div>
+</div>
+</body>
+</html>

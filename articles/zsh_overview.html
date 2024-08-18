@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-08-18 Sun 11:39 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>zsh overview</title>
+<meta name="author" content="Harumi Kiyama" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+                                    <link rel="stylesheet" type="text/css" href="/css/htmlize.css" />
+                                    <script src="/scripts/script.js"></script>
+                                    <script src="/scripts/toc.js"></script>
+</head>
+<body>
+<div id="preamble" class="status">
+<nav class="nav">
+                                     <a href="/index.html" class="button">Home</a>
+                                     <a href="/rss.xml" class="button">RSS</a>
+                                     <a href="/about_me.html" class="button">About</a>
+                                   </nav>
+                                   <hr>
+</div>
+<div id="content" class="content">
+<h1 class="title">zsh overview</h1>
+<div class="post-status"><span><i class='bx bx-calendar'></i>
+<span>2024-08-14</span></span>
+<span><i class='bx bx-edit'></i><span>2024-08-18 Sun 11:22</span></span><span><i class='bx bx-history'></i><span><a href="https://github.com/Elilif/Elilif.github.io/commits/master/orgs/zsh_overview.org">history</a></span></span></div><div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org1fb032c">1. 前言</a></li>
+<li><a href="#org903d5a4">2. zsh 的历史</a></li>
+<li><a href="#org7c4a89b">3. zsh 的配置文件</a></li>
+<li><a href="#org0a550d0">4. Options of zsh</a></li>
+<li><a href="#orgba797b8">5. zsh 的内置命令</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org1fb032c" class="outline-2">
+<h2 id="org1fb032c"><span class="section-number-2">1.</span> 前言</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+从几年前开始用 <i>archlinux</i> 时就在用 <i>zsh</i> 作为默认的 <i>shell</i> (因为 <i>zsh</i> 是
+<i>archlinux</i> 的安装镜像中默认的 <i>shell</i>), 但是因为一直都是用的 <i>oh-my-zsh</i>, 这就
+类似于 <i>Ubuntu</i> 把 <i>linux/的很多细节隐藏了一样, /oh-my-zsh</i> 也把很多 <i>zsh</i> 的细
+节隐藏了. 这几天刚好有点时间, 就把 <i>zsh</i> 的文档
+<sup><label for="fnr.1" class="footref">1</label></sup><input id="fnr.1" class="footref-toggle" type="checkbox">看了一下, 这里也算是
+做个记录吧.
+</p>
+</div>
+</div>
+<div id="outline-container-org903d5a4" class="outline-2">
+<h2 id="org903d5a4"><span class="section-number-2">2.</span> zsh 的历史</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+保罗·弗斯塔德 (<code>Paul Falstad</code>) 在 1990 于普林斯顿大学求学期间编写了 <i>zsh</i> 的初版,
+当时只是为了增强 <i>Bourne Shell</i> 的性能写的一个项目, 这两者之间的关系比较类似与
+<i>VIM</i> 和 <i>VI</i> 的关系. 在看到了普林斯顿教授邵中的登录名 <i>zsh</i> 之后, 保罗就自作主
+张的把自己写的 <i>shell</i> 的命名为 <i>zsh</i>.
+</p>
+</div>
+</div>
+<div id="outline-container-org7c4a89b" class="outline-2">
+<h2 id="org7c4a89b"><span class="section-number-2">3.</span> zsh 的配置文件</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+如果把 <i>zsh</i> 设为默认的 <i>shell</i>, 那么在开机到登陆完成为止, 配置文件的加载顺序为
+<code>/etc/zshenv</code> (注之后的行为会根据 <i>RCS</i> 和 <i>GLOBAL<sub>RCS</sub></i> 的不 同而不同, 具体会在
+下一小节讲解), <code>$ZDOTDIR/.zshenv</code>, <code>/etc/zprofile</code>, <code>$ZDOTDIR/.zprofile</code>,
+<code>/etc/zlogin</code> (这里以及之后的文件都是在登陆密码用户名校验完成之后才记载的),
+<code>$ZDOTDIR/.zlogin</code>. 其中, 如果 <code>$ZDOTDIR</code> 没有设置的话, 默认使用 <code>$HOME</code> 的值.
+</p>
+
+<p>
+在登陆之后, 如果打开一个 <i>terminal</i> 的话, 那么配置文件的加载顺序为,
+<code>/etc/zshenv</code>, <code>$ZDOTDIR/.zshenv</code>, <code>/etc/zshrc</code>, <code>$ZDOTDIR/.zshrc</code>. 这里我们可以
+看到, <i>zshenv</i> 这是一个非常的重要的文件, 应该尽可能的保持精简, 并且如果是需要全
+局配置的一些环境变量的话, 最好写在其中. 此外值得一提的是, 在推出登陆的时候, 会加
+载 <code>/etc/zlogout</code>, <code>$ZDOTDIR/.zlogout</code>.
+</p>
+</div>
+</div>
+<div id="outline-container-org0a550d0" class="outline-2">
+<h2 id="org0a550d0"><span class="section-number-2">4.</span> Options of zsh</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+这里插一句题外话, 因为实在不知道 <i>options</i> 应该怎么翻译, 这里先暂且统一称为配置吧.
+存在一些配置可以让用户对 <i>zsh</i> 定制化(<code>customization</code>), <i>zsh</i> 对于这些配置的大小
+写不敏感, 并且会无视变量中的下划线, 比如 <code>allexport</code> 和 <code>A__lleXP_ort</code> 对于
+<i>zsh</i> 来说是一样的.
+配置可以写在上一节所提到的配置文件的任意位置, 举个例子, 在 <i>zsh</i> 中, 默认是开启
+<i>auto<sub>cd</sub></i> 的也就是说, 在 <i>zsh</i> 的 <i>interactive shell</i> 里面, 直接输入文件夹的路径
+就可以进入该文件夹, 那么该如何关闭这一行为呢, 很简单, 在 <code>.zshrc</code> 文件的末尾加上
+<code>unsetopt autocd</code> (这里可以在其他任何合法的配置文件中输入, 之所以是最后一行, 是
+因为如果使用了 <i>oh-my-zsh</i> 的话, 在 <code>source $ZSH/oh-my-zsh.sh</code> 这一行之前添加的
+话有可能会导致配置失效.) 另, 具体的配置条目可以看官方的文档.
+</p>
+</div>
+</div>
+<div id="outline-container-orgba797b8" class="outline-2">
+<h2 id="orgba797b8"><span class="section-number-2">5.</span> zsh 的内置命令</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+<i>zsh</i> 提供了很多有用的内置命令
+<sup><label for="fnr.2" class="footref">2</label></sup><input id="fnr.2" class="footref-toggle" type="checkbox">(<code>build-in
+commands</code>), 很多内置命令都实现了 <i>POSIX Programmer' Manual</i> 里面的一些功能, 但是
+又多多少少有点出入. 举个例子, 在 <i>POSIX Programmer's Manual</i> 里面, 对于 <i>cd</i> 的
+使用方法是这样描述的.
+</p>
+<blockquote>
+<p>
+cd [−L|−P] [directory]
+cd −
+</p>
+</blockquote>
+<p>
+但是在 <i>zsh</i> 当中却可以这样调用 <code>cd -2</code> 甚至这样调用 <code>cd 2</code>, 这个原因在于 <i>zsh</i>
+内置的 <i>cd</i> 命令可以对目录栈做更多的操作. <code>cd -2</code> 和 <code>cd 2</code> 的行为是一致的就是进
+入在目录栈上的第三个元素所对应的目录.
+</p>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara"><a href="http://zsh.sourceforge.net/Doc/Release/index.html#Top">http://zsh.sourceforge.net/Doc/Release/index.html#Top</a></p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara"><a href="http://zsh.sourceforge.net/Doc/Release/Shell-Builtin-Commands.html#Shell-Builtin-Commands">http://zsh.sourceforge.net/Doc/Release/Shell-Builtin-Commands.html#Shell-Builtin-Commands</a></p></div></div>
+
+
+</div>
+</div></div>
+<script src="https://giscus.app/client.js"
+          data-repo="Elilif/Elilif.github.io"
+          data-repo-id="MDEwOlJlcG9zaXRvcnkyOTgxNjM5ODg="
+          data-category="Announcements"
+          data-category-id="DIC_kwDOEcWfFM4Cdz5V"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="top"
+          data-theme="light"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+  </script><div id="postamble" class="status">
+<hr class="Solid">
+                                   <div class="info">
+                                     <span class="author">Author: Harumi Kiyama (<a href="mailto:wanglc@tbamc.com">wanglc@tbamc.com</a>)</span>
+                                     <span class="date">Create Date: 2024-08-14</span>
+                                     <span class="date">Last modified: 2024-08-18 Sun 11:22</span>
+                                     <span>Creator: Emacs 31.0.50 (Org mode 9.7.9)</span>
+                                   </div>
+</div>
+</body>
+</html>

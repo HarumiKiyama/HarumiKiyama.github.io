@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-08-18 Sun 11:39 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>hash table implementation</title>
+<meta name="author" content="Harumi Kiyama" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+                                    <link rel="stylesheet" type="text/css" href="/css/htmlize.css" />
+                                    <script src="/scripts/script.js"></script>
+                                    <script src="/scripts/toc.js"></script>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<nav class="nav">
+                                     <a href="/index.html" class="button">Home</a>
+                                     <a href="/rss.xml" class="button">RSS</a>
+                                     <a href="/about_me.html" class="button">About</a>
+                                   </nav>
+                                   <hr>
+</div>
+<div id="content" class="content">
+<h1 class="title">hash table implementation</h1>
+<div class="post-status"><span><i class='bx bx-calendar'></i>
+<span>2024-08-14</span></span>
+<span><i class='bx bx-edit'></i><span>2024-08-18 Sun 11:22</span></span><span><i class='bx bx-history'></i><span><a href="https://github.com/Elilif/Elilif.github.io/commits/master/orgs/hashtable_implementation.org">history</a></span></span></div><div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org412d18c">1. 前言</a></li>
+<li><a href="#org73b292b">2. 拉链法</a></li>
+<li><a href="#orgc8dab8f">3. 开放地址法</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org412d18c" class="outline-2">
+<h2 id="org412d18c"><span class="section-number-2">1.</span> 前言</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+哈希表(<code>hash table</code>)是一种非常常用的数据结构, 它是以 <i>key-value</i> 的形式存储数据
+的, 所谓的 <i>key-value</i> 指的是, 任一 <i>key</i> 都对应到内存中的某个位置. 可以认为哈希
+表就是一种高级数组, 可以通过给定的 <i>key</i> 计算出数组对应的下标. 由于这个特性, 哈
+希表的插入速度是 \(\Theta(1)\), 查找速度也是 \(\Theta(1)\).
+</p>
+
+<p>
+使用 <i>key</i> 计算出对应下标的这个函数叫作哈希函数(<code>hash function</code>). 最简单的一个哈
+希函数便是把 <i>key</i> 转换成字符串, 然后返回这个字符串的长度.如下
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><code><span style="color: #e4b53f; font-weight: bold;">def</span> <span style="color: #6fd560;">hash</span>(key):
+    <span style="color: #e4b53f; font-weight: bold;">return</span> <span style="color: #e7a06f; font-weight: bold;">len</span>(<span style="color: #e7a06f; font-weight: bold;">str</span>(key))
+</code></pre>
+</div>
+<p>
+早期的 <i>php</i> 在对核心函数生成哈希表时, 使用就是使用函数名长度作为哈希值的, 这个
+也是 <i>php</i> 经常被人诟病的一个点.为什么使用字符串长度作为哈希值会有问题呢? 具体原
+因是这样的, 为了防止两个不同的 <i>key</i> 生成同样的哈希值(这一现象被成为哈希碰撞
+(<code>collision</code>)), 早期 <i>php</i> 的核心函数中函数被命名得错落有致, 导致要记忆常用的一
+些函数也变成了一种负担.<sup><label for="fnr.1" class="footref">1</label></sup><input id="fnr.1" class="footref-toggle" type="checkbox">
+</p>
+
+<p>
+由此, 一个新的问题出现了, 既然使用字符串长度作为哈希值会有哈希碰撞的问题, 那用其
+他的方法就不会吗? 办法是有的, 这种办法的核心思路就是在足够大的空间中生成哈希值,
+举个例子. 如果我们假定 <i>key</i> 由小写的英文组成的字符串, 那么按照下述方法生成的哈
+希值是一定不 会有碰撞的.
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><code><span style="color: #e4b53f; font-weight: bold;">def</span> <span style="color: #6fd560;">hash</span>(key):
+    <span style="color: #6fcad0;">length</span> = <span style="color: #e7a06f; font-weight: bold;">len</span>(key)
+    <span style="color: #6fcad0;">rv</span> = 0
+    <span style="color: #e4b53f; font-weight: bold;">for</span> i <span style="color: #e4b53f; font-weight: bold;">in</span> <span style="color: #e7a06f; font-weight: bold;">range</span>(length-1, -1, -1):
+        <span style="color: #6fcad0;">rv</span> += (<span style="color: #e7a06f; font-weight: bold;">ord</span>(key[i])- <span style="color: #e7a06f; font-weight: bold;">ord</span>(<span style="color: #ffa21f;">'a'</span>) + 1) * 27 ** (length-1-i)
+    <span style="color: #e4b53f; font-weight: bold;">return</span> rv
+<span style="color: #e4b53f; font-weight: bold;">return</span> <span style="color: #e7a06f; font-weight: bold;">hash</span>(<span style="color: #ffa21f;">"abc"</span>)
+</code></pre>
+</div>
+<p>
+这个方法的实质是将一串小写英文字符串视作 27 进制的整数, 并将这个整数化为 10 进制. 以
+比较简单的字符串 "abc" 为例, <code>hash("abc")</code> 返回的结果为 <code>28</code>. 如果基于这样的哈希
+函数来实现我们的不会碰撞的哈希表的话, 将会是这样的.
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><code><span style="color: #e4b53f; font-weight: bold;">class</span> <span style="color: #65d590;">HashTable</span>:
+    <span style="color: #e4b53f; font-weight: bold;">def</span> <span style="color: #6fd560;">__init__</span>(<span style="color: #e4b53f; font-weight: bold;">self</span>):
+        <span style="color: #e4b53f; font-weight: bold;">self</span>.<span style="color: #6fcad0;">_l</span>=[]
+
+    <span style="color: #e4b53f; font-weight: bold;">def</span> <span style="color: #6fd560;">hash</span>(<span style="color: #e4b53f; font-weight: bold;">self</span>,key):
+        <span style="color: #6fcad0;">length</span> = <span style="color: #e7a06f; font-weight: bold;">len</span>(key)
+        <span style="color: #6fcad0;">rv</span> = 0
+        <span style="color: #e4b53f; font-weight: bold;">for</span> i <span style="color: #e4b53f; font-weight: bold;">in</span> <span style="color: #e7a06f; font-weight: bold;">range</span>(length-1, -1, -1):
+            <span style="color: #6fcad0;">rv</span> += (<span style="color: #e7a06f; font-weight: bold;">ord</span>(key[i])- <span style="color: #e7a06f; font-weight: bold;">ord</span>(<span style="color: #ffa21f;">'a'</span>)) * 26 ** (length-1-i)
+        <span style="color: #e4b53f; font-weight: bold;">return</span> rv
+
+    <span style="color: #e4b53f; font-weight: bold;">def</span> <span style="color: #6fd560;">__setitem__</span>(<span style="color: #e4b53f; font-weight: bold;">self</span>, key, val):
+        <span style="color: #6fcad0;">hash_v</span> = <span style="color: #e4b53f; font-weight: bold;">self</span>.<span style="color: #e7a06f; font-weight: bold;">hash</span>(key)
+        <span style="color: #e4b53f; font-weight: bold;">if</span> <span style="color: #e7a06f; font-weight: bold;">len</span>(<span style="color: #e4b53f; font-weight: bold;">self</span>._l) &lt;= hash_v:
+            <span style="color: #e4b53f; font-weight: bold;">for</span> _ <span style="color: #e4b53f; font-weight: bold;">in</span> <span style="color: #e7a06f; font-weight: bold;">range</span>(hash_v-<span style="color: #e7a06f; font-weight: bold;">len</span>(<span style="color: #e4b53f; font-weight: bold;">self</span>._l)+1):
+                <span style="color: #e4b53f; font-weight: bold;">self</span>._l.append(0)
+        <span style="color: #e4b53f; font-weight: bold;">self</span>.<span style="color: #6fcad0;">_l</span>[hash_v] = val
+
+    <span style="color: #e4b53f; font-weight: bold;">def</span> <span style="color: #6fd560;">__getitem__</span>(<span style="color: #e4b53f; font-weight: bold;">self</span>, key):
+        <span style="color: #6fcad0;">hash_v</span> = <span style="color: #e4b53f; font-weight: bold;">self</span>.<span style="color: #e7a06f; font-weight: bold;">hash</span>(key)
+        <span style="color: #e4b53f; font-weight: bold;">return</span> <span style="color: #e4b53f; font-weight: bold;">self</span>._l[hash_v]
+</code></pre>
+</div>
+<p>
+<b>注意, 我们这里限制了 key 为小写英文字符构成的字符串</b>
+</p>
+
+<p>
+事实上 <b>小写英文字符构成的字符串</b> 的这个限制是可以取消的, 把这个算法推广就是:
+</p>
+<div class="org-src-container">
+<pre class="src src-latex"><code>&#23545;&#20110;&#19968;&#20010;&#20803;&#32032;&#20010;&#25968;&#20026; <span style="color: #ffa21f;">$n$</span> &#30340;&#26377;&#38480;&#38598;&#21512; <span style="color: #ffa21f;">$s$</span>, &#33509;&#26377;&#24207;&#24207;&#21015; <span style="color: #ffa21f;">$key$</span>, &#23545;&#20110; <span style="color: #ffa21f;">$\forall x\in</span>
+<span style="color: #ffa21f;">key$</span> &#26377; <span style="color: #ffa21f;">$x\in s$</span>, &#21017;&#21487;&#20197;&#25226; <span style="color: #ffa21f;">$key$</span> &#35270;&#20026;&#19968;&#20010; <span style="color: #ffa21f;">$n+1$</span> &#36827;&#21046;&#30340;&#25972;&#25968;(&#20043;&#25152;&#20197;&#26159; <span style="color: #ffa21f;">$n+1$</span> &#26159;&#22240;&#20026;
+&#20250;&#26377; /leading-zero/ &#30340;&#38382;&#39064;)
+</code></pre>
+</div>
+<p>
+如果在内存无限的情况下, 我们可以根据 <i>key</i> 得到一个整数, 然后我们可以说, 该整数
+就是这个 key 所对应的下标, 那这样, 确实是可以实现一个不会碰撞的哈希表. 但是问题在
+于在物理世界哈希表的空间是有限的, 于是哈希碰撞便是不可避免的. 现实当中的哈希表要
+不就是在一开始就分配好内存的大小, 要不就是动态更新内存的大小. 并且在根据 <i>key</i>
+得到哈希值之后, 会对这个哈希值根据哈希表的容量取余或者根据哈希表的容量减一进行与
+操作. (一般是进行与操作因为 <i>bitwise operation</i> 的会更加快)
+比如在 <i>Python</i> 当 中每个新创建的 <i>dict</i> 会有 8 个 <i>slot</i> (即是说储存哈希元素的列
+表长度), 然后会把哈希值和 <i>dict</i> 的长度减一做一个与操作得到下标, 在储存的元素大
+于哈希表长度的 \(\frac{2}{3}\) 时会对哈希表进行一次扩容
+<sup><label for="fnr.2" class="footref">2</label></sup><input id="fnr.2" class="footref-toggle" type="checkbox">
+</p>
+
+<p>
+为了解决哈希碰撞的问题, 目前大致有两种解决方案:
+</p>
+<ol class="org-ol">
+<li>拉链法(<code>open hashing</code>)</li>
+<li>开放地址法(<code>open addressing</code>)</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org73b292b" class="outline-2">
+<h2 id="org73b292b"><span class="section-number-2">2.</span> 拉链法</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+所谓的链地址法就是说, 既然哈希碰撞是一定会发生的, 那么在每个哈希值对应的下标处储
+存的不是该哈希值对应的元素, 而是一个链表, 在链表中的每个储存了, <i>key</i>, <i>value</i>
+的信息, 查询链表就是在哈希值对应的下标中, 遍历整个链表, 比对每个 <i>key</i> 如果有和
+查询的 <i>key</i> 一致的节点就返回. 而插入操作也是类似的, 先通过查询得到该 <i>key</i> 是否
+已经存在的信息, 如果有就更新那个节点, 如果没有就在链表的最后插入一个新的节点. 代
+码如下<sup><label for="fnr.3" class="footref">3</label></sup><input id="fnr.3" class="footref-toggle" type="checkbox">
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><code><span style="color: #e4b53f; font-weight: bold;">const</span> <span style="color: #65d590;">int</span> <span style="color: #6fcad0;">SIZE</span> = 1000000;
+<span style="color: #e4b53f; font-weight: bold;">const</span> <span style="color: #65d590;">int</span> <span style="color: #6fcad0;">M</span> = 999997;
+<span style="color: #e4b53f; font-weight: bold;">struct</span> <span style="color: #65d590;">HashTable</span> {
+  <span style="color: #e4b53f; font-weight: bold;">struct</span> <span style="color: #65d590;">Node</span> {
+    <span style="color: #65d590;">int</span> <span style="color: #6fcad0;">next</span>, <span style="color: #6fcad0;">value</span>, <span style="color: #6fcad0;">key</span>;
+  } <span style="color: #6fcad0;">data</span>[SIZE];
+  <span style="color: #65d590;">int</span> <span style="color: #6fcad0;">head</span>[M], <span style="color: #6fcad0;">size</span>;
+  <span style="color: #65d590;">int</span> <span style="color: #6fd560;">f</span>(<span style="color: #65d590;">int</span> <span style="color: #6fcad0;">key</span>) { <span style="color: #e4b53f; font-weight: bold;">return</span> key % M; }
+  <span style="color: #65d590;">int</span> <span style="color: #6fd560;">get</span>(<span style="color: #65d590;">int</span> <span style="color: #6fcad0;">key</span>) {
+    <span style="color: #e4b53f; font-weight: bold;">for</span> (<span style="color: #65d590;">int</span> <span style="color: #6fcad0;">p</span> = head[f(key)]; p; p = data[p].next)
+      <span style="color: #e4b53f; font-weight: bold;">if</span> (data[p].key == key) <span style="color: #e4b53f; font-weight: bold;">return</span> data[p].value;
+    <span style="color: #e4b53f; font-weight: bold;">return</span> -1;
+  }
+  <span style="color: #65d590;">int</span> <span style="color: #6fd560;">modify</span>(<span style="color: #65d590;">int</span> <span style="color: #6fcad0;">key</span>, <span style="color: #65d590;">int</span> <span style="color: #6fcad0;">value</span>) {
+    <span style="color: #e4b53f; font-weight: bold;">for</span> (<span style="color: #65d590;">int</span> <span style="color: #6fcad0;">p</span> = head[f(key)]; p; p = data[p].next)
+      <span style="color: #e4b53f; font-weight: bold;">if</span> (data[p].key == key) <span style="color: #e4b53f; font-weight: bold;">return</span> data[p].value = value;
+  }
+  <span style="color: #65d590;">int</span> <span style="color: #6fd560;">add</span>(<span style="color: #65d590;">int</span> <span style="color: #6fcad0;">key</span>, <span style="color: #65d590;">int</span> <span style="color: #6fcad0;">value</span>) {
+    <span style="color: #e4b53f; font-weight: bold;">if</span> (get(key) != -1) <span style="color: #e4b53f; font-weight: bold;">return</span> -1;
+    data[++size] = (Node){head[f(key)], value, key};
+    head[f(key)] = size;
+    <span style="color: #e4b53f; font-weight: bold;">return</span> value;
+  }
+};
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc8dab8f" class="outline-2">
+<h2 id="orgc8dab8f"><span class="section-number-2">3.</span> 开放地址法</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+开放地址法的实现会相对于拉链法要难, 其解决哈希碰撞的思路是, 先根据哈希值得到对应
+的下标, 然后如果对应的下标没有元素就在下标处插入 <i>key</i>, <i>value</i>, 如果对应的下标
+已经被占据了, 那么一般有两种策略来解决这个问题, 一种是线性查找(<code>linear
+probing</code>), 即以该下标为起始点, 遍历哈希表, 查找是否有空位置, 另一种是平方探测法
+(<code>quadratic probing</code>), 即以该下标为起点, 在第 \(i\) 次查找时, 每次增加 \(i^2\) 直到
+找到为空位置.
+关于线性查找和平方查找的优劣是学术界中一个经典的问题, 这里就不做展开了, 具体可以
+看这两篇文章
+<sup><label for="fnr.4" class="footref">4</label></sup><input id="fnr.4" class="footref-toggle" type="checkbox"><sup>, </sup><sup><label for="fnr.5" class="footref">5</label></sup><input id="fnr.5" class="footref-toggle" type="checkbox">.
+但是比较奇怪的是 <i>Python</i> 选择了这两种常见方法之外的方法, 随机查找(<code>random
+probe</code>) 来解决哈希碰撞的问题. 主要的原因是因为 <i>Python</i> 的哈希函数本身的随机性不
+太好, 如 <code>map(hash, (0,1,2))</code> 的值为
+<code>[0,1,2]</code><sup><label for="fnr.6" class="footref">6</label></sup><input id="fnr.6" class="footref-toggle" type="checkbox">.
+</p>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara"><a href="https://zhuanlan.zhihu.com/p/27288770">https://zhuanlan.zhihu.com/p/27288770</a></p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara"><a href="https://stackoverflow.com/questions/327311/how-are-pythons-built-in-dictionaries-implemented">https://stackoverflow.com/questions/327311/how-are-pythons-built-in-dictionaries-implemented</a></p></div></div>
+
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3" role="doc-backlink">3</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara"><a href="https://oi-wiki.org/ds/hash/">https://oi-wiki.org/ds/hash/</a></p></div></div>
+
+<div class="footdef"><sup><a id="fn.4" class="footnum" href="#fnr.4" role="doc-backlink">4</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara"><a href="https://www.cnblogs.com/hongshijie/p/9432838.html">https://www.cnblogs.com/hongshijie/p/9432838.html</a></p></div></div>
+
+<div class="footdef"><sup><a id="fn.5" class="footnum" href="#fnr.5" role="doc-backlink">5</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara"><a href="https://www.cnblogs.com/hongshijie/p/9432838.html">https://www.cnblogs.com/hongshijie/p/9432838.html</a></p></div></div>
+
+<div class="footdef"><sup><a id="fn.6" class="footnum" href="#fnr.6" role="doc-backlink">6</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara"><a href="https://hg.python.org/cpython/file/52f68c95e025/Objects/dictobject.c#l33">https://hg.python.org/cpython/file/52f68c95e025/Objects/dictobject.c#l33</a></p></div></div>
+
+
+</div>
+</div></div>
+<script src="https://giscus.app/client.js"
+          data-repo="Elilif/Elilif.github.io"
+          data-repo-id="MDEwOlJlcG9zaXRvcnkyOTgxNjM5ODg="
+          data-category="Announcements"
+          data-category-id="DIC_kwDOEcWfFM4Cdz5V"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="top"
+          data-theme="light"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+  </script><div id="postamble" class="status">
+<hr class="Solid">
+                                   <div class="info">
+                                     <span class="author">Author: Harumi Kiyama (<a href="mailto:wanglc@tbamc.com">wanglc@tbamc.com</a>)</span>
+                                     <span class="date">Create Date: 2024-08-14</span>
+                                     <span class="date">Last modified: 2024-08-18 Sun 11:22</span>
+                                     <span>Creator: Emacs 31.0.50 (Org mode 9.7.9)</span>
+                                   </div>
+</div>
+</body>
+</html>

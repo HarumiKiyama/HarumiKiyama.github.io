@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-08-18 Sun 11:39 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Janpanese macaque potato washing behaviour</title>
+<meta name="author" content="Harumi Kiyama" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+                                    <link rel="stylesheet" type="text/css" href="/css/htmlize.css" />
+                                    <script src="/scripts/script.js"></script>
+                                    <script src="/scripts/toc.js"></script>
+</head>
+<body>
+<div id="preamble" class="status">
+<nav class="nav">
+                                     <a href="/index.html" class="button">Home</a>
+                                     <a href="/rss.xml" class="button">RSS</a>
+                                     <a href="/about_me.html" class="button">About</a>
+                                   </nav>
+                                   <hr>
+</div>
+<div id="content" class="content">
+<h1 class="title">Janpanese macaque potato washing behaviour</h1>
+<div class="post-status"><span><i class='bx bx-calendar'></i>
+<span>2024-08-14</span></span>
+<span><i class='bx bx-edit'></i><span>2024-08-18 Sun 11:22</span></span><span><i class='bx bx-history'></i><span><a href="https://github.com/Elilif/Elilif.github.io/commits/master/orgs/japanese_macaque.org">history</a></span></span></div><div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org2f2df18">1. 绪论</a></li>
+<li><a href="#orgf071914">2. 缘起</a></li>
+<li><a href="#orgc3587b9">3. 洗土豆行为的初次报道</a></li>
+<li><a href="#org68662dc">4. 洗土豆行为的产生</a></li>
+<li><a href="#orge4a6f03">5. 洗土豆行为的传播</a>
+<ul>
+<li><a href="#orge1c620a">5.1. 第一阶段(The period of Individual Propagation)</a></li>
+<li><a href="#org16475d4">5.2. 第二阶段(The Period of Precultural Propagation)</a></li>
+</ul>
+</li>
+<li><a href="#org599ed94">6. 洗土豆行为的变化</a></li>
+<li><a href="#org7e3f325">7. 淘洗小麦行为(Wheat Placer Mining(WPM) Behavior)</a></li>
+<li><a href="#org2c6cb49">8. 反思</a></li>
+<li><a href="#orga85fac0">9. 后记</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2f2df18" class="outline-2">
+<h2 id="org2f2df18"><span class="section-number-2">1.</span> 绪论</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+日本猕猴(<i>Macaca fuscata</i>)迄今为止已经有了超过六十年的野外持续观察记录，对于它们的研究也已经出现了非常多的成果，而其中最著名的莫过于 50 年代发现的日本猕猴洗土豆 (<i>Sweet-Potato washing</i>) 的行为。 这是人类第一次在野外观察到一种特定行为在非人动物群里中的产生以及传播，对于这种行为的分析重新定义了文化(<i>culture</i>)的这一概念的。
+</p>
+</div>
+</div>
+<div id="outline-container-orgf071914" class="outline-2">
+<h2 id="orgf071914"><span class="section-number-2">2.</span> 缘起</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+在 1948 年，今西錦司(いまにし　きんじ imanishi kinji)、川村俊蔵(かわむら　しゅんぞ kawamura shunzo)以及伊谷純一郎(いたに　じゅんいちろ itani junichiro)在宫崎县的土肥半岛研究半野生的马匹的社会结构，在研究马匹的过程中他们遭遇了一群日本猕猴，只是对于这些猕猴做了一些简单的观察之后，今西錦司就发现了日本猕猴异常复杂的社会结构。于是对于日本猕猴的研究也就从这时开始了。不过必须要说明的是，真正对于日本猕猴的长期观察是在宫崎县幸島开始的。在幸島经过了长大 40 多个月的投喂(<i>provisioning</i>)之后，猕猴终于不再惧怕人类，于是近距离观察猕猴也成为了可能。
+</p>
+</div>
+</div>
+<div id="outline-container-orgc3587b9" class="outline-2">
+<h2 id="orgc3587b9"><span class="section-number-2">3.</span> 洗土豆行为的初次报道</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+川村俊藏在 1954 发表了一篇名为 <i>On a new type of feeding habit which developed in a group of wild Japanese monkeys</i> 的论文，在这篇论文中第一次描述了洗土豆的行为的产生与传播————一只 18 个月大的雌性日本猕猴名字叫做芋(いも imo)第一次作出了在海水中洗土豆的行为，以及在海水中淘洗麦粒的行为。
+在河合雅雄(かわい　まさを)于 1965 年发表的题为 <i>Newly Acquired Precultural Behavior of the Nature Troop of Japanese Monkeys on Koshima Islet</i> 的论文中对这一传播作出了详细的描述。下文就是对这一论文的总结。
+</p>
+</div>
+</div>
+<div id="outline-container-org68662dc" class="outline-2">
+<h2 id="org68662dc"><span class="section-number-2">4.</span> 洗土豆行为的产生</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+洗土豆行为，专有名词为(<i>Sweet-potato washing behavior</i>)也即(<i>SPW Behavior</i>)。具体指一只猕猴在水边用水清洗掉土豆表面的沙子和尘土的行为。最初是在 1953 年的 9 月份一只叫做芋(いも imo)的 18 个月大的雌性日本猕猴身上观察到的，很快这一行为便在其他的猕猴当中传播开了。在 1958 年，18.1%的成年个体都被观察到有 SPW 的行为，而在 2-7 岁的猕猴中这一比例则为 78.9%。到 1962 年的 8 月为止，超过两岁的猕猴中有 73.4%都被观察到了这一行为。
+</p>
+</div>
+</div>
+<div id="outline-container-orge4a6f03" class="outline-2">
+<h2 id="orge4a6f03"><span class="section-number-2">5.</span> 洗土豆行为的传播</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+洗土豆行为的传播可以大体分成两个部分——1958 年之前和 1958 年之后。作者分别将其称为第一和第二阶段。
+</p>
+</div>
+<div id="outline-container-orge1c620a" class="outline-3">
+<h3 id="orge1c620a"><span class="section-number-3">5.1.</span> 第一阶段(The period of Individual Propagation)</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+在这一阶段中，1956 年之后出生的猕猴都习得了 SPW 行为，而在这一阶段没有习得 SPW 行为的成年个体在之后的阶段也不会习得这一行为。进一步对行为的习得的分析之后，发现在 1 到 2.5 岁的猕猴最容易习得该行为，所有大于四岁的雄性猕猴没有一只习得该行为，而在雌性猕猴中即使大于四岁也能够习得该行为，但是在观测的 11 只大于 4 岁的雌性猕猴中只有两只习得了。
+究竟是什么导致了在行为习得方面的这种两性差异？在进食时间，和已经习得 SPW 行为的猴子发生交流似乎在其中扮演了一个很重要的角色，而在日本猕猴的社会当中，当一只雄性长到 4 岁大的时候，他会逐渐的从群体的中心向边缘移动。因此他们与处在群体中心的雌性猕猴和幼年猕猴之间的交流变得相对稀少。(雄性在性成熟之后逐渐离开自己的原生群体，这是日本猕猴群体之间进行基因交流的重要途径。)
+另一方面，所有的雌性都和其他的雌性以及自己的幼崽保持着密切的关系，并且一直处在群体的中心位置。这其中，雌性和自己幼崽的关系在行为习得方面扮演了非常重要的角色。(芋的母亲在很早的时候就习得了 SPW 行为)
+由于在这一阶段，行为的传播得益于个体与个体之间的关系，因此这一阶段又被成为个体传播阶段
+</p>
+</div>
+</div>
+<div id="outline-container-org16475d4" class="outline-3">
+<h3 id="org16475d4"><span class="section-number-3">5.2.</span> 第二阶段(The Period of Precultural Propagation)</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+在 1959 年之后，由于 SPW 行为在猕猴的群体中广泛的存在，在这之后出生的猕猴，很容易的习得了这一行为。
+在这一阶段，行为的传播是从母亲到孩子，从成年个体到未成年个体，这与第一阶段截然相反。也正是在这一阶段，行为从母亲传递到了孩子，意味这这一行为能够像人类当中的文化现象一样在代际间稳定的传播。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org599ed94" class="outline-2">
+<h2 id="org599ed94"><span class="section-number-2">6.</span> 洗土豆行为的变化</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+在洗土豆行为的传播当中，不可避免的出现了行为的变种，大体可分为如下两种。
+</p>
+<ul class="org-ul">
+<li>从淡水到海水(可能是为了增加咸味)
+<ul class="org-ul">
+<li>几乎所有的猕猴都呈现了这种趋势，只会在少数情况下仍然在淡水中洗土豆</li>
+</ul></li>
+<li>在海水中洗土豆的时候，洗一下，咬一下，通过这一行为来给土豆增加风味
+<ul class="org-ul">
+<li>发生行为变化的猕猴都是在第二阶段习得 SPW 行为的猕猴，即在出生之后从母亲那里习得这一行为的猕猴(作为洗土豆行为的发明人，芋并没有表现出这种行为)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org7e3f325" class="outline-2">
+<h2 id="org7e3f325"><span class="section-number-2">7.</span> 淘洗小麦行为(Wheat Placer Mining(WPM) Behavior)</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+在幸岛对日本猕猴投喂的食物中包括了小麦，由于往往是在沙地中投喂食物的，猕猴往往需要一粒一粒的捡起来吃掉，但是如果在沙地上抓起一捧麦粒，然后投入水中，麦粒和沙子就会很容易的分离。这一行为被称为 <i>Wheat Placer Mining</i> (WPM)。
+这一行为也同样是在芋(いも)身上第一次观察到的(这么一看芋真的可以称得上是日本猕猴中的伊姆霍提普(Imhotep)啊)，当时是 1956 年，芋四岁的时候。
+由于有了之前对于 SPW 行为的研究对于这一新出现行为的传播分析得更加细致。具体从如下两个方面来分析：
+</p>
+<ul class="org-ul">
+<li>家系与玩伴关系 (<i>Lineage and playmate relationships</i>)
+<ul class="org-ul">
+<li>芋从属的那个家系，15 只猴子中有 13 只习得了 WPM 行为，同时在另一家系中，只有极少数的猴子习得了这一行为。</li>
+</ul></li>
+<li>年龄与性别(<i>Age and sex</i>)
+<ul class="org-ul">
+<li>WPM 最容易被 2,3,4 岁的猕猴习得，小于一岁或者大于 6 岁均难以习得该行为。在成年和将要成年的猕猴中，有性别差异。而在幼年猕猴中这一差异并不存在。</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2c6cb49" class="outline-2">
+<h2 id="org2c6cb49"><span class="section-number-2">8.</span> 反思</h2>
+<div class="outline-text-2" id="text-8">
+<p class="verse">
+在论文中川村俊藏使用了一个词 <i>preculture</i> 来描述不同猕猴群体之间行为的差异。(现在一般用 <i>protoculture</i> 来描述非人灵长目动物社会的这一特点)。举个简单的例子，我的故乡被成为安昌的小镇上会在过 11,2 月做一种特殊的用黄酒和酱油做的腊肠，这种腊肠就我所知只会在以安昌镇的古镇区为中心的很小的一片地区被制作。在绍兴甚至可能全世界的其他地区并没有这种习惯。这在广义上也可以被视为一种文化(<i>culture</i>)。这种饮食上的差异在很多日本猕猴的群体中也可以被很清晰的观察到:有些地方的日本猕猴会吃鸟蛋，但是其他的地方的却不会即使他们生活的地方也存在鸟蛋而且获取鸟蛋对于他们而言并非一件困难的事。<br />
+但是不可否认的事，在人类和日本猕猴的文化中存在着巨大的差异，得益于更大的大脑，人类的行为多样性远超任何一种动物。而且在文化的习得方面，日本猕猴的幼崽之所以能够习得自己出生的群体中的文化，是因为他们会模仿自己母亲的行为,已经被自己周围的环境因素刺激被动的学习。但是在人类当中文化的习得更得益于成年个体主动的教授，这是一种只在人类当中被观察到的行为，在其他非人灵长目动物中几乎没有被观察到(目前只在黑猩猩当中观察到了及其稀少的例子)，而且在人类当中与群体的文化相冲突的个体会被惩罚，但是在日本猕猴中则不会。因此鉴于日本猕猴的文化和人类文化的巨大差异用同一个词(<i>culture</i>)来指代他们似乎并不妥，于是日本的灵长类学家使用(<i>preculture</i>)这个词来指代日本猕猴的文化。<br />
+对于幸岛的日本猕猴的研究为研究人类的文化提供了另外一个视角，通过仔细的追踪特定行为的发生与传播，我们或许可以站在物种演化的角度上来看待文化这一现象。我在看 19 世纪末到 20 世纪初的国人写的东西的时候，总是惊异于他们对于改造文化的狂热，但是我却不能从他们的行文中得出一个统一的关于文化的定义。<br />
+我对于被认为是神圣的东西有一种天然的，想要把他们条分缕析，扯下他们神圣帷幕的冲动。我从小被教育中国的文化如何如何，我们必须要保护自己的文化。那么为什么呢？我从来没有见过能够令我信服的，完备的证明。于是我一直有个疑问什么是文化？为什么要保护自己的文化？以及文化的起源是什么呢？对于第一,第二个问题我也无从回答，但是第三的个问题。今西锦司在 1952 年虚构了一场一个进化论者和一个门外汉的讨论，讨论的议题即是关于文化的起源。其中进化论者做出了这样的论述，“文化是通过教授与学习传播的，因此榜样和教学对于文化传播是必须的。于是，稳固的群体生活对于文化的产生是必不可少的。甚至可以推测有稳固的群体生活的物种，在其中或多或少能够观察到类似于人类文化的现象”。<br />
+不应该把人类看作是一种遗世独立独一无二的物种，人类的很多特性在其他非人灵长目动物当中都可以看到类似的特性。人类就像很多其他动物一样，也存在生活史，也在系统发生树上占有一席之地，与其他动物无异。<br />
+</p>
+</div>
+</div>
+<div id="outline-container-orga85fac0" class="outline-2">
+<h2 id="orga85fac0"><span class="section-number-2">9.</span> 后记</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+写这篇文章的时候，看了一些关于日本猕猴和京都大学灵长类学研究所(PRI Primates Reach Institution)资料后，深感日本灵长类学者的勇气，比如伊谷纯一郎 60 年代就跑去当时战火纷飞的刚果调查黑猩猩。松泽哲郎都 60 多了，打了疫苗之后还往埃伯拉病毒肆虐的几内亚跑，更不用说早期投喂日本猕猴时的艰辛了。比起他们来，那些大喊中国文化如何如何，西方文化如何如何的人，只不过是在空口说白话吧。
+</p>
+</div>
+</div>
+</div>
+<script src="https://giscus.app/client.js"
+          data-repo="Elilif/Elilif.github.io"
+          data-repo-id="MDEwOlJlcG9zaXRvcnkyOTgxNjM5ODg="
+          data-category="Announcements"
+          data-category-id="DIC_kwDOEcWfFM4Cdz5V"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="top"
+          data-theme="light"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+  </script><div id="postamble" class="status">
+<hr class="Solid">
+                                   <div class="info">
+                                     <span class="author">Author: Harumi Kiyama (<a href="mailto:wanglc@tbamc.com">wanglc@tbamc.com</a>)</span>
+                                     <span class="date">Create Date: 2024-08-14</span>
+                                     <span class="date">Last modified: 2024-08-18 Sun 11:22</span>
+                                     <span>Creator: Emacs 31.0.50 (Org mode 9.7.9)</span>
+                                   </div>
+</div>
+</body>
+</html>

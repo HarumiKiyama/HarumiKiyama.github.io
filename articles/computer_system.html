@@ -1,0 +1,773 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-08-18 Sun 11:39 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>计算机系统核心概念及软硬件实现</title>
+<meta name="author" content="Harumi Kiyama" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+                                    <link rel="stylesheet" type="text/css" href="/css/htmlize.css" />
+                                    <script src="/scripts/script.js"></script>
+                                    <script src="/scripts/toc.js"></script>
+</head>
+<body>
+<div id="preamble" class="status">
+<nav class="nav">
+                                     <a href="/index.html" class="button">Home</a>
+                                     <a href="/rss.xml" class="button">RSS</a>
+                                     <a href="/about_me.html" class="button">About</a>
+                                   </nav>
+                                   <hr>
+</div>
+<div id="content" class="content">
+<h1 class="title">计算机系统核心概念及软硬件实现</h1>
+<div class="post-status"><span><i class='bx bx-calendar'></i>
+<span>2024-08-14</span></span>
+<span><i class='bx bx-edit'></i><span>2024-08-18 Sun 11:22</span></span><span><i class='bx bx-history'></i><span><a href="https://github.com/Elilif/Elilif.github.io/commits/master/orgs/computer_system.org">history</a></span></span></div><div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org4779306">1. App7 层(应用层)</a></li>
+<li><a href="#orgd334a0c">2. HOL6 层(高级语言层)</a>
+<ul>
+<li><a href="#org1e682db">2.1. 变量</a></li>
+<li><a href="#org88858cd">2.2. 控制流</a></li>
+<li><a href="#orgc1ab5ce">2.3. 函数</a></li>
+<li><a href="#org0442a4a">2.4. 递归</a></li>
+<li><a href="#orgbcf8913">2.5. 动态内存分配</a></li>
+</ul>
+</li>
+<li><a href="#org716e353">3. ISA3 层(指令集架构层)</a>
+<ul>
+<li><a href="#org618cb6f">3.1. 信息的表示</a></li>
+<li><a href="#orgac6cb0e">3.2. 计算机体系结构</a>
+<ul>
+<li><a href="#orgea151a6">3.2.1. 4.1 和 4.2</a></li>
+<li><a href="#org60b9426">3.2.2. 4.3 冯诺伊曼机器</a></li>
+<li><a href="#org5e75e7f">3.2.3. 4.4 ISA3 层编程</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org6e58606">4. Asmb5 层(汇编层)</a>
+<ul>
+<li><a href="#org70ce9b7">4.1. 汇编语言</a></li>
+<li><a href="#orga61b3d8">4.2. 编译到汇编层</a>
+<ul>
+<li><a href="#org2515759">4.2.1. 栈寻址和局部变量</a></li>
+<li><a href="#org35d6747">4.2.2. 转移指令和控制流</a></li>
+<li><a href="#org611f96f">4.2.3. 函数调用和参数</a></li>
+<li><a href="#orgdbc9313">4.2.4. 变址寻址和数组</a></li>
+<li><a href="#org8d1f185">4.2.5. 动态内存分配</a></li>
+</ul>
+</li>
+<li><a href="#org3271d76">4.3. 语言翻译原理</a></li>
+</ul>
+</li>
+<li><a href="#orga34b915">5. OS4 层(操作系统层)</a>
+<ul>
+<li><a href="#org72a6a52">5.1. 进程管理</a>
+<ul>
+<li><a href="#orga9fb862">5.1.1. 装载器</a></li>
+<li><a href="#orgd833fe6">5.1.2. 陷阱</a></li>
+<li><a href="#orgd6f91cf">5.1.3. 并发进程</a></li>
+<li><a href="#org2549115">5.1.4. 并发处理程序</a></li>
+</ul>
+</li>
+<li><a href="#org75bde9e">5.2. 储存管理</a>
+<ul>
+<li><a href="#org071d3cb">5.2.1. 内存管理</a></li>
+<li><a href="#org8f86a82">5.2.2. 文件管理</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orge2a8159">6. LG1 层(逻辑门层)</a>
+<ul>
+<li><a href="#orge350095">6.1. 组合电路</a></li>
+<li><a href="#orgc8dffea">6.2. 时序电路</a></li>
+</ul>
+</li>
+<li><a href="#org89dfe43">7. Mc2 层(微代码层)</a>
+<ul>
+<li><a href="#org7cacadb">7.1. 计算机组成</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4779306" class="outline-2">
+<h2 id="org4779306"><span class="section-number-2">1.</span> App7 层(应用层)</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+论述一些软件的使用,可以跳过
+</p>
+</div>
+</div>
+<div id="outline-container-orgd334a0c" class="outline-2">
+<h2 id="orgd334a0c"><span class="section-number-2">2.</span> HOL6 层(高级语言层)</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+以 C++为例子论述高级语言的一些性质,具体的
+</p>
+</div>
+<div id="outline-container-org1e682db" class="outline-3">
+<h3 id="org1e682db"><span class="section-number-3">2.1.</span> 变量</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li>论述了 C++编译器执行的基本功能</li>
+<li>C++的内存模型</li>
+<li>全局变量和赋值语句</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org88858cd" class="outline-3">
+<h3 id="org88858cd"><span class="section-number-3">2.2.</span> 控制流</h3>
+</div>
+<div id="outline-container-orgc1ab5ce" class="outline-3">
+<h3 id="orgc1ab5ce"><span class="section-number-3">2.3.</span> 函数</h3>
+</div>
+<div id="outline-container-org0442a4a" class="outline-3">
+<h3 id="org0442a4a"><span class="section-number-3">2.4.</span> 递归</h3>
+</div>
+<div id="outline-container-orgbcf8913" class="outline-3">
+<h3 id="orgbcf8913"><span class="section-number-3">2.5.</span> 动态内存分配</h3>
+</div>
+</div>
+<div id="outline-container-org716e353" class="outline-2">
+<h2 id="org716e353"><span class="section-number-2">3.</span> ISA3 层(指令集架构层)</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org618cb6f" class="outline-3">
+<h3 id="org618cb6f"><span class="section-number-3">3.1.</span> 信息的表示</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+描述了计算机中数据是如何保存的以及数据之间是如何进行运算的.计算机如何表示浮点数这部分内容很不错.
+</p>
+</div>
+</div>
+<div id="outline-container-orgac6cb0e" class="outline-3">
+<h3 id="orgac6cb0e"><span class="section-number-3">3.2.</span> 计算机体系结构</h3>
+<div class="outline-text-3" id="text-3-2">
+</div>
+<div id="outline-container-orgea151a6" class="outline-4">
+<h4 id="orgea151a6"><span class="section-number-4">3.2.1.</span> 4.1 和 4.2</h4>
+<div class="outline-text-4" id="text-3-2-1">
+<p>
+主要表述 pep8 的体系结构,比较详细,看的时候只要把握大概就好了.在做习题的时候会加深理解的.
+</p>
+</div>
+</div>
+<div id="outline-container-org60b9426" class="outline-4">
+<h4 id="org60b9426"><span class="section-number-4">3.2.2.</span> 4.3 冯诺伊曼机器</h4>
+<div class="outline-text-4" id="text-3-2-2">
+<p>
+讲述了冯诺伊曼机器的执行步骤,具体如下:
+加载机器语言程序
+初始化 PC 和 SP
+do{
+	取下一条指令
+    指令指示符解码
+    递增 PC
+    执行取出的指令
+} while (没有执行停止指令)
+</p>
+</div>
+</div>
+<div id="outline-container-org5e75e7f" class="outline-4">
+<h4 id="org5e75e7f"><span class="section-number-4">3.2.3.</span> 4.4 ISA3 层编程</h4>
+<div class="outline-text-4" id="text-3-2-3">
+<p>
+描述了怎么样使用机器码给 pep8 编程 可以跳过,之后在 Asmb5 层进行编程
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org6e58606" class="outline-2">
+<h2 id="org6e58606"><span class="section-number-2">4.</span> Asmb5 层(汇编层)</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-org70ce9b7" class="outline-3">
+<h3 id="org70ce9b7"><span class="section-number-3">4.1.</span> 汇编语言</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+汇编层即是对 ISA3 层次的抽象.隐藏了 ISA3 层的细节.
+汇编语言的语句可以分成两种类型助记符语句(指令),伪操作(即点命令,汇编器指示字,数据)
+汇编语言消除了程序中需要手工确定数据和指令地址的问题(这个是最痛苦的)
+高级语言层的变量对应与汇编层的内存地址, 在汇编层唯一的类型是位,某种意义上算是完全的动态类型
+</p>
+</div>
+</div>
+<div id="outline-container-orga61b3d8" class="outline-3">
+<h3 id="orga61b3d8"><span class="section-number-3">4.2.</span> 编译到汇编层</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+主要讲解 C++和汇编语言之间的关系,C++的语句如何在汇编层实现
+</p>
+</div>
+<div id="outline-container-org2515759" class="outline-4">
+<h4 id="org2515759"><span class="section-number-4">4.2.1.</span> 栈寻址和局部变量</h4>
+<div class="outline-text-4" id="text-4-2-1">
+<p>
+讲述了汇编层如何进行栈寻址的,以及数据出栈入栈的操作
+要翻译程序的局部变量,编译器要:
+</p>
+<ul class="org-ul">
+<li>用 SUBSP 分配内存</li>
+<li>用栈相对寻址访问局部变量</li>
+<li>用 ADDSP 释放存储</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org35d6747" class="outline-4">
+<h4 id="org35d6747"><span class="section-number-4">4.2.2.</span> 转移指令和控制流</h4>
+<div class="outline-text-4" id="text-4-2-2">
+<p>
+讲述了 pep8 的 8 个条件分支指令,每个条件分支检测 4 个状态位 N,Z,V,C 中的一个或者两个.
+之后描述了如何用这个 8 个分支指令来实现 C++的 if 语句,if/else 语句,while 循环,do 循环,for 循环
+</p>
+</div>
+</div>
+<div id="outline-container-org611f96f" class="outline-4">
+<h4 id="org611f96f"><span class="section-number-4">4.2.3.</span> 函数调用和参数</h4>
+<div class="outline-text-4" id="text-4-2-3">
+<p>
+C++层面的函数调用如何在汇编层面完成
+</p>
+<ul class="org-ul">
+<li>无参空函数的调用
+以无参空函数为例子讲解了汇编层面的 CALL 指令和 RETn 指令如何配合完成函数调用的.</li>
+<li>全局变量翻译传值调用参数
+具体步骤如下:
+<ol class="org-ol">
+<li>调用压入实参(执行 SUBSP)</li>
+<li>调用压入返回地址(执行 CALL)</li>
+<li>被调用分配局部变量(执行 SUBSP)</li>
+<li>被调用执行它的函数体</li>
+<li>被调用释放局部变量,弹出返回地址(执行 RETn)</li>
+<li>调用弹出实参(执行 ADDSP)</li>
+</ol></li>
+<li>用局部变量翻译传值调用参数
+和全局变量不同的地方在于使用栈相对寻址的</li>
+<li>翻译非空函数调用
+较前两个多了压入返回值的存储空间和释放返回值储存空间这一步.</li>
+<li>用全局变量翻译传引用调用参数
+和传值调用最大的不同在于,传引用调用会把实参的地址压入栈中,然后通过栈相对间接寻址找到操作数</li>
+<li>用局部变量翻译传引用调用参数
+通过把栈指针的值与局部变量的栈相对值相加,得到局部变量的绝对地址,然后同全局变量翻译</li>
+<li>翻译布尔类型
+C++直到 1996 年都没有 bool 类型</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgdbc9313" class="outline-4">
+<h4 id="orgdbc9313"><span class="section-number-4">4.2.4.</span> 变址寻址和数组</h4>
+<div class="outline-text-4" id="text-4-2-4">
+<ul class="org-ul">
+<li>作为全局变量的数组
+使用.BLOCK n 给数组分配储存空间,n 是数组占用的总字节数
+通过把索引乘以每个单元的字节数装入变址寄存器来访问数组元素,使用变址寻址</li>
+<li>作为局部变量的数组
+使用 SUBSP 对数组进行分配,用 ADDSP 释放
+通过把索引装入变址寄存器来访问数组元素,把索引乘以每个单元的字节数,使用栈变址寻址</li>
+<li>作为参数传递的数组
+考虑到效率,C++中对于数组默认是传引用调用
+数组第一个元素的地址压入运行时栈,对于局部数组,使用 MOVSPA 后面采用立即数寻址的 ADDA,
+对于全局数组,使用立即数寻址的 LDA
+通过把索引装入变址寄存器来访问数组元素,将索引乘以每个单元的字节数,使用栈变址间接寻址</li>
+<li>翻译 switch 语句
+编译器生成转移表,然后使用变址寻址的方式进行寻址</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org8d1f185" class="outline-4">
+<h4 id="org8d1f185"><span class="section-number-4">4.2.5.</span> 动态内存分配</h4>
+<div class="outline-text-4" id="text-4-2-5">
+<p>
+讲述编译器怎样翻译指针和结构(struct)
+</p>
+<ul class="org-ul">
+<li>翻译全局指针
+用.BLOCK 2 给指针分配储存空间,因为一个地址占用 2 字节
+在 heap 中分配指针指向的单元
+用直接寻址访问指针
+用间接寻址访问指针指向的单元</li>
+<li>翻译局部指针
+使用 SUBSP 在运行时栈给指针分配储存空间,用 ADDSP 释放储存空间
+用栈相对寻址访问指针
+用栈相对间接寻址访问指针指向的单元</li>
+<li>翻译结构
+在 Asmb5 层结构非常像数组,结构的字段名对应该字段距离结构第一个字节的偏移量.
+结构的每个字段等于它距离结构第一个字节的偏移量
+用.BLOCK n 给结构分配储存空间,n 是结构占用的总字节数
+用立即数寻址把字段的偏移量装入变址寄存器,后面跟一条使用变址寻址方式的指令来访问结构的字段.</li>
+<li>翻译链式数据结构
+结点的字段名等于字段距离节点第一个字节的偏移量,把偏移量装入变址寄存器
+访问结点字段的指令使用栈变址间接寻址的</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org3271d76" class="outline-3">
+<h3 id="org3271d76"><span class="section-number-3">4.3.</span> 语言翻译原理</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+计算机科学的基本问题,什么能够被自动化,人工语言的自动化翻译是计算机科学的核心.
+语言翻译可以分成词法分析,语法分析和代码生成三个步骤
+计算机语言的语法是一个程序要成为合法的语言程序必须要遵守的一套规则.语法包含 4 个人部分:
+</p>
+<ul class="org-ul">
+<li>N, 一个非终结字符表</li>
+<li>T, 一个终结字符表</li>
+<li>P, 一套产生式规则</li>
+<li>S, 初始符, 为 N 的一个元素</li>
+</ul>
+<p>
+词法分析即是把一串终结字符,转换为非终结字符
+语法分析即是根据产生式规则校验词法分析产生的非终结字符
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orga34b915" class="outline-2">
+<h2 id="orga34b915"><span class="section-number-2">5.</span> OS4 层(操作系统层)</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+操作系统的目的是向高级语言提供一个更加方便的环境,并且有效分配系统资源(CPU 时间,主存,磁盘存储器)
+</p>
+</div>
+<div id="outline-container-org72a6a52" class="outline-3">
+<h3 id="org72a6a52"><span class="section-number-3">5.1.</span> 进程管理</h3>
+<div class="outline-text-3" id="text-5-1">
+</div>
+<div id="outline-container-orga9fb862" class="outline-4">
+<h4 id="orga9fb862"><span class="section-number-4">5.1.1.</span> 装载器</h4>
+<div class="outline-text-4" id="text-5-1-1">
+<p>
+操作系统必须把适当的程序装载到主存并把 CPU 的控制交给这个程序来执行
+</p>
+</div>
+</div>
+<div id="outline-container-orgd833fe6" class="outline-4">
+<h4 id="orgd833fe6"><span class="section-number-4">5.1.2.</span> 陷阱</h4>
+<div class="outline-text-4" id="text-5-1-2">
+<p>
+某些在 ISA3 层没有的指令,当计算机取出具有这样一些操作码的指令时,会触发陷阱,调用操作系统提供的接口,来进行操作
+</p>
+</div>
+</div>
+<div id="outline-container-orgd6f91cf" class="outline-4">
+<h4 id="orgd6f91cf"><span class="section-number-4">5.1.3.</span> 并发进程</h4>
+<div class="outline-text-4" id="text-5-1-3">
+<p>
+中断分为两种
+</p>
+<ul class="org-ul">
+<li>同步中断
+每次执行进程中断时是同时发生的,中断和代码是同步的.</li>
+<li>异步中断
+执行时发生的时间不可预测,常见的原因是超时,I/O 完成
+<ul class="org-ul">
+<li>超时
+分时系统只会让进程运行一定的时间间隔,之后中断运行下一个进程</li>
+<li>I/O 完成
+当进程请求 I/O 操作时,会触发中断,运行下一个进程,I/O 操作完成时,中断第二个进程,继续执行第一个进程</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2549115" class="outline-4">
+<h4 id="org2549115"><span class="section-number-4">5.1.4.</span> 并发处理程序</h4>
+<div class="outline-text-4" id="text-5-1-4">
+<p>
+  由于 HOL6 的赋值操作不是原子性的,进程间共享内存会导致出现预期以外的行为,所以需要设置临界区 <code>critical section</code> 即进程在执行该区域时,其他进程不能访问
+临界区需要两段额外的代码段, 入口段和出口段.
+</p>
+<ul class="org-ul">
+<li>入口段
+测试其他进程是否在执行临界区</li>
+<li>出口段
+通知其他进程,该进程已经出了临界区</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org75bde9e" class="outline-3">
+<h3 id="org75bde9e"><span class="section-number-3">5.2.</span> 储存管理</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+操作系统如何分配储存空间的
+</p>
+</div>
+<div id="outline-container-org071d3cb" class="outline-4">
+<h4 id="org071d3cb"><span class="section-number-4">5.2.1.</span> 内存管理</h4>
+<div class="outline-text-4" id="text-5-2-1">
+</div>
+<ol class="org-ol">
+<li><a id="org66481e6"></a>单通道程序设计 <code>uniprogramming</code><br />
+<div class="outline-text-5" id="text-5-2-1-1">
+<p>
+最简单的内存分配技术,操作系统在内存的一段,应用程序在另一端,系统一次只执行一个作业,每个作业都加载在同一位置
+</p>
+</div>
+</li>
+<li><a id="orgcbe0488"></a>优点<br />
+<div class="outline-text-5" id="text-5-2-1-2">
+<p>
+设计简单,系统小,适用于嵌入式系统
+</p>
+</div>
+</li>
+<li><a id="org1274274"></a>缺点<br />
+<div class="outline-text-5" id="text-5-2-1-3">
+<p>
+CPU 利用率低,作业调度不灵活
+</p>
+</div>
+</li>
+<li><a id="org1a097df"></a>固定分区多通道程序设计 <code>fixed-partition multiprogramming</code><br />
+<div class="outline-text-5" id="text-5-2-1-4">
+<p>
+对单通道的改进,把主存分成了不同的分区,分别储存不同的正在执行的进程.分区的大小不会改变
+</p>
+</div>
+</li>
+<li><a id="orgca23c31"></a>缺点<br />
+<div class="outline-text-5" id="text-5-2-1-5">
+<p>
+分区不灵活,浪费了内存空间,对更高的层级暴露了过多的细节
+</p>
+</div>
+</li>
+<li><a id="org90b0f6a"></a>可变分区多通道程序设计 <code>variable-partition multiprogramming</code><br />
+<div class="outline-text-5" id="text-5-2-1-6">
+<p>
+对固定分区的改进,操作系统只在作业加载进内存时才设立分区,且分区的大小正好适合作业的大小
+</p>
+</div>
+</li>
+<li><a id="orgcdf51c2"></a>缺点<br />
+<div class="outline-text-5" id="text-5-2-1-7">
+<p>
+由于分配的算法,会出现小的内存片段,因为过于小,导致难以分配作业,即使可以通过合并回收内存,仍然是个很耗时的操作
+</p>
+</div>
+</li>
+<li><a id="org3a1ae40"></a>分页 <code>paging</code><br />
+<div class="outline-text-5" id="text-5-2-1-8">
+<p>
+对可变分区的改进,把程序分解开,是去适合洞.
+</p>
+</div>
+</li>
+<li><a id="orgaf584a9"></a>缺点<br />
+<div class="outline-text-5" id="text-5-2-1-9">
+<p>
+需要维护一个页表每次引用内存都需要先访问页表,比较耗时.
+</p>
+</div>
+</li>
+<li><a id="org3fda4ac"></a>虚拟内存 <code>virtual memory</code><br />
+<div class="outline-text-5" id="text-5-2-1-10">
+<p>
+对分页的改进,不是一次性把所有页加载进内存,而是有选择的加载页
+</p>
+</div>
+</li>
+<li><a id="orga5c0a91"></a>缺点<br />
+<div class="outline-text-5" id="text-5-2-1-11">
+<p>
+引发缺页时必须从磁盘中加载缺页,耗时较长
+</p>
+</div>
+</li>
+</ol>
+</div>
+<div id="outline-container-org8f86a82" class="outline-4">
+<h4 id="org8f86a82"><span class="section-number-4">5.2.2.</span> 文件管理</h4>
+<div class="outline-text-4" id="text-5-2-2">
+<p>
+操作系统负责维护磁盘上的文件,连接起 HOL6 或 Asmb5 层程序员看到的文件的逻辑组织和文件在磁盘上的无力组织
+存储分配技术
+</p>
+<ul class="org-ul">
+<li>连续
+操作系统使文件的无力组织与逻辑组织相匹配,把文件连续地放在一个磁道相邻的块中</li>
+<li>链接
+把文件储存在物理上分散在磁盘上的块中,每个块的最后几个字节保留给下一块的地址</li>
+<li>索引
+把一个文件所有的块都放进一个列表中</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orge2a8159" class="outline-2">
+<h2 id="orge2a8159"><span class="section-number-2">6.</span> LG1 层(逻辑门层)</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+LG1 层是一切的基础,因为考虑到成本的因素,所以会加入 Mc2 层来减少开发成本,但是这样速度就会变慢.
+LG1 层的电路有两种基本的结构,组合电路和时序电路.
+组合电路即只由输入决定输出的电路,时序电路即输入确定,但是输出却可能随时间变化的电路
+</p>
+</div>
+<div id="outline-container-orge350095" class="outline-3">
+<h3 id="orge350095"><span class="section-number-3">6.1.</span> 组合电路</h3>
+<div class="outline-text-3" id="text-6-1">
+<p>
+描述组合电路的行为有三种方式:
+</p>
+<dl class="org-dl">
+<dt>真值表</dt><dd>列出输入值每种可能组合的输出</dd>
+<dt>布尔代数表达式</dt><dd>说明组合电路是怎么做的
+布尔代数表达式,具体可以看离散数学</dd>
+<dt>逻辑图</dt><dd>即把电路图话出来,最接近电路的一种</dd>
+</dl>
+
+<p>
+解布尔表达式卡诺图做电路优化的细节,略过
+计算机设计当中普遍用到的一些电路单元,略过
+</p>
+</div>
+</div>
+<div id="outline-container-orgc8dffea" class="outline-3">
+<h3 id="orgc8dffea"><span class="section-number-3">6.2.</span> 时序电路</h3>
+<div class="outline-text-3" id="text-6-2">
+<p>
+相比组合电路来说是有状态的电路
+时序电路也是由和组合电路一样的逻辑门组成,但是时序电路相对于组合电路来说是有反馈电路的,因为反馈电路,时序电路才有了状态
+时序电路的行为通过时序图来给出图形化表示
+计算机会维护一个时钟,所有设备必须根据时钟同时改变状态.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org89dfe43" class="outline-2">
+<h2 id="org89dfe43"><span class="section-number-2">7.</span> Mc2 层(微代码层)</h2>
+<div class="outline-text-2" id="text-7">
+</div>
+<div id="outline-container-org7cacadb" class="outline-3">
+<h3 id="org7cacadb"><span class="section-number-3">7.1.</span> 计算机组成</h3>
+<div class="outline-text-3" id="text-7-1">
+<p>
+介绍 LG1 层是如何与 ISA3 层联系的
+Mc2 层的作用即是控制 LG1 层的数据流动,然后给 ISA3 层提供统一的接口
+</p>
+</div>
+</div>
+</div>
+</div>
+<script src="https://giscus.app/client.js"
+          data-repo="Elilif/Elilif.github.io"
+          data-repo-id="MDEwOlJlcG9zaXRvcnkyOTgxNjM5ODg="
+          data-category="Announcements"
+          data-category-id="DIC_kwDOEcWfFM4Cdz5V"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="top"
+          data-theme="light"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+  </script><div id="postamble" class="status">
+<hr class="Solid">
+                                   <div class="info">
+                                     <span class="author">Author: Harumi Kiyama (<a href="mailto:wanglc@tbamc.com">wanglc@tbamc.com</a>)</span>
+                                     <span class="date">Create Date: 2024-08-14</span>
+                                     <span class="date">Last modified: 2024-08-18 Sun 11:22</span>
+                                     <span>Creator: Emacs 31.0.50 (Org mode 9.7.9)</span>
+                                   </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-08-18 Sun 11:39 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>What is select</title>
+<meta name="author" content="Harumi Kiyama" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+                                    <link rel="stylesheet" type="text/css" href="/css/htmlize.css" />
+                                    <script src="/scripts/script.js"></script>
+                                    <script src="/scripts/toc.js"></script>
+</head>
+<body>
+<div id="preamble" class="status">
+<nav class="nav">
+                                     <a href="/index.html" class="button">Home</a>
+                                     <a href="/rss.xml" class="button">RSS</a>
+                                     <a href="/about_me.html" class="button">About</a>
+                                   </nav>
+                                   <hr>
+</div>
+<div id="content" class="content">
+<h1 class="title">What is select</h1>
+<div class="post-status"><span><i class='bx bx-calendar'></i>
+<span>2024-08-14</span></span>
+<span><i class='bx bx-edit'></i><span>2024-08-18 Sun 11:22</span></span><span><i class='bx bx-history'></i><span><a href="https://github.com/Elilif/Elilif.github.io/commits/master/orgs/select_poll_epoll.org">history</a></span></span></div><div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org141d338">1. 前言</a></li>
+<li><a href="#org4c586a1">2. select 是什么</a></li>
+<li><a href="#org6210080">3. 为什么需要 select</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org141d338" class="outline-2">
+<h2 id="org141d338"><span class="section-number-2">1.</span> 前言</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+select, poll 还有 epoll 是什么, 这个问题一直能够时不时的看到, 网上找了很多资料要么是语焉不详, 要么就是在解释这些 api 是如何处理 IO 多路复用的(<code>IO multiplexing</code>), 然后再对 IO 多路复用做一些以其昏昏使人昭昭的解释. 从某种角度来说这个问题也和某个函数式编程当中的经常有初学者问的问题, 即什么是 <i>monad</i> 一样, 网上有很多种解释, 但是如果没有去使用过是完全不会明白 <i>monad</i> 是什么的. 这也是工科和理科最大的一个区别吧, 站在工科的视角来看, 对于概念的定义并没有那么重要, 关键是如果讲这些概念应用到实际问题上去. 而理科的话则是需要死扣定义, 因为只有定义清晰了, 才可以创造出一个共同的语境(<code>context</code>), 这之后对于这个概念的讨论才有意义, 这方面最严谨的莫过于近现代数学公理化之后留下的遗产了.
+</p>
+
+<p>
+select, poll 还有 epoll 是什么, 这个问题可以分成两部分, 第一部分, 这三个 api 在文档中是怎么定义的; 第二部分, 这三个 api 的实现是什么.
+这里我只阐述这三个 api 是什么, 对于这三个 api 的实现是什么, 不做阐述, 特别的, 对于这三个 api 的文档特指, <i>POSIX Programmer's Manual</i> 这可能和 <i>Linux Programmer's Manual</i> 有所出入, 读者需要特别注意. 由于篇幅问题, 我这里将把对每个 api 的描述单独放到一篇文章中. 首先当然是排行第一的 <i>select</i>.
+</p>
+</div>
+</div>
+<div id="outline-container-org4c586a1" class="outline-2">
+<h2 id="org4c586a1"><span class="section-number-2">2.</span> select 是什么</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+这个问题或许是最好回答的了, 如前所述, 代码的定义以及实现都是明明白白写在文档以及代码中的. 这里只做摘录以及必要的解释
+select 的规范是写在 <i>POSIX Programmer's Manual</i> 中的, 如果读者使用的是内核为 <i>linux</i> 的操作系统的话, 可以在 <i>shell</i> 中输入 <code>man select</code> 或者 <code>man 3 select</code> 就会进入 select 的 <i>POSIX Programmer's Manual</i> 页面 (<b>注意输入</b> <code>man 2 select</code> <b>会进入到</b> <i>Linux Programmer's Manual</i> <b>中</b>). 我们注意到在该页面中, <i>DESCRIPTION</i> 中写到 <i>refer to pselect()</i>, 于是我们再在 <i>shell</i> 中运行 <code>man pselect</code> 转跳到 <i>pselect</i> 的页面中.
+</p>
+
+<p>
+在 <i>pselect</i> 的页面中, 我们可以看到 <i>select</i> 和 <i>pselect</i> 的函数签名, <i>pselect</i> 的签名如下
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><code><span style="color: #65d590;">int</span> <span style="color: #6fd560;">pselect</span>(<span style="color: #65d590;">int</span> <span style="color: #6fcad0;">nfds</span>, <span style="color: #65d590;">fd_set</span> *<span style="color: #e4b53f; font-weight: bold;">restrict</span> <span style="color: #6fcad0;">readfds</span>, <span style="color: #65d590;">fd_set</span> *<span style="color: #e4b53f; font-weight: bold;">restrict</span> <span style="color: #6fcad0;">writefds</span>,
+            <span style="color: #65d590;">fd_set</span> *<span style="color: #e4b53f; font-weight: bold;">restrict</span> <span style="color: #6fcad0;">errorfds</span>, <span style="color: #e4b53f; font-weight: bold;">const</span> <span style="color: #e4b53f; font-weight: bold;">struct</span> <span style="color: #65d590;">timespec</span> *<span style="color: #e4b53f; font-weight: bold;">restrict</span> <span style="color: #6fcad0;">timeout</span>,
+            <span style="color: #e4b53f; font-weight: bold;">const</span> <span style="color: #65d590;">sigset_t</span> *<span style="color: #e4b53f; font-weight: bold;">restrict</span> <span style="color: #6fcad0;">sigmask</span>);
+</code></pre>
+</div>
+<p>
+其中, <code>sigmask</code> 的作用为
+</p>
+<blockquote>
+<p>
+If sigmask is not a null pointer, then the pselect() function shall replace the signal mask of the caller by the set of signals pointed to by sigmask before examining the descriptors, and shall restore the signal mask of the calling thread before
+returning.
+</p>
+</blockquote>
+
+<p>
+<i>select</i> 的函数签名如下
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><code><span style="color: #65d590;">int</span> <span style="color: #6fd560;">select</span> (<span style="color: #65d590;">int</span> <span style="color: #6fcad0;">NFDS</span>, <span style="color: #65d590;">fd_set</span> *<span style="color: #6fcad0;">READ</span>-FDS, <span style="color: #65d590;">fd_set</span> *<span style="color: #6fcad0;">WRITE</span>-FDS,
+          <span style="color: #65d590;">fd_set</span> *<span style="color: #6fcad0;">EXCEPT</span>-FDS, <span style="color: #e4b53f; font-weight: bold;">struct</span> <span style="color: #65d590;">timeval</span> *<span style="color: #6fcad0;">TIMEOUT</span>);
+</code></pre>
+</div>
+<p>
+其中, <code>nfds</code> 参数为需要检验的文件描述符的范围, 在每一个 <i>xxFDS</i> 中, 只校验 0 到 nfds - 1 的文件描述符. (<b>注意</b> <code>linux</code> <b>内核中并没有完全实现这个逻辑,详情可见</b> <code>man 2 select</code> <b>摘录如下</b>)
+</p>
+<blockquote>
+<p>
+According  to  POSIX, select() should check all specified file descriptors in the three file descriptor sets, up to the limit
+nfds-1.  However, the current implementation ignores any file descriptor in these sets that is greater than the maximum  file
+descriptor number that the process currently has open.  According to POSIX, any such file descriptor that is specified in one
+of the sets should result in the error EBADF.
+</p>
+</blockquote>
+
+<p>
+fd<sub>set</sub> 为一个 <i>bit array</i>, 在 <i>POSIX Programmer's Manual</i> 中没有明确定义, 但是在 <i>linux</i> 的内核代码中有实现, 如下所示
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><code><span style="color: #ff7f4f;">#define</span> <span style="color: #6fcad0;">__FD_SETSIZE</span> 1024
+<span style="color: #e4b53f; font-weight: bold;">typedef</span> <span style="color: #e4b53f; font-weight: bold;">struct</span> {
+  <span style="color: #65d590;">unsigned</span> <span style="color: #65d590;">long</span> <span style="color: #6fcad0;">fds_bits</span>[__FD_SETSIZE / (8 * <span style="color: #e4b53f; font-weight: bold;">sizeof</span>(<span style="color: #65d590;">long</span>))];
+} <span style="color: #65d590;">__kernel_fd_set</span>;
+</code></pre>
+</div>
+
+<p>
+然后在 <i>DESCRIPTION</i> 中, 写明了 <i>pselect</i> , <i>select</i> 执行了什么功能, 以及 <i>pselect</i>, <i>select</i> 分别有什么区别, 简单摘要如下
+</p>
+<blockquote>
+<p>
+The pselect() function shall examine the file descriptor sets whose addresses are passed in the readfds, writefds,
+and  errorfds  parameters  to see whether some of their descriptors are ready for reading, are ready for writing,
+or have an exceptional condition pending, respectively.
+The select() function shall be equivalent to the pselect() function, except as follows:
+</p>
+<ul class="org-ul">
+<li>For the select() function, the timeout period is given in seconds  and  microseconds  in  an  argument  of  type  struct
+timeval,  whereas  for  the  pselect() function the timeout period is given in seconds and nanoseconds in an argument of
+type struct timespec.</li>
+<li>The select() function has no sigmask argument; it shall behave as pselect() does when sigmask is a null pointer.</li>
+<li>Upon successful completion, the select() function may modify the object pointed to by the timeout argument.</li>
+</ul>
+</blockquote>
+<p>
+简而言之, <i>select</i> 和 <i>select</i> 都是执行类似的功能的, 即对传入的参数 <i>readfds</i>, <i>writefds</i>, <i>errorfds</i> 做校验, 判断是否处于 <i>ready</i> 状态.
+他们的差别在与
+</p>
+<ol class="org-ol">
+<li>timeout 的参数的类型不同</li>
+<li><i>select</i> 不需要传入 <code>sigmask</code> 作为参数</li>
+<li>在执行完之后, <i>select</i> 会更新 <code>timeval</code> 的值, 新的值表示还有多少时间剩下来. 而 <i>pselect</i> 则不会.</li>
+</ol>
+
+<p>
+<i>select</i> 和 <i>pselect</i> 的差别就阐述到这里, 接下来就以 <i>select</i> 为例, 来看看 <i>select</i> 的行为是怎么定义的
+</p>
+<blockquote>
+<p>
+If the readfds, writefds, and errorfds arguments are all null pointers and the timeout argument is not a null pointer, the
+pselect() or select() function shall block for the time specified, or  until  interrupted  by  a  signal.  If  the  readfds,
+writefds, and errorfds arguments are all null pointers and the timeout argument is a null pointer, the pselect() or select()
+function shall block until interrupted by a signal.
+</p>
+</blockquote>
+<p>
+当 <i>select</i> 程序运行成功时
+</p>
+<blockquote>
+<p>
+Upon successful completion, the pselect() or select() function shall modify the objects pointed to by the readfds, writefds,
+and errorfds arguments to indicate which file descriptors are ready for reading, ready for writing, or have an error
+condition pending, respectively, and shall return the total number of ready descriptors in all the output sets. For each file
+descriptor less than nfds, the corresponding bit shall be set upon successful completion if it was set on input and the
+associated condition is true for that file descriptor.
+</p>
+</blockquote>
+
+<p>
+当 <i>select</i> 程序运行遇到错误时
+</p>
+<blockquote>
+<p>
+On failure, the objects pointed to by the readfds, writefds, and errorfds arguments shall not be modified. If the timeout
+interval expires without the specified condition being true for any of the specified file descriptors, the  objects  pointed
+to by the readfds, writefds, and errorfds arguments shall have all bits set to 0.
+−1 shall be returned, and errno shall be set to indicate the error.
+</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-org6210080" class="outline-2">
+<h2 id="org6210080"><span class="section-number-2">3.</span> 为什么需要 select</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+select 在 1983 年被首次引入 BSD 中, 用于实现 IO 多路复用(<code>IO multiplexing</code>). 多路复用早期是一个通信行业的词汇, 指的是将多种信号合并通过同一媒介传播, 在计算机科学中多路复用指的是
+</p>
+<blockquote>
+<p>
+monitoring multiple file descriptors, waiting until one or more of the file descriptors
+become "ready" for some class of I/O operation (e.g., input possible)
+</p>
+</blockquote>
+<p>
+在 80 年代服务器面对的客户端开始增多, 早期的一个线程对应一个输入信号的做法已经渐渐跟不上潮流, 于是一种更加高效的监听 IO 事件的 <i>system call</i> 被开发了出来.
+</p>
+</div>
+</div>
+</div>
+<script src="https://giscus.app/client.js"
+          data-repo="Elilif/Elilif.github.io"
+          data-repo-id="MDEwOlJlcG9zaXRvcnkyOTgxNjM5ODg="
+          data-category="Announcements"
+          data-category-id="DIC_kwDOEcWfFM4Cdz5V"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="top"
+          data-theme="light"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+  </script><div id="postamble" class="status">
+<hr class="Solid">
+                                   <div class="info">
+                                     <span class="author">Author: Harumi Kiyama (<a href="mailto:wanglc@tbamc.com">wanglc@tbamc.com</a>)</span>
+                                     <span class="date">Create Date: 2024-08-14</span>
+                                     <span class="date">Last modified: 2024-08-18 Sun 11:22</span>
+                                     <span>Creator: Emacs 31.0.50 (Org mode 9.7.9)</span>
+                                   </div>
+</div>
+</body>
+</html>
