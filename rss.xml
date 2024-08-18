@@ -10,185 +10,185 @@
      xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
      xmlns:media="http://search.yahoo.com/mrss/"><channel>
   <title>Harumi's Chapel</title>
-  <atom:link href="https://elilif.github.io/rss.xml" rel="self" type="application/rss+xml" />
-  <link>https://elilif.github.io/</link>
+  <atom:link href="https://harumikiyama.github.io/rss.xml" rel="self" type="application/rss+xml" />
+  <link>https://harumikiyama.github.io/</link>
   <description><![CDATA[]]></description>
   <language>en</language>
-  <pubDate>Sun, 18 Aug 2024 21:02:10 +0800</pubDate>
-  <lastBuildDate>Sun, 18 Aug 2024 21:02:10 +0800</lastBuildDate>
+  <pubDate>Sun, 18 Aug 2024 23:24:05 +0800</pubDate>
+  <lastBuildDate>Sun, 18 Aug 2024 23:24:05 +0800</lastBuildDate>
   <generator>Emacs 30.0 Org-mode 9.7.9</generator>
-  <webMaster>wanglc@tbamc.com (Harumi Kiyama)</webMaster>
+  <webMaster>lucius0720@hotmail.com (Harumi Kiyama)</webMaster>
   <image>
     <url>https://orgmode.org/img/org-mode-unicorn-logo.png</url>
     <title>Harumi's Chapel</title>
-    <link>https://elilif.github.io/</link>
+    <link>https://harumikiyama.github.io/</link>
   </image>
 
   <item>
     <title>Segment Tree</title>
-    <link>https://elilif.github.io/articles/segment_tree.html</link>
-    <author>wanglc@tbamc.com (Harumi Kiyama)</author>
-    <guid isPermaLink="false">https://elilif.github.io/articles/segment_tree.html</guid>
+    <link>https://harumikiyama.github.io/articles/segment_tree.html</link>
+    <author>lucius0720@hotmail.com (Harumi Kiyama)</author>
+    <guid isPermaLink="false">https://harumikiyama.github.io/articles/segment_tree.html</guid>
     <pubDate>Wed, 14 Aug 2024 00:00:00 +0800</pubDate>
 
     <description><![CDATA[<p>
-    <a href="https://elilif.github.io/articles/segment_tree.html">Read More</a>
+    <a href="https://harumikiyama.github.io/articles/segment_tree.html">Read More</a>
     </p>
     ]]></description>
   </item>
   <item>
     <title>zsh command line editting</title>
-    <link>https://elilif.github.io/articles/zsh_zle.html</link>
-    <author>wanglc@tbamc.com (Harumi Kiyama)</author>
-    <guid isPermaLink="false">https://elilif.github.io/articles/zsh_zle.html</guid>
+    <link>https://harumikiyama.github.io/articles/zsh_zle.html</link>
+    <author>lucius0720@hotmail.com (Harumi Kiyama)</author>
+    <guid isPermaLink="false">https://harumikiyama.github.io/articles/zsh_zle.html</guid>
     <pubDate>Wed, 14 Aug 2024 00:00:00 +0800</pubDate>
 
     <description><![CDATA[<p>
-    <a href="https://elilif.github.io/articles/zsh_zle.html">Read More</a>
+    <a href="https://harumikiyama.github.io/articles/zsh_zle.html">Read More</a>
     </p>
     ]]></description>
   </item>
   <item>
     <title>zsh overview</title>
-    <link>https://elilif.github.io/articles/zsh_overview.html</link>
-    <author>wanglc@tbamc.com (Harumi Kiyama)</author>
-    <guid isPermaLink="false">https://elilif.github.io/articles/zsh_overview.html</guid>
+    <link>https://harumikiyama.github.io/articles/zsh_overview.html</link>
+    <author>lucius0720@hotmail.com (Harumi Kiyama)</author>
+    <guid isPermaLink="false">https://harumikiyama.github.io/articles/zsh_overview.html</guid>
     <pubDate>Wed, 14 Aug 2024 00:00:00 +0800</pubDate>
 
     <description><![CDATA[<p>
-    <a href="https://elilif.github.io/articles/zsh_overview.html">Read More</a>
+    <a href="https://harumikiyama.github.io/articles/zsh_overview.html">Read More</a>
     </p>
     ]]></description>
   </item>
   <item>
     <title>xmonad 的配置</title>
-    <link>https://elilif.github.io/articles/xmonad_config.html</link>
-    <author>wanglc@tbamc.com (Harumi Kiyama)</author>
-    <guid isPermaLink="false">https://elilif.github.io/articles/xmonad_config.html</guid>
+    <link>https://harumikiyama.github.io/articles/xmonad_config.html</link>
+    <author>lucius0720@hotmail.com (Harumi Kiyama)</author>
+    <guid isPermaLink="false">https://harumikiyama.github.io/articles/xmonad_config.html</guid>
     <pubDate>Wed, 14 Aug 2024 00:00:00 +0800</pubDate>
 
     <description><![CDATA[<p>
-    <a href="https://elilif.github.io/articles/xmonad_config.html">Read More</a>
+    <a href="https://harumikiyama.github.io/articles/xmonad_config.html">Read More</a>
     </p>
     ]]></description>
   </item>
   <item>
     <title>What is select</title>
-    <link>https://elilif.github.io/articles/select_poll_epoll.html</link>
-    <author>wanglc@tbamc.com (Harumi Kiyama)</author>
-    <guid isPermaLink="false">https://elilif.github.io/articles/select_poll_epoll.html</guid>
+    <link>https://harumikiyama.github.io/articles/select_poll_epoll.html</link>
+    <author>lucius0720@hotmail.com (Harumi Kiyama)</author>
+    <guid isPermaLink="false">https://harumikiyama.github.io/articles/select_poll_epoll.html</guid>
     <pubDate>Wed, 14 Aug 2024 00:00:00 +0800</pubDate>
 
     <description><![CDATA[<p>
-    <a href="https://elilif.github.io/articles/select_poll_epoll.html">Read More</a>
+    <a href="https://harumikiyama.github.io/articles/select_poll_epoll.html">Read More</a>
     </p>
     ]]></description>
   </item>
   <item>
     <title>科学革命</title>
-    <link>https://elilif.github.io/articles/science_revolution.html</link>
-    <author>wanglc@tbamc.com (Harumi Kiyama)</author>
-    <guid isPermaLink="false">https://elilif.github.io/articles/science_revolution.html</guid>
+    <link>https://harumikiyama.github.io/articles/science_revolution.html</link>
+    <author>lucius0720@hotmail.com (Harumi Kiyama)</author>
+    <guid isPermaLink="false">https://harumikiyama.github.io/articles/science_revolution.html</guid>
     <pubDate>Wed, 14 Aug 2024 00:00:00 +0800</pubDate>
 
     <description><![CDATA[<p>
-    <a href="https://elilif.github.io/articles/science_revolution.html">Read More</a>
+    <a href="https://harumikiyama.github.io/articles/science_revolution.html">Read More</a>
     </p>
     ]]></description>
   </item>
   <item>
     <title>秋兰操</title>
-    <link>https://elilif.github.io/articles/name_poem_for_my_son.html</link>
-    <author>wanglc@tbamc.com (Harumi Kiyama)</author>
-    <guid isPermaLink="false">https://elilif.github.io/articles/name_poem_for_my_son.html</guid>
+    <link>https://harumikiyama.github.io/articles/name_poem_for_my_son.html</link>
+    <author>lucius0720@hotmail.com (Harumi Kiyama)</author>
+    <guid isPermaLink="false">https://harumikiyama.github.io/articles/name_poem_for_my_son.html</guid>
     <pubDate>Wed, 14 Aug 2024 00:00:00 +0800</pubDate>
 
     <description><![CDATA[<p>
-    <a href="https://elilif.github.io/articles/name_poem_for_my_son.html">Read More</a>
+    <a href="https://harumikiyama.github.io/articles/name_poem_for_my_son.html">Read More</a>
     </p>
     ]]></description>
   </item>
   <item>
     <title>Janpanese macaque potato washing behaviour</title>
-    <link>https://elilif.github.io/articles/japanese_macaque.html</link>
-    <author>wanglc@tbamc.com (Harumi Kiyama)</author>
-    <guid isPermaLink="false">https://elilif.github.io/articles/japanese_macaque.html</guid>
+    <link>https://harumikiyama.github.io/articles/japanese_macaque.html</link>
+    <author>lucius0720@hotmail.com (Harumi Kiyama)</author>
+    <guid isPermaLink="false">https://harumikiyama.github.io/articles/japanese_macaque.html</guid>
     <pubDate>Wed, 14 Aug 2024 00:00:00 +0800</pubDate>
 
     <description><![CDATA[<p>
-    <a href="https://elilif.github.io/articles/japanese_macaque.html">Read More</a>
+    <a href="https://harumikiyama.github.io/articles/japanese_macaque.html">Read More</a>
     </p>
     ]]></description>
   </item>
   <item>
     <title>新加坡的日本人墓地公园</title>
-    <link>https://elilif.github.io/articles/japanese_cemetery_park.html</link>
-    <author>wanglc@tbamc.com (Harumi Kiyama)</author>
-    <guid isPermaLink="false">https://elilif.github.io/articles/japanese_cemetery_park.html</guid>
+    <link>https://harumikiyama.github.io/articles/japanese_cemetery_park.html</link>
+    <author>lucius0720@hotmail.com (Harumi Kiyama)</author>
+    <guid isPermaLink="false">https://harumikiyama.github.io/articles/japanese_cemetery_park.html</guid>
     <pubDate>Wed, 14 Aug 2024 00:00:00 +0800</pubDate>
 
     <description><![CDATA[<p>
-    <a href="https://elilif.github.io/articles/japanese_cemetery_park.html">Read More</a>
+    <a href="https://harumikiyama.github.io/articles/japanese_cemetery_park.html">Read More</a>
     </p>
     ]]></description>
   </item>
   <item>
     <title>hash table implementation</title>
-    <link>https://elilif.github.io/articles/hashtable_implementation.html</link>
-    <author>wanglc@tbamc.com (Harumi Kiyama)</author>
-    <guid isPermaLink="false">https://elilif.github.io/articles/hashtable_implementation.html</guid>
+    <link>https://harumikiyama.github.io/articles/hashtable_implementation.html</link>
+    <author>lucius0720@hotmail.com (Harumi Kiyama)</author>
+    <guid isPermaLink="false">https://harumikiyama.github.io/articles/hashtable_implementation.html</guid>
     <pubDate>Wed, 14 Aug 2024 00:00:00 +0800</pubDate>
 
     <description><![CDATA[<p>
-    <a href="https://elilif.github.io/articles/hashtable_implementation.html">Read More</a>
+    <a href="https://harumikiyama.github.io/articles/hashtable_implementation.html">Read More</a>
     </p>
     ]]></description>
   </item>
   <item>
     <title>计算机系统核心概念及软硬件实现</title>
-    <link>https://elilif.github.io/articles/computer_system.html</link>
-    <author>wanglc@tbamc.com (Harumi Kiyama)</author>
-    <guid isPermaLink="false">https://elilif.github.io/articles/computer_system.html</guid>
+    <link>https://harumikiyama.github.io/articles/computer_system.html</link>
+    <author>lucius0720@hotmail.com (Harumi Kiyama)</author>
+    <guid isPermaLink="false">https://harumikiyama.github.io/articles/computer_system.html</guid>
     <pubDate>Wed, 14 Aug 2024 00:00:00 +0800</pubDate>
 
     <description><![CDATA[<p>
-    <a href="https://elilif.github.io/articles/computer_system.html">Read More</a>
+    <a href="https://harumikiyama.github.io/articles/computer_system.html">Read More</a>
     </p>
     ]]></description>
   </item>
   <item>
     <title>音吉生平</title>
-    <link>https://elilif.github.io/articles/biography_of_otokichi.html</link>
-    <author>wanglc@tbamc.com (Harumi Kiyama)</author>
-    <guid isPermaLink="false">https://elilif.github.io/articles/biography_of_otokichi.html</guid>
+    <link>https://harumikiyama.github.io/articles/biography_of_otokichi.html</link>
+    <author>lucius0720@hotmail.com (Harumi Kiyama)</author>
+    <guid isPermaLink="false">https://harumikiyama.github.io/articles/biography_of_otokichi.html</guid>
     <pubDate>Wed, 14 Aug 2024 00:00:00 +0800</pubDate>
 
     <description><![CDATA[<p>
-    <a href="https://elilif.github.io/articles/biography_of_otokichi.html">Read More</a>
+    <a href="https://harumikiyama.github.io/articles/biography_of_otokichi.html">Read More</a>
     </p>
     ]]></description>
   </item>
   <item>
     <title>新加坡的亚美尼亚使徒教会</title>
-    <link>https://elilif.github.io/articles/armenia_church.html</link>
-    <author>wanglc@tbamc.com (Harumi Kiyama)</author>
-    <guid isPermaLink="false">https://elilif.github.io/articles/armenia_church.html</guid>
+    <link>https://harumikiyama.github.io/articles/armenia_church.html</link>
+    <author>lucius0720@hotmail.com (Harumi Kiyama)</author>
+    <guid isPermaLink="false">https://harumikiyama.github.io/articles/armenia_church.html</guid>
     <pubDate>Wed, 14 Aug 2024 00:00:00 +0800</pubDate>
 
     <description><![CDATA[<p>
-    <a href="https://elilif.github.io/articles/armenia_church.html">Read More</a>
+    <a href="https://harumikiyama.github.io/articles/armenia_church.html">Read More</a>
     </p>
     ]]></description>
   </item>
   <item>
     <title>马六甲游记</title>
-    <link>https://elilif.github.io/articles/Malacca_traveling.html</link>
-    <author>wanglc@tbamc.com (Harumi Kiyama)</author>
-    <guid isPermaLink="false">https://elilif.github.io/articles/Malacca_traveling.html</guid>
+    <link>https://harumikiyama.github.io/articles/Malacca_traveling.html</link>
+    <author>lucius0720@hotmail.com (Harumi Kiyama)</author>
+    <guid isPermaLink="false">https://harumikiyama.github.io/articles/Malacca_traveling.html</guid>
     <pubDate>Wed, 14 Aug 2024 00:00:00 +0800</pubDate>
 
     <description><![CDATA[<p>
-    <a href="https://elilif.github.io/articles/Malacca_traveling.html">Read More</a>
+    <a href="https://harumikiyama.github.io/articles/Malacca_traveling.html">Read More</a>
     </p>
     ]]></description>
   </item>

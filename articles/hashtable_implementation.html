@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-08-18 Sun 20:50 -->
+<!-- 2024-08-18 Sun 23:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>hash table implementation</title>
@@ -247,14 +247,14 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org788b627">1. 前言</a></li>
-<li><a href="#org056a3ce">2. 拉链法</a></li>
-<li><a href="#orgb8c34c2">3. 开放地址法</a></li>
+<li><a href="#org419ff95">1. 前言</a></li>
+<li><a href="#orgb3aae83">2. 拉链法</a></li>
+<li><a href="#orgbdebc17">3. 开放地址法</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org788b627" class="outline-2">
-<h2 id="org788b627"><span class="section-number-2">1.</span> 前言</h2>
+<div id="outline-container-org419ff95" class="outline-2">
+<h2 id="org419ff95"><span class="section-number-2">1.</span> 前言</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 哈希表(<code>hash table</code>)是一种非常常用的数据结构, 它是以 <i>key-value</i> 的形式存储数据
@@ -360,8 +360,8 @@
 </ol>
 </div>
 </div>
-<div id="outline-container-org056a3ce" class="outline-2">
-<h2 id="org056a3ce"><span class="section-number-2">2.</span> 拉链法</h2>
+<div id="outline-container-orgb3aae83" class="outline-2">
+<h2 id="orgb3aae83"><span class="section-number-2">2.</span> 拉链法</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 所谓的链地址法就是说, 既然哈希碰撞是一定会发生的, 那么在每个哈希值对应的下标处储
@@ -400,8 +400,8 @@
 </div>
 </div>
 </div>
-<div id="outline-container-orgb8c34c2" class="outline-2">
-<h2 id="orgb8c34c2"><span class="section-number-2">3.</span> 开放地址法</h2>
+<div id="outline-container-orgbdebc17" class="outline-2">
+<h2 id="orgbdebc17"><span class="section-number-2">3.</span> 开放地址法</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 开放地址法的实现会相对于拉链法要难, 其解决哈希碰撞的思路是, 先根据哈希值得到对应
@@ -456,7 +456,7 @@ probe</code>) 来解决哈希碰撞的问题. 主要的原因是因为 <i>Python
    </script><div id="postamble" class="status">
 <hr class="Solid">
                                    <div class="info">
-                                     <span class="author">Author: Harumi Kiyama (<a href="mailto:wanglc@tbamc.com">wanglc@tbamc.com</a>)</span>
+                                     <span class="author">Author: Harumi Kiyama (<a href="mailto:lucius0720@hotmail.com">lucius0720@hotmail.com</a>)</span>
                                      <span class="date">Create Date: 2024-08-14</span>
                                      <span class="date">Last modified: 2024-08-18 Sun 19:27</span>
                                      <span>Creator: Emacs 31.0.50 (Org mode 9.7.9)</span>
