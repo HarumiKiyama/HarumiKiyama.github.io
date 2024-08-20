@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-08-18 Sun 23:23 -->
+<!-- 2024-08-20 Tue 14:57 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>计算机系统核心概念及软硬件实现</title>
@@ -211,96 +211,96 @@
 <h1 class="title">计算机系统核心概念及软硬件实现</h1>
 <div class="post-status"><span><i class='bx bx-calendar'></i>
 <span>2024-08-14</span></span>
-<span><i class='bx bx-edit'></i><span>2024-08-18 Sun 19:27</span></span></div><div id="table-of-contents" role="doc-toc">
+<span><i class='bx bx-edit'></i><span>2024-08-19 Mon 08:21</span></span></div><div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgc52d8fe">1. App7 层(应用层)</a></li>
-<li><a href="#org96f2885">2. HOL6 层(高级语言层)</a>
+<li><a href="#org88d5fc8">1. App7 层(应用层)</a></li>
+<li><a href="#org8b354d0">2. HOL6 层(高级语言层)</a>
 <ul>
-<li><a href="#orgda24bda">2.1. 变量</a></li>
-<li><a href="#orgc1ae304">2.2. 控制流</a></li>
-<li><a href="#org2e71f28">2.3. 函数</a></li>
-<li><a href="#orgf4e064b">2.4. 递归</a></li>
-<li><a href="#orgc1752c8">2.5. 动态内存分配</a></li>
+<li><a href="#org6708ffa">2.1. 变量</a></li>
+<li><a href="#org5540199">2.2. 控制流</a></li>
+<li><a href="#org2b0cf31">2.3. 函数</a></li>
+<li><a href="#org6234526">2.4. 递归</a></li>
+<li><a href="#orgaf0c8cf">2.5. 动态内存分配</a></li>
 </ul>
 </li>
-<li><a href="#org269b161">3. ISA3 层(指令集架构层)</a>
+<li><a href="#orgfd19c29">3. ISA3 层(指令集架构层)</a>
 <ul>
-<li><a href="#org39f7027">3.1. 信息的表示</a></li>
-<li><a href="#org2e9c6d1">3.2. 计算机体系结构</a>
+<li><a href="#org902aa16">3.1. 信息的表示</a></li>
+<li><a href="#org21c6ffa">3.2. 计算机体系结构</a>
 <ul>
-<li><a href="#org2706269">3.2.1. 4.1 和 4.2</a></li>
-<li><a href="#orgbd93946">3.2.2. 4.3 冯诺伊曼机器</a></li>
-<li><a href="#org2260759">3.2.3. 4.4 ISA3 层编程</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#org6eaa2c7">4. Asmb5 层(汇编层)</a>
-<ul>
-<li><a href="#org638e573">4.1. 汇编语言</a></li>
-<li><a href="#org43eea73">4.2. 编译到汇编层</a>
-<ul>
-<li><a href="#orgc0c8644">4.2.1. 栈寻址和局部变量</a></li>
-<li><a href="#org15f2a3a">4.2.2. 转移指令和控制流</a></li>
-<li><a href="#org586ee80">4.2.3. 函数调用和参数</a></li>
-<li><a href="#orgc5dfeb9">4.2.4. 变址寻址和数组</a></li>
-<li><a href="#org85ef50b">4.2.5. 动态内存分配</a></li>
-</ul>
-</li>
-<li><a href="#org500ec3e">4.3. 语言翻译原理</a></li>
-</ul>
-</li>
-<li><a href="#org6a29192">5. OS4 层(操作系统层)</a>
-<ul>
-<li><a href="#org033ddea">5.1. 进程管理</a>
-<ul>
-<li><a href="#orgd872bfd">5.1.1. 装载器</a></li>
-<li><a href="#orgc08eae2">5.1.2. 陷阱</a></li>
-<li><a href="#orga102e0c">5.1.3. 并发进程</a></li>
-<li><a href="#orgcdca5a5">5.1.4. 并发处理程序</a></li>
-</ul>
-</li>
-<li><a href="#org820d115">5.2. 储存管理</a>
-<ul>
-<li><a href="#org023ad53">5.2.1. 内存管理</a></li>
-<li><a href="#org5265e27">5.2.2. 文件管理</a></li>
+<li><a href="#orga4fcbef">3.2.1. 4.1 和 4.2</a></li>
+<li><a href="#org90168af">3.2.2. 4.3 冯诺伊曼机器</a></li>
+<li><a href="#orgd10df8c">3.2.3. 4.4 ISA3 层编程</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgf992abc">6. LG1 层(逻辑门层)</a>
+<li><a href="#orgacf3b72">4. Asmb5 层(汇编层)</a>
 <ul>
-<li><a href="#org683dc98">6.1. 组合电路</a></li>
-<li><a href="#orgabadba2">6.2. 时序电路</a></li>
+<li><a href="#org516298a">4.1. 汇编语言</a></li>
+<li><a href="#org32622eb">4.2. 编译到汇编层</a>
+<ul>
+<li><a href="#orgd90d998">4.2.1. 栈寻址和局部变量</a></li>
+<li><a href="#orgd9eae8b">4.2.2. 转移指令和控制流</a></li>
+<li><a href="#org72630dc">4.2.3. 函数调用和参数</a></li>
+<li><a href="#org3d90ecf">4.2.4. 变址寻址和数组</a></li>
+<li><a href="#org402dc2a">4.2.5. 动态内存分配</a></li>
 </ul>
 </li>
-<li><a href="#org3749037">7. Mc2 层(微代码层)</a>
+<li><a href="#orge68efb0">4.3. 语言翻译原理</a></li>
+</ul>
+</li>
+<li><a href="#org7c6bde2">5. OS4 层(操作系统层)</a>
 <ul>
-<li><a href="#orgdabb531">7.1. 计算机组成</a></li>
+<li><a href="#orgfb63ffe">5.1. 进程管理</a>
+<ul>
+<li><a href="#org86b1d69">5.1.1. 装载器</a></li>
+<li><a href="#org91498b4">5.1.2. 陷阱</a></li>
+<li><a href="#orgd4507c7">5.1.3. 并发进程</a></li>
+<li><a href="#org332b4d1">5.1.4. 并发处理程序</a></li>
+</ul>
+</li>
+<li><a href="#orgd09ec2c">5.2. 储存管理</a>
+<ul>
+<li><a href="#org54ccdec">5.2.1. 内存管理</a></li>
+<li><a href="#org5154b48">5.2.2. 文件管理</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org9d984bf">6. LG1 层(逻辑门层)</a>
+<ul>
+<li><a href="#org16dd450">6.1. 组合电路</a></li>
+<li><a href="#orgd51d299">6.2. 时序电路</a></li>
+</ul>
+</li>
+<li><a href="#orgdedad1a">7. Mc2 层(微代码层)</a>
+<ul>
+<li><a href="#org4bf56ee">7.1. 计算机组成</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc52d8fe" class="outline-2">
-<h2 id="orgc52d8fe"><span class="section-number-2">1.</span> App7 层(应用层)</h2>
+<div id="outline-container-org88d5fc8" class="outline-2">
+<h2 id="org88d5fc8"><span class="section-number-2">1.</span> App7 层(应用层)</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 论述一些软件的使用,可以跳过
 </p>
 </div>
 </div>
-<div id="outline-container-org96f2885" class="outline-2">
-<h2 id="org96f2885"><span class="section-number-2">2.</span> HOL6 层(高级语言层)</h2>
+<div id="outline-container-org8b354d0" class="outline-2">
+<h2 id="org8b354d0"><span class="section-number-2">2.</span> HOL6 层(高级语言层)</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 以 C++为例子论述高级语言的一些性质,具体的
 </p>
 </div>
-<div id="outline-container-orgda24bda" class="outline-3">
-<h3 id="orgda24bda"><span class="section-number-3">2.1.</span> 变量</h3>
+<div id="outline-container-org6708ffa" class="outline-3">
+<h3 id="org6708ffa"><span class="section-number-3">2.1.</span> 变量</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li>论述了 C++编译器执行的基本功能</li>
@@ -309,45 +309,45 @@
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc1ae304" class="outline-3">
-<h3 id="orgc1ae304"><span class="section-number-3">2.2.</span> 控制流</h3>
+<div id="outline-container-org5540199" class="outline-3">
+<h3 id="org5540199"><span class="section-number-3">2.2.</span> 控制流</h3>
 </div>
-<div id="outline-container-org2e71f28" class="outline-3">
-<h3 id="org2e71f28"><span class="section-number-3">2.3.</span> 函数</h3>
+<div id="outline-container-org2b0cf31" class="outline-3">
+<h3 id="org2b0cf31"><span class="section-number-3">2.3.</span> 函数</h3>
 </div>
-<div id="outline-container-orgf4e064b" class="outline-3">
-<h3 id="orgf4e064b"><span class="section-number-3">2.4.</span> 递归</h3>
+<div id="outline-container-org6234526" class="outline-3">
+<h3 id="org6234526"><span class="section-number-3">2.4.</span> 递归</h3>
 </div>
-<div id="outline-container-orgc1752c8" class="outline-3">
-<h3 id="orgc1752c8"><span class="section-number-3">2.5.</span> 动态内存分配</h3>
+<div id="outline-container-orgaf0c8cf" class="outline-3">
+<h3 id="orgaf0c8cf"><span class="section-number-3">2.5.</span> 动态内存分配</h3>
 </div>
 </div>
-<div id="outline-container-org269b161" class="outline-2">
-<h2 id="org269b161"><span class="section-number-2">3.</span> ISA3 层(指令集架构层)</h2>
+<div id="outline-container-orgfd19c29" class="outline-2">
+<h2 id="orgfd19c29"><span class="section-number-2">3.</span> ISA3 层(指令集架构层)</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org39f7027" class="outline-3">
-<h3 id="org39f7027"><span class="section-number-3">3.1.</span> 信息的表示</h3>
+<div id="outline-container-org902aa16" class="outline-3">
+<h3 id="org902aa16"><span class="section-number-3">3.1.</span> 信息的表示</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 描述了计算机中数据是如何保存的以及数据之间是如何进行运算的.计算机如何表示浮点数这部分内容很不错.
 </p>
 </div>
 </div>
-<div id="outline-container-org2e9c6d1" class="outline-3">
-<h3 id="org2e9c6d1"><span class="section-number-3">3.2.</span> 计算机体系结构</h3>
+<div id="outline-container-org21c6ffa" class="outline-3">
+<h3 id="org21c6ffa"><span class="section-number-3">3.2.</span> 计算机体系结构</h3>
 <div class="outline-text-3" id="text-3-2">
 </div>
-<div id="outline-container-org2706269" class="outline-4">
-<h4 id="org2706269"><span class="section-number-4">3.2.1.</span> 4.1 和 4.2</h4>
+<div id="outline-container-orga4fcbef" class="outline-4">
+<h4 id="orga4fcbef"><span class="section-number-4">3.2.1.</span> 4.1 和 4.2</h4>
 <div class="outline-text-4" id="text-3-2-1">
 <p>
 主要表述 pep8 的体系结构,比较详细,看的时候只要把握大概就好了.在做习题的时候会加深理解的.
 </p>
 </div>
 </div>
-<div id="outline-container-orgbd93946" class="outline-4">
-<h4 id="orgbd93946"><span class="section-number-4">3.2.2.</span> 4.3 冯诺伊曼机器</h4>
+<div id="outline-container-org90168af" class="outline-4">
+<h4 id="org90168af"><span class="section-number-4">3.2.2.</span> 4.3 冯诺伊曼机器</h4>
 <div class="outline-text-4" id="text-3-2-2">
 <p>
 讲述了冯诺伊曼机器的执行步骤,具体如下:
@@ -362,8 +362,8 @@ do{
 </p>
 </div>
 </div>
-<div id="outline-container-org2260759" class="outline-4">
-<h4 id="org2260759"><span class="section-number-4">3.2.3.</span> 4.4 ISA3 层编程</h4>
+<div id="outline-container-orgd10df8c" class="outline-4">
+<h4 id="orgd10df8c"><span class="section-number-4">3.2.3.</span> 4.4 ISA3 层编程</h4>
 <div class="outline-text-4" id="text-3-2-3">
 <p>
 描述了怎么样使用机器码给 pep8 编程 可以跳过,之后在 Asmb5 层进行编程
@@ -372,12 +372,12 @@ do{
 </div>
 </div>
 </div>
-<div id="outline-container-org6eaa2c7" class="outline-2">
-<h2 id="org6eaa2c7"><span class="section-number-2">4.</span> Asmb5 层(汇编层)</h2>
+<div id="outline-container-orgacf3b72" class="outline-2">
+<h2 id="orgacf3b72"><span class="section-number-2">4.</span> Asmb5 层(汇编层)</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-org638e573" class="outline-3">
-<h3 id="org638e573"><span class="section-number-3">4.1.</span> 汇编语言</h3>
+<div id="outline-container-org516298a" class="outline-3">
+<h3 id="org516298a"><span class="section-number-3">4.1.</span> 汇编语言</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 汇编层即是对 ISA3 层次的抽象.隐藏了 ISA3 层的细节.
@@ -387,15 +387,15 @@ do{
 </p>
 </div>
 </div>
-<div id="outline-container-org43eea73" class="outline-3">
-<h3 id="org43eea73"><span class="section-number-3">4.2.</span> 编译到汇编层</h3>
+<div id="outline-container-org32622eb" class="outline-3">
+<h3 id="org32622eb"><span class="section-number-3">4.2.</span> 编译到汇编层</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 主要讲解 C++和汇编语言之间的关系,C++的语句如何在汇编层实现
 </p>
 </div>
-<div id="outline-container-orgc0c8644" class="outline-4">
-<h4 id="orgc0c8644"><span class="section-number-4">4.2.1.</span> 栈寻址和局部变量</h4>
+<div id="outline-container-orgd90d998" class="outline-4">
+<h4 id="orgd90d998"><span class="section-number-4">4.2.1.</span> 栈寻址和局部变量</h4>
 <div class="outline-text-4" id="text-4-2-1">
 <p>
 讲述了汇编层如何进行栈寻址的,以及数据出栈入栈的操作
@@ -408,8 +408,8 @@ do{
 </ul>
 </div>
 </div>
-<div id="outline-container-org15f2a3a" class="outline-4">
-<h4 id="org15f2a3a"><span class="section-number-4">4.2.2.</span> 转移指令和控制流</h4>
+<div id="outline-container-orgd9eae8b" class="outline-4">
+<h4 id="orgd9eae8b"><span class="section-number-4">4.2.2.</span> 转移指令和控制流</h4>
 <div class="outline-text-4" id="text-4-2-2">
 <p>
 讲述了 pep8 的 8 个条件分支指令,每个条件分支检测 4 个状态位 N,Z,V,C 中的一个或者两个.
@@ -417,8 +417,8 @@ do{
 </p>
 </div>
 </div>
-<div id="outline-container-org586ee80" class="outline-4">
-<h4 id="org586ee80"><span class="section-number-4">4.2.3.</span> 函数调用和参数</h4>
+<div id="outline-container-org72630dc" class="outline-4">
+<h4 id="org72630dc"><span class="section-number-4">4.2.3.</span> 函数调用和参数</h4>
 <div class="outline-text-4" id="text-4-2-3">
 <p>
 C++层面的函数调用如何在汇编层面完成
@@ -449,8 +449,8 @@ C++直到 1996 年都没有 bool 类型</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc5dfeb9" class="outline-4">
-<h4 id="orgc5dfeb9"><span class="section-number-4">4.2.4.</span> 变址寻址和数组</h4>
+<div id="outline-container-org3d90ecf" class="outline-4">
+<h4 id="org3d90ecf"><span class="section-number-4">4.2.4.</span> 变址寻址和数组</h4>
 <div class="outline-text-4" id="text-4-2-4">
 <ul class="org-ul">
 <li>作为全局变量的数组
@@ -469,8 +469,8 @@ C++直到 1996 年都没有 bool 类型</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org85ef50b" class="outline-4">
-<h4 id="org85ef50b"><span class="section-number-4">4.2.5.</span> 动态内存分配</h4>
+<div id="outline-container-org402dc2a" class="outline-4">
+<h4 id="org402dc2a"><span class="section-number-4">4.2.5.</span> 动态内存分配</h4>
 <div class="outline-text-4" id="text-4-2-5">
 <p>
 讲述编译器怎样翻译指针和结构(struct)
@@ -497,8 +497,8 @@ C++直到 1996 年都没有 bool 类型</li>
 </div>
 </div>
 </div>
-<div id="outline-container-org500ec3e" class="outline-3">
-<h3 id="org500ec3e"><span class="section-number-3">4.3.</span> 语言翻译原理</h3>
+<div id="outline-container-orge68efb0" class="outline-3">
+<h3 id="orge68efb0"><span class="section-number-3">4.3.</span> 语言翻译原理</h3>
 <div class="outline-text-3" id="text-4-3">
 <p>
 计算机科学的基本问题,什么能够被自动化,人工语言的自动化翻译是计算机科学的核心.
@@ -518,35 +518,35 @@ C++直到 1996 年都没有 bool 类型</li>
 </div>
 </div>
 </div>
-<div id="outline-container-org6a29192" class="outline-2">
-<h2 id="org6a29192"><span class="section-number-2">5.</span> OS4 层(操作系统层)</h2>
+<div id="outline-container-org7c6bde2" class="outline-2">
+<h2 id="org7c6bde2"><span class="section-number-2">5.</span> OS4 层(操作系统层)</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 操作系统的目的是向高级语言提供一个更加方便的环境,并且有效分配系统资源(CPU 时间,主存,磁盘存储器)
 </p>
 </div>
-<div id="outline-container-org033ddea" class="outline-3">
-<h3 id="org033ddea"><span class="section-number-3">5.1.</span> 进程管理</h3>
+<div id="outline-container-orgfb63ffe" class="outline-3">
+<h3 id="orgfb63ffe"><span class="section-number-3">5.1.</span> 进程管理</h3>
 <div class="outline-text-3" id="text-5-1">
 </div>
-<div id="outline-container-orgd872bfd" class="outline-4">
-<h4 id="orgd872bfd"><span class="section-number-4">5.1.1.</span> 装载器</h4>
+<div id="outline-container-org86b1d69" class="outline-4">
+<h4 id="org86b1d69"><span class="section-number-4">5.1.1.</span> 装载器</h4>
 <div class="outline-text-4" id="text-5-1-1">
 <p>
 操作系统必须把适当的程序装载到主存并把 CPU 的控制交给这个程序来执行
 </p>
 </div>
 </div>
-<div id="outline-container-orgc08eae2" class="outline-4">
-<h4 id="orgc08eae2"><span class="section-number-4">5.1.2.</span> 陷阱</h4>
+<div id="outline-container-org91498b4" class="outline-4">
+<h4 id="org91498b4"><span class="section-number-4">5.1.2.</span> 陷阱</h4>
 <div class="outline-text-4" id="text-5-1-2">
 <p>
 某些在 ISA3 层没有的指令,当计算机取出具有这样一些操作码的指令时,会触发陷阱,调用操作系统提供的接口,来进行操作
 </p>
 </div>
 </div>
-<div id="outline-container-orga102e0c" class="outline-4">
-<h4 id="orga102e0c"><span class="section-number-4">5.1.3.</span> 并发进程</h4>
+<div id="outline-container-orgd4507c7" class="outline-4">
+<h4 id="orgd4507c7"><span class="section-number-4">5.1.3.</span> 并发进程</h4>
 <div class="outline-text-4" id="text-5-1-3">
 <p>
 中断分为两种
@@ -565,8 +565,8 @@ C++直到 1996 年都没有 bool 类型</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgcdca5a5" class="outline-4">
-<h4 id="orgcdca5a5"><span class="section-number-4">5.1.4.</span> 并发处理程序</h4>
+<div id="outline-container-org332b4d1" class="outline-4">
+<h4 id="org332b4d1"><span class="section-number-4">5.1.4.</span> 并发处理程序</h4>
 <div class="outline-text-4" id="text-5-1-4">
 <p>
   由于 HOL6 的赋值操作不是原子性的,进程间共享内存会导致出现预期以外的行为,所以需要设置临界区 <code>critical section</code> 即进程在执行该区域时,其他进程不能访问
@@ -581,89 +581,89 @@ C++直到 1996 年都没有 bool 类型</li>
 </div>
 </div>
 </div>
-<div id="outline-container-org820d115" class="outline-3">
-<h3 id="org820d115"><span class="section-number-3">5.2.</span> 储存管理</h3>
+<div id="outline-container-orgd09ec2c" class="outline-3">
+<h3 id="orgd09ec2c"><span class="section-number-3">5.2.</span> 储存管理</h3>
 <div class="outline-text-3" id="text-5-2">
 <p>
 操作系统如何分配储存空间的
 </p>
 </div>
-<div id="outline-container-org023ad53" class="outline-4">
-<h4 id="org023ad53"><span class="section-number-4">5.2.1.</span> 内存管理</h4>
+<div id="outline-container-org54ccdec" class="outline-4">
+<h4 id="org54ccdec"><span class="section-number-4">5.2.1.</span> 内存管理</h4>
 <div class="outline-text-4" id="text-5-2-1">
 </div>
 <ol class="org-ol">
-<li><a id="orge81d5a5"></a>单通道程序设计 <code>uniprogramming</code><br />
+<li><a id="orgfbeb928"></a>单通道程序设计 <code>uniprogramming</code><br />
 <div class="outline-text-5" id="text-5-2-1-1">
 <p>
 最简单的内存分配技术,操作系统在内存的一段,应用程序在另一端,系统一次只执行一个作业,每个作业都加载在同一位置
 </p>
 </div>
 </li>
-<li><a id="org1bbeffa"></a>优点<br />
+<li><a id="org82ca279"></a>优点<br />
 <div class="outline-text-5" id="text-5-2-1-2">
 <p>
 设计简单,系统小,适用于嵌入式系统
 </p>
 </div>
 </li>
-<li><a id="org24b80af"></a>缺点<br />
+<li><a id="org87f972a"></a>缺点<br />
 <div class="outline-text-5" id="text-5-2-1-3">
 <p>
 CPU 利用率低,作业调度不灵活
 </p>
 </div>
 </li>
-<li><a id="orgbb75d1c"></a>固定分区多通道程序设计 <code>fixed-partition multiprogramming</code><br />
+<li><a id="org00d09f3"></a>固定分区多通道程序设计 <code>fixed-partition multiprogramming</code><br />
 <div class="outline-text-5" id="text-5-2-1-4">
 <p>
 对单通道的改进,把主存分成了不同的分区,分别储存不同的正在执行的进程.分区的大小不会改变
 </p>
 </div>
 </li>
-<li><a id="orgde5c1c9"></a>缺点<br />
+<li><a id="org8da78e6"></a>缺点<br />
 <div class="outline-text-5" id="text-5-2-1-5">
 <p>
 分区不灵活,浪费了内存空间,对更高的层级暴露了过多的细节
 </p>
 </div>
 </li>
-<li><a id="org6c99ca0"></a>可变分区多通道程序设计 <code>variable-partition multiprogramming</code><br />
+<li><a id="org93851ee"></a>可变分区多通道程序设计 <code>variable-partition multiprogramming</code><br />
 <div class="outline-text-5" id="text-5-2-1-6">
 <p>
 对固定分区的改进,操作系统只在作业加载进内存时才设立分区,且分区的大小正好适合作业的大小
 </p>
 </div>
 </li>
-<li><a id="org47e2902"></a>缺点<br />
+<li><a id="org6f33d62"></a>缺点<br />
 <div class="outline-text-5" id="text-5-2-1-7">
 <p>
 由于分配的算法,会出现小的内存片段,因为过于小,导致难以分配作业,即使可以通过合并回收内存,仍然是个很耗时的操作
 </p>
 </div>
 </li>
-<li><a id="org61e3494"></a>分页 <code>paging</code><br />
+<li><a id="org7d7aa1f"></a>分页 <code>paging</code><br />
 <div class="outline-text-5" id="text-5-2-1-8">
 <p>
 对可变分区的改进,把程序分解开,是去适合洞.
 </p>
 </div>
 </li>
-<li><a id="org53f5893"></a>缺点<br />
+<li><a id="org9c41b08"></a>缺点<br />
 <div class="outline-text-5" id="text-5-2-1-9">
 <p>
 需要维护一个页表每次引用内存都需要先访问页表,比较耗时.
 </p>
 </div>
 </li>
-<li><a id="org058a292"></a>虚拟内存 <code>virtual memory</code><br />
+<li><a id="orgb63bb30"></a>虚拟内存 <code>virtual memory</code><br />
 <div class="outline-text-5" id="text-5-2-1-10">
 <p>
 对分页的改进,不是一次性把所有页加载进内存,而是有选择的加载页
 </p>
 </div>
 </li>
-<li><a id="org94fbc73"></a>缺点<br />
+<li><a id="org0751d0f"></a>缺点<br />
 <div class="outline-text-5" id="text-5-2-1-11">
 <p>
 引发缺页时必须从磁盘中加载缺页,耗时较长
@@ -672,8 +672,8 @@ CPU 利用率低,作业调度不灵活
 </li>
 </ol>
 </div>
-<div id="outline-container-org5265e27" class="outline-4">
-<h4 id="org5265e27"><span class="section-number-4">5.2.2.</span> 文件管理</h4>
+<div id="outline-container-org5154b48" class="outline-4">
+<h4 id="org5154b48"><span class="section-number-4">5.2.2.</span> 文件管理</h4>
 <div class="outline-text-4" id="text-5-2-2">
 <p>
 操作系统负责维护磁盘上的文件,连接起 HOL6 或 Asmb5 层程序员看到的文件的逻辑组织和文件在磁盘上的无力组织
@@ -691,8 +691,8 @@ CPU 利用率低,作业调度不灵活
 </div>
 </div>
 </div>
-<div id="outline-container-orgf992abc" class="outline-2">
-<h2 id="orgf992abc"><span class="section-number-2">6.</span> LG1 层(逻辑门层)</h2>
+<div id="outline-container-org9d984bf" class="outline-2">
+<h2 id="org9d984bf"><span class="section-number-2">6.</span> LG1 层(逻辑门层)</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 LG1 层是一切的基础,因为考虑到成本的因素,所以会加入 Mc2 层来减少开发成本,但是这样速度就会变慢.
@@ -700,8 +700,8 @@ LG1 层的电路有两种基本的结构,组合电路和时序电路.
 组合电路即只由输入决定输出的电路,时序电路即输入确定,但是输出却可能随时间变化的电路
 </p>
 </div>
-<div id="outline-container-org683dc98" class="outline-3">
-<h3 id="org683dc98"><span class="section-number-3">6.1.</span> 组合电路</h3>
+<div id="outline-container-org16dd450" class="outline-3">
+<h3 id="org16dd450"><span class="section-number-3">6.1.</span> 组合电路</h3>
 <div class="outline-text-3" id="text-6-1">
 <p>
 描述组合电路的行为有三种方式:
@@ -719,8 +719,8 @@ LG1 层的电路有两种基本的结构,组合电路和时序电路.
 </p>
 </div>
 </div>
-<div id="outline-container-orgabadba2" class="outline-3">
-<h3 id="orgabadba2"><span class="section-number-3">6.2.</span> 时序电路</h3>
+<div id="outline-container-orgd51d299" class="outline-3">
+<h3 id="orgd51d299"><span class="section-number-3">6.2.</span> 时序电路</h3>
 <div class="outline-text-3" id="text-6-2">
 <p>
 相比组合电路来说是有状态的电路
@@ -731,12 +731,12 @@ LG1 层的电路有两种基本的结构,组合电路和时序电路.
 </div>
 </div>
 </div>
-<div id="outline-container-org3749037" class="outline-2">
-<h2 id="org3749037"><span class="section-number-2">7.</span> Mc2 层(微代码层)</h2>
+<div id="outline-container-orgdedad1a" class="outline-2">
+<h2 id="orgdedad1a"><span class="section-number-2">7.</span> Mc2 层(微代码层)</h2>
 <div class="outline-text-2" id="text-7">
 </div>
-<div id="outline-container-orgdabb531" class="outline-3">
-<h3 id="orgdabb531"><span class="section-number-3">7.1.</span> 计算机组成</h3>
+<div id="outline-container-org4bf56ee" class="outline-3">
+<h3 id="org4bf56ee"><span class="section-number-3">7.1.</span> 计算机组成</h3>
 <div class="outline-text-3" id="text-7-1">
 <p>
 介绍 LG1 层是如何与 ISA3 层联系的
@@ -765,7 +765,7 @@ Mc2 层的作用即是控制 LG1 层的数据流动,然后给 ISA3 层提供统�
                                    <div class="info">
                                      <span class="author">Author: Harumi Kiyama (<a href="mailto:lucius0720@hotmail.com">lucius0720@hotmail.com</a>)</span>
                                      <span class="date">Create Date: 2024-08-14</span>
-                                     <span class="date">Last modified: 2024-08-18 Sun 19:27</span>
+                                     <span class="date">Last modified: 2024-08-19 Mon 08:21</span>
                                      <span>Creator: Emacs 31.0.50 (Org mode 9.7.9)</span>
                                    </div>
 </div>
