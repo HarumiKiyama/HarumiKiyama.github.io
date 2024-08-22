@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-08-20 Tue 14:57 -->
+<!-- 2024-08-22 Thu 22:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Segment Tree</title>
@@ -247,25 +247,25 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org0c5deff">1. 前言</a></li>
-<li><a href="#orgcfc653c">2. 线段树的性质</a></li>
-<li><a href="#org82294d2">3. 如何实现一个线段树</a></li>
-<li><a href="#org5ba7f44">4. 线段树的区间查询</a></li>
-<li><a href="#orgc85a687">5. 线段树的区间修改与惰性标记</a></li>
-<li><a href="#org9e8d965">6. 应当在什么时候使用线段树</a></li>
+<li><a href="#org61771ba">1. 前言</a></li>
+<li><a href="#org66978d9">2. 线段树的性质</a></li>
+<li><a href="#org2447b7e">3. 如何实现一个线段树</a></li>
+<li><a href="#orgdbad757">4. 线段树的区间查询</a></li>
+<li><a href="#org8839757">5. 线段树的区间修改与惰性标记</a></li>
+<li><a href="#org861f676">6. 应当在什么时候使用线段树</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org0c5deff" class="outline-2">
-<h2 id="org0c5deff"><span class="section-number-2">1.</span> 前言</h2>
+<div id="outline-container-org61771ba" class="outline-2">
+<h2 id="org61771ba"><span class="section-number-2">1.</span> 前言</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 本文主要从三个方面来讲述线段树 (<i>segment tree</i>) 是什么. 即, 线段树的特性, 线段树的实现方式, 以及线段树可以解决什么问题这三个方面. 另, 本文主要参考了 <i>oi-wiki</i><sup><label for="fnr.1" class="footref">1</label></sup><input id="fnr.1" class="footref-toggle" type="checkbox">.
 </p>
 </div>
 </div>
-<div id="outline-container-orgcfc653c" class="outline-2">
-<h2 id="orgcfc653c"><span class="section-number-2">2.</span> 线段树的性质</h2>
+<div id="outline-container-org66978d9" class="outline-2">
+<h2 id="org66978d9"><span class="section-number-2">2.</span> 线段树的性质</h2>
 <div class="outline-text-2" id="text-2">
 <blockquote>
 <p>
@@ -274,14 +274,14 @@
 </blockquote>
 </div>
 </div>
-<div id="outline-container-org82294d2" class="outline-2">
-<h2 id="org82294d2"><span class="section-number-2">3.</span> 如何实现一个线段树</h2>
+<div id="outline-container-org2447b7e" class="outline-2">
+<h2 id="org2447b7e"><span class="section-number-2">3.</span> 如何实现一个线段树</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 设有一大小为 \(5\) 的数组 \(a=\{10,11,12,13,14\}\) 其所转化为的线段树如下图
 </p>
 
-<div id="org850d698" class="figure">
+<div id="org918d0b8" class="figure">
 <p><img src="static/segment_tree/tree.png" alt="tree.png" />
 </p>
 </div>
@@ -291,15 +291,15 @@
 如果以递归的方式实现线段树的话会比较简单, 如下, 代码参考 <i>oi-wiki</i>
 </p>
 <div class="org-src-container">
-<pre class="src src-cpp"><code><span style="color: #65d590;">void</span> <span style="color: #6fd560;">build</span>(<span style="color: #65d590;">int</span> <span style="color: #6fcad0;">s</span>, <span style="color: #65d590;">int</span> <span style="color: #6fcad0;">t</span>, <span style="color: #65d590;">int</span> <span style="color: #6fcad0;">p</span>) {
-  <span style="color: #eab780; font-style: italic;">// </span><span style="color: #eab780; font-style: italic;">&#23545; [s,t] &#21306;&#38388;&#24314;&#31435;&#32447;&#27573;&#26641;,&#24403;&#21069;&#26681;&#30340;&#32534;&#21495;&#20026; p</span>
-  <span style="color: #e4b53f; font-weight: bold;">if</span> (s == t) {
+<pre class="src src-cpp"><code><span style="color: #a9c99f;">void</span> <span style="color: #8fcfd0;">build</span>(<span style="color: #a9c99f;">int</span> <span style="color: #ffaacf;">s</span>, <span style="color: #a9c99f;">int</span> <span style="color: #ffaacf;">t</span>, <span style="color: #a9c99f;">int</span> <span style="color: #ffaacf;">p</span>) {
+  <span style="color: #a0a0cf; font-style: italic;">// </span><span style="color: #a0a0cf; font-style: italic;">&#23545; [s,t] &#21306;&#38388;&#24314;&#31435;&#32447;&#27573;&#26641;,&#24403;&#21069;&#26681;&#30340;&#32534;&#21495;&#20026; p</span>
+  <span style="color: #deb07a; font-weight: bold;">if</span> (s == t) {
     d[p] = a[s];
-    <span style="color: #e4b53f; font-weight: bold;">return</span>;
+    <span style="color: #deb07a; font-weight: bold;">return</span>;
   }
-  <span style="color: #65d590;">int</span> <span style="color: #6fcad0;">m</span> = (s + t) / 2;
+  <span style="color: #a9c99f;">int</span> <span style="color: #ffaacf;">m</span> = (s + t) / 2;
   build(s, m, p * 2), build(m + 1, t, p * 2 + 1);
-  <span style="color: #eab780; font-style: italic;">// </span><span style="color: #eab780; font-style: italic;">&#36882;&#24402;&#23545;&#24038;&#21491;&#21306;&#38388;&#24314;&#26641;</span>
+  <span style="color: #a0a0cf; font-style: italic;">// </span><span style="color: #a0a0cf; font-style: italic;">&#36882;&#24402;&#23545;&#24038;&#21491;&#21306;&#38388;&#24314;&#26641;</span>
   d[p] = d[p * 2] + d[(p * 2) + 1];
 }
 </code></pre>
@@ -309,31 +309,31 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org5ba7f44" class="outline-2">
-<h2 id="org5ba7f44"><span class="section-number-2">4.</span> 线段树的区间查询</h2>
+<div id="outline-container-orgdbad757" class="outline-2">
+<h2 id="orgdbad757"><span class="section-number-2">4.</span> 线段树的区间查询</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 一般的, 如果要查询区间, \([l,r]\) 则可以将其拆成最多为 \(O(\log n)\) 个极大的区间, 合并这些区间即可求出 \([l,r]\) 的答案.
 代码如下
 </p>
 <div class="org-src-container">
-<pre class="src src-cpp"><code><span style="color: #65d590;">int</span> <span style="color: #6fd560;">getsum</span>(<span style="color: #65d590;">int</span> <span style="color: #6fcad0;">l</span>, <span style="color: #65d590;">int</span> <span style="color: #6fcad0;">r</span>, <span style="color: #65d590;">int</span> <span style="color: #6fcad0;">s</span>, <span style="color: #65d590;">int</span> <span style="color: #6fcad0;">t</span>, <span style="color: #65d590;">int</span> <span style="color: #6fcad0;">p</span>) {
-  <span style="color: #eab780; font-style: italic;">// </span><span style="color: #eab780; font-style: italic;">[l,r] &#20026;&#26597;&#35810;&#21306;&#38388;,[s,t] &#20026;&#24403;&#21069;&#33410;&#28857;&#21253;&#21547;&#30340;&#21306;&#38388;,p &#20026;&#24403;&#21069;&#33410;&#28857;&#30340;&#32534;&#21495;</span>
-  <span style="color: #e4b53f; font-weight: bold;">if</span> (l &lt;= s &amp;&amp; t &lt;= r)
-    <span style="color: #e4b53f; font-weight: bold;">return</span> d[p];  <span style="color: #eab780; font-style: italic;">// </span><span style="color: #eab780; font-style: italic;">&#24403;&#21069;&#21306;&#38388;&#20026;&#35810;&#38382;&#21306;&#38388;&#30340;&#23376;&#38598;&#26102;&#30452;&#25509;&#36820;&#22238;&#24403;&#21069;&#21306;&#38388;&#30340;&#21644;</span>
-  <span style="color: #65d590;">int</span> <span style="color: #6fcad0;">m</span> = (s + t) / 2, <span style="color: #6fcad0;">sum</span> = 0;
-  <span style="color: #e4b53f; font-weight: bold;">if</span> (l &lt;= m) sum += getsum(l, r, s, m, p * 2);
-  <span style="color: #eab780; font-style: italic;">// </span><span style="color: #eab780; font-style: italic;">&#22914;&#26524;&#24038;&#20799;&#23376;&#20195;&#34920;&#30340;&#21306;&#38388; [l,m] &#19982;&#35810;&#38382;&#21306;&#38388;&#26377;&#20132;&#38598;,&#21017;&#36882;&#24402;&#26597;&#35810;&#24038;&#20799;&#23376;</span>
-  <span style="color: #e4b53f; font-weight: bold;">if</span> (r &gt; m) sum += getsum(l, r, m + 1, t, p * 2 + 1);
-  <span style="color: #eab780; font-style: italic;">// </span><span style="color: #eab780; font-style: italic;">&#22914;&#26524;&#21491;&#20799;&#23376;&#20195;&#34920;&#30340;&#21306;&#38388; [m+1,r] &#19982;&#35810;&#38382;&#21306;&#38388;&#26377;&#20132;&#38598;,&#21017;&#36882;&#24402;&#26597;&#35810;&#21491;&#20799;&#23376;</span>
-  <span style="color: #e4b53f; font-weight: bold;">return</span> sum;
+<pre class="src src-cpp"><code><span style="color: #a9c99f;">int</span> <span style="color: #8fcfd0;">getsum</span>(<span style="color: #a9c99f;">int</span> <span style="color: #ffaacf;">l</span>, <span style="color: #a9c99f;">int</span> <span style="color: #ffaacf;">r</span>, <span style="color: #a9c99f;">int</span> <span style="color: #ffaacf;">s</span>, <span style="color: #a9c99f;">int</span> <span style="color: #ffaacf;">t</span>, <span style="color: #a9c99f;">int</span> <span style="color: #ffaacf;">p</span>) {
+  <span style="color: #a0a0cf; font-style: italic;">// </span><span style="color: #a0a0cf; font-style: italic;">[l,r] &#20026;&#26597;&#35810;&#21306;&#38388;,[s,t] &#20026;&#24403;&#21069;&#33410;&#28857;&#21253;&#21547;&#30340;&#21306;&#38388;,p &#20026;&#24403;&#21069;&#33410;&#28857;&#30340;&#32534;&#21495;</span>
+  <span style="color: #deb07a; font-weight: bold;">if</span> (l &lt;= s &amp;&amp; t &lt;= r)
+    <span style="color: #deb07a; font-weight: bold;">return</span> d[p];  <span style="color: #a0a0cf; font-style: italic;">// </span><span style="color: #a0a0cf; font-style: italic;">&#24403;&#21069;&#21306;&#38388;&#20026;&#35810;&#38382;&#21306;&#38388;&#30340;&#23376;&#38598;&#26102;&#30452;&#25509;&#36820;&#22238;&#24403;&#21069;&#21306;&#38388;&#30340;&#21644;</span>
+  <span style="color: #a9c99f;">int</span> <span style="color: #ffaacf;">m</span> = (s + t) / 2, <span style="color: #ffaacf;">sum</span> = 0;
+  <span style="color: #deb07a; font-weight: bold;">if</span> (l &lt;= m) sum += getsum(l, r, s, m, p * 2);
+  <span style="color: #a0a0cf; font-style: italic;">// </span><span style="color: #a0a0cf; font-style: italic;">&#22914;&#26524;&#24038;&#20799;&#23376;&#20195;&#34920;&#30340;&#21306;&#38388; [l,m] &#19982;&#35810;&#38382;&#21306;&#38388;&#26377;&#20132;&#38598;,&#21017;&#36882;&#24402;&#26597;&#35810;&#24038;&#20799;&#23376;</span>
+  <span style="color: #deb07a; font-weight: bold;">if</span> (r &gt; m) sum += getsum(l, r, m + 1, t, p * 2 + 1);
+  <span style="color: #a0a0cf; font-style: italic;">// </span><span style="color: #a0a0cf; font-style: italic;">&#22914;&#26524;&#21491;&#20799;&#23376;&#20195;&#34920;&#30340;&#21306;&#38388; [m+1,r] &#19982;&#35810;&#38382;&#21306;&#38388;&#26377;&#20132;&#38598;,&#21017;&#36882;&#24402;&#26597;&#35810;&#21491;&#20799;&#23376;</span>
+  <span style="color: #deb07a; font-weight: bold;">return</span> sum;
 }
 </code></pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgc85a687" class="outline-2">
-<h2 id="orgc85a687"><span class="section-number-2">5.</span> 线段树的区间修改与惰性标记</h2>
+<div id="outline-container-org8839757" class="outline-2">
+<h2 id="org8839757"><span class="section-number-2">5.</span> 线段树的区间修改与惰性标记</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 当修改了 \([l,r]\) 中的至少一个元素时, 需要把所有包含了 \([l,r]\) 中的节点的线段树节点进行更新, 时间复杂度太大, 难以承受.
@@ -341,22 +341,22 @@
 区间修改(区间加上某个值)
 </p>
 <div class="org-src-container">
-<pre class="src src-cpp"><code><span style="color: #65d590;">void</span> <span style="color: #6fd560;">update</span>(<span style="color: #65d590;">int</span> <span style="color: #6fcad0;">l</span>, <span style="color: #65d590;">int</span> <span style="color: #6fcad0;">r</span>, <span style="color: #65d590;">int</span> <span style="color: #6fcad0;">c</span>, <span style="color: #65d590;">int</span> <span style="color: #6fcad0;">s</span>, <span style="color: #65d590;">int</span> <span style="color: #6fcad0;">t</span>, <span style="color: #65d590;">int</span> <span style="color: #6fcad0;">p</span>) {
-  <span style="color: #eab780; font-style: italic;">// </span><span style="color: #eab780; font-style: italic;">[l,r] &#20026;&#20462;&#25913;&#21306;&#38388;,c &#20026;&#34987;&#20462;&#25913;&#30340;&#20803;&#32032;&#30340;&#21464;&#21270;&#37327;,[s,t] &#20026;&#24403;&#21069;&#33410;&#28857;&#21253;&#21547;&#30340;&#21306;&#38388;,p</span>
-  <span style="color: #eab780; font-style: italic;">// </span><span style="color: #eab780; font-style: italic;">&#20026;&#24403;&#21069;&#33410;&#28857;&#30340;&#32534;&#21495;</span>
-  <span style="color: #e4b53f; font-weight: bold;">if</span> (l &lt;= s &amp;&amp; t &lt;= r) {
+<pre class="src src-cpp"><code><span style="color: #a9c99f;">void</span> <span style="color: #8fcfd0;">update</span>(<span style="color: #a9c99f;">int</span> <span style="color: #ffaacf;">l</span>, <span style="color: #a9c99f;">int</span> <span style="color: #ffaacf;">r</span>, <span style="color: #a9c99f;">int</span> <span style="color: #ffaacf;">c</span>, <span style="color: #a9c99f;">int</span> <span style="color: #ffaacf;">s</span>, <span style="color: #a9c99f;">int</span> <span style="color: #ffaacf;">t</span>, <span style="color: #a9c99f;">int</span> <span style="color: #ffaacf;">p</span>) {
+  <span style="color: #a0a0cf; font-style: italic;">// </span><span style="color: #a0a0cf; font-style: italic;">[l,r] &#20026;&#20462;&#25913;&#21306;&#38388;,c &#20026;&#34987;&#20462;&#25913;&#30340;&#20803;&#32032;&#30340;&#21464;&#21270;&#37327;,[s,t] &#20026;&#24403;&#21069;&#33410;&#28857;&#21253;&#21547;&#30340;&#21306;&#38388;,p</span>
+  <span style="color: #a0a0cf; font-style: italic;">// </span><span style="color: #a0a0cf; font-style: italic;">&#20026;&#24403;&#21069;&#33410;&#28857;&#30340;&#32534;&#21495;</span>
+  <span style="color: #deb07a; font-weight: bold;">if</span> (l &lt;= s &amp;&amp; t &lt;= r) {
     d[p] += (t - s + 1) * c, b[p] += c;
-    <span style="color: #e4b53f; font-weight: bold;">return</span>;
-  }  <span style="color: #eab780; font-style: italic;">// </span><span style="color: #eab780; font-style: italic;">&#24403;&#21069;&#21306;&#38388;&#20026;&#20462;&#25913;&#21306;&#38388;&#30340;&#23376;&#38598;&#26102;&#30452;&#25509;&#20462;&#25913;&#24403;&#21069;&#33410;&#28857;&#30340;&#20540;,&#28982;&#21518;&#25171;&#26631;&#35760;,&#32467;&#26463;&#20462;&#25913;</span>
-  <span style="color: #65d590;">int</span> <span style="color: #6fcad0;">m</span> = (s + t) / 2;
-  <span style="color: #e4b53f; font-weight: bold;">if</span> (b[p] &amp;&amp; s != t) {
-    <span style="color: #eab780; font-style: italic;">// </span><span style="color: #eab780; font-style: italic;">&#22914;&#26524;&#24403;&#21069;&#33410;&#28857;&#30340;&#25042;&#26631;&#35760;&#38750;&#31354;,&#21017;&#26356;&#26032;&#24403;&#21069;&#33410;&#28857;&#20004;&#20010;&#23376;&#33410;&#28857;&#30340;&#20540;&#21644;&#25042;&#26631;&#35760;&#20540;</span>
+    <span style="color: #deb07a; font-weight: bold;">return</span>;
+  }  <span style="color: #a0a0cf; font-style: italic;">// </span><span style="color: #a0a0cf; font-style: italic;">&#24403;&#21069;&#21306;&#38388;&#20026;&#20462;&#25913;&#21306;&#38388;&#30340;&#23376;&#38598;&#26102;&#30452;&#25509;&#20462;&#25913;&#24403;&#21069;&#33410;&#28857;&#30340;&#20540;,&#28982;&#21518;&#25171;&#26631;&#35760;,&#32467;&#26463;&#20462;&#25913;</span>
+  <span style="color: #a9c99f;">int</span> <span style="color: #ffaacf;">m</span> = (s + t) / 2;
+  <span style="color: #deb07a; font-weight: bold;">if</span> (b[p] &amp;&amp; s != t) {
+    <span style="color: #a0a0cf; font-style: italic;">// </span><span style="color: #a0a0cf; font-style: italic;">&#22914;&#26524;&#24403;&#21069;&#33410;&#28857;&#30340;&#25042;&#26631;&#35760;&#38750;&#31354;,&#21017;&#26356;&#26032;&#24403;&#21069;&#33410;&#28857;&#20004;&#20010;&#23376;&#33410;&#28857;&#30340;&#20540;&#21644;&#25042;&#26631;&#35760;&#20540;</span>
     d[p * 2] += b[p] * (m - s + 1), d[p * 2 + 1] += b[p] * (t - m);
-    b[p * 2] += b[p], b[p * 2 + 1] += b[p];  <span style="color: #eab780; font-style: italic;">// </span><span style="color: #eab780; font-style: italic;">&#23558;&#26631;&#35760;&#19979;&#20256;&#32473;&#23376;&#33410;&#28857;</span>
-    b[p] = 0;                                <span style="color: #eab780; font-style: italic;">// </span><span style="color: #eab780; font-style: italic;">&#28165;&#31354;&#24403;&#21069;&#33410;&#28857;&#30340;&#26631;&#35760;</span>
+    b[p * 2] += b[p], b[p * 2 + 1] += b[p];  <span style="color: #a0a0cf; font-style: italic;">// </span><span style="color: #a0a0cf; font-style: italic;">&#23558;&#26631;&#35760;&#19979;&#20256;&#32473;&#23376;&#33410;&#28857;</span>
+    b[p] = 0;                                <span style="color: #a0a0cf; font-style: italic;">// </span><span style="color: #a0a0cf; font-style: italic;">&#28165;&#31354;&#24403;&#21069;&#33410;&#28857;&#30340;&#26631;&#35760;</span>
   }
-  <span style="color: #e4b53f; font-weight: bold;">if</span> (l &lt;= m) update(l, r, c, s, m, p * 2);
-  <span style="color: #e4b53f; font-weight: bold;">if</span> (r &gt; m) update(l, r, c, m + 1, t, p * 2 + 1);
+  <span style="color: #deb07a; font-weight: bold;">if</span> (l &lt;= m) update(l, r, c, s, m, p * 2);
+  <span style="color: #deb07a; font-weight: bold;">if</span> (r &gt; m) update(l, r, c, m + 1, t, p * 2 + 1);
   d[p] = d[p * 2] + d[p * 2 + 1];
 }
 </code></pre>
@@ -365,29 +365,29 @@
 区间查询(区间求和)
 </p>
 <div class="org-src-container">
-<pre class="src src-cpp"><code><span style="color: #65d590;">int</span> <span style="color: #6fd560;">getsum</span>(<span style="color: #65d590;">int</span> <span style="color: #6fcad0;">l</span>, <span style="color: #65d590;">int</span> <span style="color: #6fcad0;">r</span>, <span style="color: #65d590;">int</span> <span style="color: #6fcad0;">s</span>, <span style="color: #65d590;">int</span> <span style="color: #6fcad0;">t</span>, <span style="color: #65d590;">int</span> <span style="color: #6fcad0;">p</span>) {
-  <span style="color: #eab780; font-style: italic;">// </span><span style="color: #eab780; font-style: italic;">[l,r] &#20026;&#20462;&#25913;&#21306;&#38388;,c &#20026;&#34987;&#20462;&#25913;&#30340;&#20803;&#32032;&#30340;&#21464;&#21270;&#37327;,[s,t] &#20026;&#24403;&#21069;&#33410;&#28857;&#21253;&#21547;&#30340;&#21306;&#38388;,p</span>
-  <span style="color: #eab780; font-style: italic;">// </span><span style="color: #eab780; font-style: italic;">&#20026;&#24403;&#21069;&#33410;&#28857;&#30340;&#32534;&#21495;</span>
-  <span style="color: #e4b53f; font-weight: bold;">if</span> (l &lt;= s &amp;&amp; t &lt;= r) <span style="color: #e4b53f; font-weight: bold;">return</span> d[p];
-  <span style="color: #eab780; font-style: italic;">// </span><span style="color: #eab780; font-style: italic;">&#24403;&#21069;&#21306;&#38388;&#20026;&#35810;&#38382;&#21306;&#38388;&#30340;&#23376;&#38598;&#26102;&#30452;&#25509;&#36820;&#22238;&#24403;&#21069;&#21306;&#38388;&#30340;&#21644;</span>
-  <span style="color: #65d590;">int</span> <span style="color: #6fcad0;">m</span> = (s + t) / 2;
-  <span style="color: #e4b53f; font-weight: bold;">if</span> (b[p]) {
-    <span style="color: #eab780; font-style: italic;">// </span><span style="color: #eab780; font-style: italic;">&#22914;&#26524;&#24403;&#21069;&#33410;&#28857;&#30340;&#25042;&#26631;&#35760;&#38750;&#31354;,&#21017;&#26356;&#26032;&#24403;&#21069;&#33410;&#28857;&#20004;&#20010;&#23376;&#33410;&#28857;&#30340;&#20540;&#21644;&#25042;&#26631;&#35760;&#20540;</span>
+<pre class="src src-cpp"><code><span style="color: #a9c99f;">int</span> <span style="color: #8fcfd0;">getsum</span>(<span style="color: #a9c99f;">int</span> <span style="color: #ffaacf;">l</span>, <span style="color: #a9c99f;">int</span> <span style="color: #ffaacf;">r</span>, <span style="color: #a9c99f;">int</span> <span style="color: #ffaacf;">s</span>, <span style="color: #a9c99f;">int</span> <span style="color: #ffaacf;">t</span>, <span style="color: #a9c99f;">int</span> <span style="color: #ffaacf;">p</span>) {
+  <span style="color: #a0a0cf; font-style: italic;">// </span><span style="color: #a0a0cf; font-style: italic;">[l,r] &#20026;&#20462;&#25913;&#21306;&#38388;,c &#20026;&#34987;&#20462;&#25913;&#30340;&#20803;&#32032;&#30340;&#21464;&#21270;&#37327;,[s,t] &#20026;&#24403;&#21069;&#33410;&#28857;&#21253;&#21547;&#30340;&#21306;&#38388;,p</span>
+  <span style="color: #a0a0cf; font-style: italic;">// </span><span style="color: #a0a0cf; font-style: italic;">&#20026;&#24403;&#21069;&#33410;&#28857;&#30340;&#32534;&#21495;</span>
+  <span style="color: #deb07a; font-weight: bold;">if</span> (l &lt;= s &amp;&amp; t &lt;= r) <span style="color: #deb07a; font-weight: bold;">return</span> d[p];
+  <span style="color: #a0a0cf; font-style: italic;">// </span><span style="color: #a0a0cf; font-style: italic;">&#24403;&#21069;&#21306;&#38388;&#20026;&#35810;&#38382;&#21306;&#38388;&#30340;&#23376;&#38598;&#26102;&#30452;&#25509;&#36820;&#22238;&#24403;&#21069;&#21306;&#38388;&#30340;&#21644;</span>
+  <span style="color: #a9c99f;">int</span> <span style="color: #ffaacf;">m</span> = (s + t) / 2;
+  <span style="color: #deb07a; font-weight: bold;">if</span> (b[p]) {
+    <span style="color: #a0a0cf; font-style: italic;">// </span><span style="color: #a0a0cf; font-style: italic;">&#22914;&#26524;&#24403;&#21069;&#33410;&#28857;&#30340;&#25042;&#26631;&#35760;&#38750;&#31354;,&#21017;&#26356;&#26032;&#24403;&#21069;&#33410;&#28857;&#20004;&#20010;&#23376;&#33410;&#28857;&#30340;&#20540;&#21644;&#25042;&#26631;&#35760;&#20540;</span>
     d[p * 2] += b[p] * (m - s + 1), d[p * 2 + 1] += b[p] * (t - m),
-        b[p * 2] += b[p], b[p * 2 + 1] += b[p];  <span style="color: #eab780; font-style: italic;">// </span><span style="color: #eab780; font-style: italic;">&#23558;&#26631;&#35760;&#19979;&#20256;&#32473;&#23376;&#33410;&#28857;</span>
-    b[p] = 0;                                    <span style="color: #eab780; font-style: italic;">// </span><span style="color: #eab780; font-style: italic;">&#28165;&#31354;&#24403;&#21069;&#33410;&#28857;&#30340;&#26631;&#35760;</span>
+        b[p * 2] += b[p], b[p * 2 + 1] += b[p];  <span style="color: #a0a0cf; font-style: italic;">// </span><span style="color: #a0a0cf; font-style: italic;">&#23558;&#26631;&#35760;&#19979;&#20256;&#32473;&#23376;&#33410;&#28857;</span>
+    b[p] = 0;                                    <span style="color: #a0a0cf; font-style: italic;">// </span><span style="color: #a0a0cf; font-style: italic;">&#28165;&#31354;&#24403;&#21069;&#33410;&#28857;&#30340;&#26631;&#35760;</span>
   }
-  <span style="color: #65d590;">int</span> <span style="color: #6fcad0;">sum</span> = 0;
-  <span style="color: #e4b53f; font-weight: bold;">if</span> (l &lt;= m) sum = getsum(l, r, s, m, p * 2);
-  <span style="color: #e4b53f; font-weight: bold;">if</span> (r &gt; m) sum += getsum(l, r, m + 1, t, p * 2 + 1);
-  <span style="color: #e4b53f; font-weight: bold;">return</span> sum;
+  <span style="color: #a9c99f;">int</span> <span style="color: #ffaacf;">sum</span> = 0;
+  <span style="color: #deb07a; font-weight: bold;">if</span> (l &lt;= m) sum = getsum(l, r, s, m, p * 2);
+  <span style="color: #deb07a; font-weight: bold;">if</span> (r &gt; m) sum += getsum(l, r, m + 1, t, p * 2 + 1);
+  <span style="color: #deb07a; font-weight: bold;">return</span> sum;
 }
 </code></pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org9e8d965" class="outline-2">
-<h2 id="org9e8d965"><span class="section-number-2">6.</span> 应当在什么时候使用线段树</h2>
+<div id="outline-container-org861f676" class="outline-2">
+<h2 id="org861f676"><span class="section-number-2">6.</span> 应当在什么时候使用线段树</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 具体主要应用在对区间进行诸如求和,求最大值,求最小值操作的场景
@@ -434,6 +434,8 @@
                                      <span class="author">Author: Harumi Kiyama (<a href="mailto:lucius0720@hotmail.com">lucius0720@hotmail.com</a>)</span>
                                      <span class="date">Create Date: 2024-08-14</span>
                                      <span class="date">Last modified: 2024-08-20 Tue 14:49</span>
+                                     <span><img src="../static/emacs.png" alt="emacs.png"/></span>
+                                     <span><img src="../static/orgmode.svg" alt="orgmode.svg"></span>
                                      <span>Creator: Emacs 31.0.50 (Org mode 9.7.9)</span>
                                    </div>
 </div>

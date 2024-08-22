@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-08-20 Tue 14:57 -->
+<!-- 2024-08-22 Thu 22:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>What is select</title>
@@ -215,14 +215,14 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgdaa3026">1. 前言</a></li>
-<li><a href="#orgde2b4ff">2. select 是什么</a></li>
-<li><a href="#org636c9b6">3. 为什么需要 select</a></li>
+<li><a href="#orgcc0ce7e">1. 前言</a></li>
+<li><a href="#org95a2f21">2. select 是什么</a></li>
+<li><a href="#org6d1bd65">3. 为什么需要 select</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgdaa3026" class="outline-2">
-<h2 id="orgdaa3026"><span class="section-number-2">1.</span> 前言</h2>
+<div id="outline-container-orgcc0ce7e" class="outline-2">
+<h2 id="orgcc0ce7e"><span class="section-number-2">1.</span> 前言</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 select, poll 还有 epoll 是什么, 这个问题一直能够时不时的看到, 网上找了很多资料要么是语焉不详, 要么就是在解释这些 api 是如何处理 IO 多路复用的(<code>IO multiplexing</code>), 然后再对 IO 多路复用做一些以其昏昏使人昭昭的解释. 从某种角度来说这个问题也和某个函数式编程当中的经常有初学者问的问题, 即什么是 <i>monad</i> 一样, 网上有很多种解释, 但是如果没有去使用过是完全不会明白 <i>monad</i> 是什么的. 这也是工科和理科最大的一个区别吧, 站在工科的视角来看, 对于概念的定义并没有那么重要, 关键是如果讲这些概念应用到实际问题上去. 而理科的话则是需要死扣定义, 因为只有定义清晰了, 才可以创造出一个共同的语境(<code>context</code>), 这之后对于这个概念的讨论才有意义, 这方面最严谨的莫过于近现代数学公理化之后留下的遗产了.
@@ -234,8 +234,8 @@ select, poll 还有 epoll 是什么, 这个问题可以分成两部分, 第一�
 </p>
 </div>
 </div>
-<div id="outline-container-orgde2b4ff" class="outline-2">
-<h2 id="orgde2b4ff"><span class="section-number-2">2.</span> select 是什么</h2>
+<div id="outline-container-org95a2f21" class="outline-2">
+<h2 id="org95a2f21"><span class="section-number-2">2.</span> select 是什么</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 这个问题或许是最好回答的了, 如前所述, 代码的定义以及实现都是明明白白写在文档以及代码中的. 这里只做摘录以及必要的解释
@@ -246,9 +246,9 @@ select 的规范是写在 <i>POSIX Programmer's Manual</i> 中的, 如果读者�
 在 <i>pselect</i> 的页面中, 我们可以看到 <i>select</i> 和 <i>pselect</i> 的函数签名, <i>pselect</i> 的签名如下
 </p>
 <div class="org-src-container">
-<pre class="src src-c"><code><span style="color: #65d590;">int</span> <span style="color: #6fd560;">pselect</span>(<span style="color: #65d590;">int</span> <span style="color: #6fcad0;">nfds</span>, <span style="color: #65d590;">fd_set</span> *<span style="color: #e4b53f; font-weight: bold;">restrict</span> <span style="color: #6fcad0;">readfds</span>, <span style="color: #65d590;">fd_set</span> *<span style="color: #e4b53f; font-weight: bold;">restrict</span> <span style="color: #6fcad0;">writefds</span>,
-            <span style="color: #65d590;">fd_set</span> *<span style="color: #e4b53f; font-weight: bold;">restrict</span> <span style="color: #6fcad0;">errorfds</span>, <span style="color: #e4b53f; font-weight: bold;">const</span> <span style="color: #e4b53f; font-weight: bold;">struct</span> <span style="color: #65d590;">timespec</span> *<span style="color: #e4b53f; font-weight: bold;">restrict</span> <span style="color: #6fcad0;">timeout</span>,
-            <span style="color: #e4b53f; font-weight: bold;">const</span> <span style="color: #65d590;">sigset_t</span> *<span style="color: #e4b53f; font-weight: bold;">restrict</span> <span style="color: #6fcad0;">sigmask</span>);
+<pre class="src src-c"><code><span style="color: #a9c99f;">int</span> <span style="color: #8fcfd0;">pselect</span>(<span style="color: #a9c99f;">int</span> <span style="color: #ffaacf;">nfds</span>, <span style="color: #a9c99f;">fd_set</span> *<span style="color: #deb07a; font-weight: bold;">restrict</span> <span style="color: #ffaacf;">readfds</span>, <span style="color: #a9c99f;">fd_set</span> *<span style="color: #deb07a; font-weight: bold;">restrict</span> <span style="color: #ffaacf;">writefds</span>,
+            <span style="color: #a9c99f;">fd_set</span> *<span style="color: #deb07a; font-weight: bold;">restrict</span> <span style="color: #ffaacf;">errorfds</span>, <span style="color: #deb07a; font-weight: bold;">const</span> <span style="color: #deb07a; font-weight: bold;">struct</span> <span style="color: #a9c99f;">timespec</span> *<span style="color: #deb07a; font-weight: bold;">restrict</span> <span style="color: #ffaacf;">timeout</span>,
+            <span style="color: #deb07a; font-weight: bold;">const</span> <span style="color: #a9c99f;">sigset_t</span> *<span style="color: #deb07a; font-weight: bold;">restrict</span> <span style="color: #ffaacf;">sigmask</span>);
 </code></pre>
 </div>
 <p>
@@ -265,8 +265,8 @@ returning.
 <i>select</i> 的函数签名如下
 </p>
 <div class="org-src-container">
-<pre class="src src-c"><code><span style="color: #65d590;">int</span> <span style="color: #6fd560;">select</span> (<span style="color: #65d590;">int</span> <span style="color: #6fcad0;">NFDS</span>, <span style="color: #65d590;">fd_set</span> *<span style="color: #6fcad0;">READ</span>-FDS, <span style="color: #65d590;">fd_set</span> *<span style="color: #6fcad0;">WRITE</span>-FDS,
-          <span style="color: #65d590;">fd_set</span> *<span style="color: #6fcad0;">EXCEPT</span>-FDS, <span style="color: #e4b53f; font-weight: bold;">struct</span> <span style="color: #65d590;">timeval</span> *<span style="color: #6fcad0;">TIMEOUT</span>);
+<pre class="src src-c"><code><span style="color: #a9c99f;">int</span> <span style="color: #8fcfd0;">select</span> (<span style="color: #a9c99f;">int</span> <span style="color: #ffaacf;">NFDS</span>, <span style="color: #a9c99f;">fd_set</span> *<span style="color: #ffaacf;">READ</span>-FDS, <span style="color: #a9c99f;">fd_set</span> *<span style="color: #ffaacf;">WRITE</span>-FDS,
+          <span style="color: #a9c99f;">fd_set</span> *<span style="color: #ffaacf;">EXCEPT</span>-FDS, <span style="color: #deb07a; font-weight: bold;">struct</span> <span style="color: #a9c99f;">timeval</span> *<span style="color: #ffaacf;">TIMEOUT</span>);
 </code></pre>
 </div>
 <p>
@@ -285,10 +285,10 @@ of the sets should result in the error EBADF.
 fd<sub>set</sub> 为一个 <i>bit array</i>, 在 <i>POSIX Programmer's Manual</i> 中没有明确定义, 但是在 <i>linux</i> 的内核代码中有实现, 如下所示
 </p>
 <div class="org-src-container">
-<pre class="src src-c"><code><span style="color: #ff7f4f;">#define</span> <span style="color: #6fcad0;">__FD_SETSIZE</span> 1024
-<span style="color: #e4b53f; font-weight: bold;">typedef</span> <span style="color: #e4b53f; font-weight: bold;">struct</span> {
-  <span style="color: #65d590;">unsigned</span> <span style="color: #65d590;">long</span> <span style="color: #6fcad0;">fds_bits</span>[__FD_SETSIZE / (8 * <span style="color: #e4b53f; font-weight: bold;">sizeof</span>(<span style="color: #65d590;">long</span>))];
-} <span style="color: #65d590;">__kernel_fd_set</span>;
+<pre class="src src-c"><code><span style="color: #65c5a8;">#define</span> <span style="color: #ffaacf;">__FD_SETSIZE</span> 1024
+<span style="color: #deb07a; font-weight: bold;">typedef</span> <span style="color: #deb07a; font-weight: bold;">struct</span> {
+  <span style="color: #a9c99f;">unsigned</span> <span style="color: #a9c99f;">long</span> <span style="color: #ffaacf;">fds_bits</span>[__FD_SETSIZE / (8 * <span style="color: #deb07a; font-weight: bold;">sizeof</span>(<span style="color: #a9c99f;">long</span>))];
+} <span style="color: #a9c99f;">__kernel_fd_set</span>;
 </code></pre>
 </div>
 
@@ -357,8 +357,8 @@ to by the readfds, writefds, and errorfds arguments shall have all bits set to 0
 </blockquote>
 </div>
 </div>
-<div id="outline-container-org636c9b6" class="outline-2">
-<h2 id="org636c9b6"><span class="section-number-2">3.</span> 为什么需要 select</h2>
+<div id="outline-container-org6d1bd65" class="outline-2">
+<h2 id="org6d1bd65"><span class="section-number-2">3.</span> 为什么需要 select</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 select 在 1983 年被首次引入 BSD 中, 用于实现 IO 多路复用(<code>IO multiplexing</code>). 多路复用早期是一个通信行业的词汇, 指的是将多种信号合并通过同一媒介传播, 在计算机科学中多路复用指的是
@@ -395,6 +395,8 @@ become "ready" for some class of I/O operation (e.g., input possible)
                                      <span class="author">Author: Harumi Kiyama (<a href="mailto:lucius0720@hotmail.com">lucius0720@hotmail.com</a>)</span>
                                      <span class="date">Create Date: 2024-08-14</span>
                                      <span class="date">Last modified: 2024-08-19 Mon 08:21</span>
+                                     <span><img src="../static/emacs.png" alt="emacs.png"/></span>
+                                     <span><img src="../static/orgmode.svg" alt="orgmode.svg"></span>
                                      <span>Creator: Emacs 31.0.50 (Org mode 9.7.9)</span>
                                    </div>
 </div>

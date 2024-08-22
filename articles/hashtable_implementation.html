@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-08-20 Tue 14:57 -->
+<!-- 2024-08-22 Thu 22:11 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>hash table implementation</title>
@@ -247,14 +247,14 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgc604a16">1. 前言</a></li>
-<li><a href="#org869da2e">2. 拉链法</a></li>
-<li><a href="#org384d0da">3. 开放地址法</a></li>
+<li><a href="#orgb5aae5a">1. 前言</a></li>
+<li><a href="#org3207905">2. 拉链法</a></li>
+<li><a href="#org111378f">3. 开放地址法</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgc604a16" class="outline-2">
-<h2 id="orgc604a16"><span class="section-number-2">1.</span> 前言</h2>
+<div id="outline-container-orgb5aae5a" class="outline-2">
+<h2 id="orgb5aae5a"><span class="section-number-2">1.</span> 前言</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 哈希表(<code>hash table</code>)是一种非常常用的数据结构, 它是以 <i>key-value</i> 的形式存储数据
@@ -268,8 +268,8 @@
 希函数便是把 <i>key</i> 转换成字符串, 然后返回这个字符串的长度.如下
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><code><span style="color: #e4b53f; font-weight: bold;">def</span> <span style="color: #6fd560;">hash</span>(key):
-    <span style="color: #e4b53f; font-weight: bold;">return</span> <span style="color: #e7a06f; font-weight: bold;">len</span>(<span style="color: #e7a06f; font-weight: bold;">str</span>(key))
+<pre class="src src-python"><code><span style="color: #deb07a; font-weight: bold;">def</span> <span style="color: #8fcfd0;">hash</span>(key):
+    <span style="color: #deb07a; font-weight: bold;">return</span> <span style="color: #e3b0c0; font-weight: bold;">len</span>(<span style="color: #e3b0c0; font-weight: bold;">str</span>(key))
 </code></pre>
 </div>
 <p>
@@ -287,13 +287,13 @@
 希值是一定不 会有碰撞的.
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><code><span style="color: #e4b53f; font-weight: bold;">def</span> <span style="color: #6fd560;">hash</span>(key):
-    <span style="color: #6fcad0;">length</span> = <span style="color: #e7a06f; font-weight: bold;">len</span>(key)
-    <span style="color: #6fcad0;">rv</span> = 0
-    <span style="color: #e4b53f; font-weight: bold;">for</span> i <span style="color: #e4b53f; font-weight: bold;">in</span> <span style="color: #e7a06f; font-weight: bold;">range</span>(length-1, -1, -1):
-        <span style="color: #6fcad0;">rv</span> += (<span style="color: #e7a06f; font-weight: bold;">ord</span>(key[i])- <span style="color: #e7a06f; font-weight: bold;">ord</span>(<span style="color: #ffa21f;">'a'</span>) + 1) * 27 ** (length-1-i)
-    <span style="color: #e4b53f; font-weight: bold;">return</span> rv
-<span style="color: #e4b53f; font-weight: bold;">return</span> <span style="color: #e7a06f; font-weight: bold;">hash</span>(<span style="color: #ffa21f;">"abc"</span>)
+<pre class="src src-python"><code><span style="color: #deb07a; font-weight: bold;">def</span> <span style="color: #8fcfd0;">hash</span>(key):
+    <span style="color: #ffaacf;">length</span> = <span style="color: #e3b0c0; font-weight: bold;">len</span>(key)
+    <span style="color: #ffaacf;">rv</span> = 0
+    <span style="color: #deb07a; font-weight: bold;">for</span> i <span style="color: #deb07a; font-weight: bold;">in</span> <span style="color: #e3b0c0; font-weight: bold;">range</span>(length-1, -1, -1):
+        <span style="color: #ffaacf;">rv</span> += (<span style="color: #e3b0c0; font-weight: bold;">ord</span>(key[i])- <span style="color: #e3b0c0; font-weight: bold;">ord</span>(<span style="color: #f3a0a0;">'a'</span>) + 1) * 27 ** (length-1-i)
+    <span style="color: #deb07a; font-weight: bold;">return</span> rv
+<span style="color: #deb07a; font-weight: bold;">return</span> <span style="color: #e3b0c0; font-weight: bold;">hash</span>(<span style="color: #f3a0a0;">"abc"</span>)
 </code></pre>
 </div>
 <p>
@@ -302,27 +302,27 @@
 函数来实现我们的不会碰撞的哈希表的话, 将会是这样的.
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><code><span style="color: #e4b53f; font-weight: bold;">class</span> <span style="color: #65d590;">HashTable</span>:
-    <span style="color: #e4b53f; font-weight: bold;">def</span> <span style="color: #6fd560;">__init__</span>(<span style="color: #e4b53f; font-weight: bold;">self</span>):
-        <span style="color: #e4b53f; font-weight: bold;">self</span>.<span style="color: #6fcad0;">_l</span>=[]
+<pre class="src src-python"><code><span style="color: #deb07a; font-weight: bold;">class</span> <span style="color: #a9c99f;">HashTable</span>:
+    <span style="color: #deb07a; font-weight: bold;">def</span> <span style="color: #8fcfd0;">__init__</span>(<span style="color: #deb07a; font-weight: bold;">self</span>):
+        <span style="color: #deb07a; font-weight: bold;">self</span>.<span style="color: #ffaacf;">_l</span>=[]
 
-    <span style="color: #e4b53f; font-weight: bold;">def</span> <span style="color: #6fd560;">hash</span>(<span style="color: #e4b53f; font-weight: bold;">self</span>,key):
-        <span style="color: #6fcad0;">length</span> = <span style="color: #e7a06f; font-weight: bold;">len</span>(key)
-        <span style="color: #6fcad0;">rv</span> = 0
-        <span style="color: #e4b53f; font-weight: bold;">for</span> i <span style="color: #e4b53f; font-weight: bold;">in</span> <span style="color: #e7a06f; font-weight: bold;">range</span>(length-1, -1, -1):
-            <span style="color: #6fcad0;">rv</span> += (<span style="color: #e7a06f; font-weight: bold;">ord</span>(key[i])- <span style="color: #e7a06f; font-weight: bold;">ord</span>(<span style="color: #ffa21f;">'a'</span>)) * 26 ** (length-1-i)
-        <span style="color: #e4b53f; font-weight: bold;">return</span> rv
+    <span style="color: #deb07a; font-weight: bold;">def</span> <span style="color: #8fcfd0;">hash</span>(<span style="color: #deb07a; font-weight: bold;">self</span>,key):
+        <span style="color: #ffaacf;">length</span> = <span style="color: #e3b0c0; font-weight: bold;">len</span>(key)
+        <span style="color: #ffaacf;">rv</span> = 0
+        <span style="color: #deb07a; font-weight: bold;">for</span> i <span style="color: #deb07a; font-weight: bold;">in</span> <span style="color: #e3b0c0; font-weight: bold;">range</span>(length-1, -1, -1):
+            <span style="color: #ffaacf;">rv</span> += (<span style="color: #e3b0c0; font-weight: bold;">ord</span>(key[i])- <span style="color: #e3b0c0; font-weight: bold;">ord</span>(<span style="color: #f3a0a0;">'a'</span>)) * 26 ** (length-1-i)
+        <span style="color: #deb07a; font-weight: bold;">return</span> rv
 
-    <span style="color: #e4b53f; font-weight: bold;">def</span> <span style="color: #6fd560;">__setitem__</span>(<span style="color: #e4b53f; font-weight: bold;">self</span>, key, val):
-        <span style="color: #6fcad0;">hash_v</span> = <span style="color: #e4b53f; font-weight: bold;">self</span>.<span style="color: #e7a06f; font-weight: bold;">hash</span>(key)
-        <span style="color: #e4b53f; font-weight: bold;">if</span> <span style="color: #e7a06f; font-weight: bold;">len</span>(<span style="color: #e4b53f; font-weight: bold;">self</span>._l) &lt;= hash_v:
-            <span style="color: #e4b53f; font-weight: bold;">for</span> _ <span style="color: #e4b53f; font-weight: bold;">in</span> <span style="color: #e7a06f; font-weight: bold;">range</span>(hash_v-<span style="color: #e7a06f; font-weight: bold;">len</span>(<span style="color: #e4b53f; font-weight: bold;">self</span>._l)+1):
-                <span style="color: #e4b53f; font-weight: bold;">self</span>._l.append(0)
-        <span style="color: #e4b53f; font-weight: bold;">self</span>.<span style="color: #6fcad0;">_l</span>[hash_v] = val
+    <span style="color: #deb07a; font-weight: bold;">def</span> <span style="color: #8fcfd0;">__setitem__</span>(<span style="color: #deb07a; font-weight: bold;">self</span>, key, val):
+        <span style="color: #ffaacf;">hash_v</span> = <span style="color: #deb07a; font-weight: bold;">self</span>.<span style="color: #e3b0c0; font-weight: bold;">hash</span>(key)
+        <span style="color: #deb07a; font-weight: bold;">if</span> <span style="color: #e3b0c0; font-weight: bold;">len</span>(<span style="color: #deb07a; font-weight: bold;">self</span>._l) &lt;= hash_v:
+            <span style="color: #deb07a; font-weight: bold;">for</span> _ <span style="color: #deb07a; font-weight: bold;">in</span> <span style="color: #e3b0c0; font-weight: bold;">range</span>(hash_v-<span style="color: #e3b0c0; font-weight: bold;">len</span>(<span style="color: #deb07a; font-weight: bold;">self</span>._l)+1):
+                <span style="color: #deb07a; font-weight: bold;">self</span>._l.append(0)
+        <span style="color: #deb07a; font-weight: bold;">self</span>.<span style="color: #ffaacf;">_l</span>[hash_v] = val
 
-    <span style="color: #e4b53f; font-weight: bold;">def</span> <span style="color: #6fd560;">__getitem__</span>(<span style="color: #e4b53f; font-weight: bold;">self</span>, key):
-        <span style="color: #6fcad0;">hash_v</span> = <span style="color: #e4b53f; font-weight: bold;">self</span>.<span style="color: #e7a06f; font-weight: bold;">hash</span>(key)
-        <span style="color: #e4b53f; font-weight: bold;">return</span> <span style="color: #e4b53f; font-weight: bold;">self</span>._l[hash_v]
+    <span style="color: #deb07a; font-weight: bold;">def</span> <span style="color: #8fcfd0;">__getitem__</span>(<span style="color: #deb07a; font-weight: bold;">self</span>, key):
+        <span style="color: #ffaacf;">hash_v</span> = <span style="color: #deb07a; font-weight: bold;">self</span>.<span style="color: #e3b0c0; font-weight: bold;">hash</span>(key)
+        <span style="color: #deb07a; font-weight: bold;">return</span> <span style="color: #deb07a; font-weight: bold;">self</span>._l[hash_v]
 </code></pre>
 </div>
 <p>
@@ -333,8 +333,8 @@
 事实上 <b>小写英文字符构成的字符串</b> 的这个限制是可以取消的, 把这个算法推广就是:
 </p>
 <div class="org-src-container">
-<pre class="src src-latex"><code>&#23545;&#20110;&#19968;&#20010;&#20803;&#32032;&#20010;&#25968;&#20026; <span style="color: #ffa21f;">$n$</span> &#30340;&#26377;&#38480;&#38598;&#21512; <span style="color: #ffa21f;">$s$</span>, &#33509;&#26377;&#24207;&#24207;&#21015; <span style="color: #ffa21f;">$key$</span>, &#23545;&#20110; <span style="color: #ffa21f;">$\forall x\in</span>
-<span style="color: #ffa21f;">key$</span> &#26377; <span style="color: #ffa21f;">$x\in s$</span>, &#21017;&#21487;&#20197;&#25226; <span style="color: #ffa21f;">$key$</span> &#35270;&#20026;&#19968;&#20010; <span style="color: #ffa21f;">$n+1$</span> &#36827;&#21046;&#30340;&#25972;&#25968;(&#20043;&#25152;&#20197;&#26159; <span style="color: #ffa21f;">$n+1$</span> &#26159;&#22240;&#20026;
+<pre class="src src-latex"><code>&#23545;&#20110;&#19968;&#20010;&#20803;&#32032;&#20010;&#25968;&#20026; <span style="color: #f3a0a0;">$n$</span> &#30340;&#26377;&#38480;&#38598;&#21512; <span style="color: #f3a0a0;">$s$</span>, &#33509;&#26377;&#24207;&#24207;&#21015; <span style="color: #f3a0a0;">$key$</span>, &#23545;&#20110; <span style="color: #f3a0a0;">$\forall x\in</span>
+<span style="color: #f3a0a0;">key$</span> &#26377; <span style="color: #f3a0a0;">$x\in s$</span>, &#21017;&#21487;&#20197;&#25226; <span style="color: #f3a0a0;">$key$</span> &#35270;&#20026;&#19968;&#20010; <span style="color: #f3a0a0;">$n+1$</span> &#36827;&#21046;&#30340;&#25972;&#25968;(&#20043;&#25152;&#20197;&#26159; <span style="color: #f3a0a0;">$n+1$</span> &#26159;&#22240;&#20026;
 &#20250;&#26377; /leading-zero/ &#30340;&#38382;&#39064;)
 </code></pre>
 </div>
@@ -360,8 +360,8 @@
 </ol>
 </div>
 </div>
-<div id="outline-container-org869da2e" class="outline-2">
-<h2 id="org869da2e"><span class="section-number-2">2.</span> 拉链法</h2>
+<div id="outline-container-org3207905" class="outline-2">
+<h2 id="org3207905"><span class="section-number-2">2.</span> 拉链法</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 所谓的链地址法就是说, 既然哈希碰撞是一定会发生的, 那么在每个哈希值对应的下标处储
@@ -372,36 +372,36 @@
 码如下<sup><label for="fnr.3" class="footref">3</label></sup><input id="fnr.3" class="footref-toggle" type="checkbox">
 </p>
 <div class="org-src-container">
-<pre class="src src-c"><code><span style="color: #e4b53f; font-weight: bold;">const</span> <span style="color: #65d590;">int</span> <span style="color: #6fcad0;">SIZE</span> = 1000000;
-<span style="color: #e4b53f; font-weight: bold;">const</span> <span style="color: #65d590;">int</span> <span style="color: #6fcad0;">M</span> = 999997;
-<span style="color: #e4b53f; font-weight: bold;">struct</span> <span style="color: #65d590;">HashTable</span> {
-  <span style="color: #e4b53f; font-weight: bold;">struct</span> <span style="color: #65d590;">Node</span> {
-    <span style="color: #65d590;">int</span> <span style="color: #6fcad0;">next</span>, <span style="color: #6fcad0;">value</span>, <span style="color: #6fcad0;">key</span>;
-  } <span style="color: #6fcad0;">data</span>[SIZE];
-  <span style="color: #65d590;">int</span> <span style="color: #6fcad0;">head</span>[M], <span style="color: #6fcad0;">size</span>;
-  <span style="color: #65d590;">int</span> <span style="color: #6fd560;">f</span>(<span style="color: #65d590;">int</span> <span style="color: #6fcad0;">key</span>) { <span style="color: #e4b53f; font-weight: bold;">return</span> key % M; }
-  <span style="color: #65d590;">int</span> <span style="color: #6fd560;">get</span>(<span style="color: #65d590;">int</span> <span style="color: #6fcad0;">key</span>) {
-    <span style="color: #e4b53f; font-weight: bold;">for</span> (<span style="color: #65d590;">int</span> <span style="color: #6fcad0;">p</span> = head[f(key)]; p; p = data[p].next)
-      <span style="color: #e4b53f; font-weight: bold;">if</span> (data[p].key == key) <span style="color: #e4b53f; font-weight: bold;">return</span> data[p].value;
-    <span style="color: #e4b53f; font-weight: bold;">return</span> -1;
+<pre class="src src-c"><code><span style="color: #deb07a; font-weight: bold;">const</span> <span style="color: #a9c99f;">int</span> <span style="color: #ffaacf;">SIZE</span> = 1000000;
+<span style="color: #deb07a; font-weight: bold;">const</span> <span style="color: #a9c99f;">int</span> <span style="color: #ffaacf;">M</span> = 999997;
+<span style="color: #deb07a; font-weight: bold;">struct</span> <span style="color: #a9c99f;">HashTable</span> {
+  <span style="color: #deb07a; font-weight: bold;">struct</span> <span style="color: #a9c99f;">Node</span> {
+    <span style="color: #a9c99f;">int</span> <span style="color: #ffaacf;">next</span>, <span style="color: #ffaacf;">value</span>, <span style="color: #ffaacf;">key</span>;
+  } <span style="color: #ffaacf;">data</span>[SIZE];
+  <span style="color: #a9c99f;">int</span> <span style="color: #ffaacf;">head</span>[M], <span style="color: #ffaacf;">size</span>;
+  <span style="color: #a9c99f;">int</span> <span style="color: #8fcfd0;">f</span>(<span style="color: #a9c99f;">int</span> <span style="color: #ffaacf;">key</span>) { <span style="color: #deb07a; font-weight: bold;">return</span> key % M; }
+  <span style="color: #a9c99f;">int</span> <span style="color: #8fcfd0;">get</span>(<span style="color: #a9c99f;">int</span> <span style="color: #ffaacf;">key</span>) {
+    <span style="color: #deb07a; font-weight: bold;">for</span> (<span style="color: #a9c99f;">int</span> <span style="color: #ffaacf;">p</span> = head[f(key)]; p; p = data[p].next)
+      <span style="color: #deb07a; font-weight: bold;">if</span> (data[p].key == key) <span style="color: #deb07a; font-weight: bold;">return</span> data[p].value;
+    <span style="color: #deb07a; font-weight: bold;">return</span> -1;
   }
-  <span style="color: #65d590;">int</span> <span style="color: #6fd560;">modify</span>(<span style="color: #65d590;">int</span> <span style="color: #6fcad0;">key</span>, <span style="color: #65d590;">int</span> <span style="color: #6fcad0;">value</span>) {
-    <span style="color: #e4b53f; font-weight: bold;">for</span> (<span style="color: #65d590;">int</span> <span style="color: #6fcad0;">p</span> = head[f(key)]; p; p = data[p].next)
-      <span style="color: #e4b53f; font-weight: bold;">if</span> (data[p].key == key) <span style="color: #e4b53f; font-weight: bold;">return</span> data[p].value = value;
+  <span style="color: #a9c99f;">int</span> <span style="color: #8fcfd0;">modify</span>(<span style="color: #a9c99f;">int</span> <span style="color: #ffaacf;">key</span>, <span style="color: #a9c99f;">int</span> <span style="color: #ffaacf;">value</span>) {
+    <span style="color: #deb07a; font-weight: bold;">for</span> (<span style="color: #a9c99f;">int</span> <span style="color: #ffaacf;">p</span> = head[f(key)]; p; p = data[p].next)
+      <span style="color: #deb07a; font-weight: bold;">if</span> (data[p].key == key) <span style="color: #deb07a; font-weight: bold;">return</span> data[p].value = value;
   }
-  <span style="color: #65d590;">int</span> <span style="color: #6fd560;">add</span>(<span style="color: #65d590;">int</span> <span style="color: #6fcad0;">key</span>, <span style="color: #65d590;">int</span> <span style="color: #6fcad0;">value</span>) {
-    <span style="color: #e4b53f; font-weight: bold;">if</span> (get(key) != -1) <span style="color: #e4b53f; font-weight: bold;">return</span> -1;
+  <span style="color: #a9c99f;">int</span> <span style="color: #8fcfd0;">add</span>(<span style="color: #a9c99f;">int</span> <span style="color: #ffaacf;">key</span>, <span style="color: #a9c99f;">int</span> <span style="color: #ffaacf;">value</span>) {
+    <span style="color: #deb07a; font-weight: bold;">if</span> (get(key) != -1) <span style="color: #deb07a; font-weight: bold;">return</span> -1;
     data[++size] = (Node){head[f(key)], value, key};
     head[f(key)] = size;
-    <span style="color: #e4b53f; font-weight: bold;">return</span> value;
+    <span style="color: #deb07a; font-weight: bold;">return</span> value;
   }
 };
 </code></pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org384d0da" class="outline-2">
-<h2 id="org384d0da"><span class="section-number-2">3.</span> 开放地址法</h2>
+<div id="outline-container-org111378f" class="outline-2">
+<h2 id="org111378f"><span class="section-number-2">3.</span> 开放地址法</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 开放地址法的实现会相对于拉链法要难, 其解决哈希碰撞的思路是, 先根据哈希值得到对应
@@ -459,6 +459,8 @@ probe</code>) 来解决哈希碰撞的问题. 主要的原因是因为 <i>Python
                                      <span class="author">Author: Harumi Kiyama (<a href="mailto:lucius0720@hotmail.com">lucius0720@hotmail.com</a>)</span>
                                      <span class="date">Create Date: 2024-08-14</span>
                                      <span class="date">Last modified: 2024-08-19 Mon 08:21</span>
+                                     <span><img src="../static/emacs.png" alt="emacs.png"/></span>
+                                     <span><img src="../static/orgmode.svg" alt="orgmode.svg"></span>
                                      <span>Creator: Emacs 31.0.50 (Org mode 9.7.9)</span>
                                    </div>
 </div>
