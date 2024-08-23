@@ -14,8 +14,8 @@
   <link>https://harumikiyama.github.io/</link>
   <description><![CDATA[]]></description>
   <language>en</language>
-  <pubDate>Thu, 22 Aug 2024 22:12:02 +0800</pubDate>
-  <lastBuildDate>Thu, 22 Aug 2024 22:12:02 +0800</lastBuildDate>
+  <pubDate>Fri, 23 Aug 2024 17:36:40 +0800</pubDate>
+  <lastBuildDate>Fri, 23 Aug 2024 17:36:40 +0800</lastBuildDate>
   <generator>Emacs 31.0 Org-mode 9.7.9</generator>
   <webMaster>lucius0720@hotmail.com (Harumi Kiyama)</webMaster>
   <image>
@@ -24,6 +24,18 @@
     <link>https://harumikiyama.github.io/</link>
   </image>
 
+  <item>
+    <title>ochirumichie</title>
+    <link>https://harumikiyama.github.io/articles/ochirumichie.html</link>
+    <author>lucius0720@hotmail.com (Harumi Kiyama)</author>
+    <guid isPermaLink="false">https://harumikiyama.github.io/articles/ochirumichie.html</guid>
+    <pubDate>Fri, 23 Aug 2024 00:00:00 +0800</pubDate>
+
+    <description><![CDATA[<p>
+    <a href="https://harumikiyama.github.io/articles/ochirumichie.html">Read More</a>
+    </p>
+    ]]></description>
+  </item>
   <item>
     <title>Segment Tree</title>
     <link>https://harumikiyama.github.io/articles/segment_tree.html</link>
