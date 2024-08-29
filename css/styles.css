@@ -422,7 +422,6 @@ blockquote::before {
     font-style: italic;
     margin: 0 10px;
     padding: 0.8em;
-    align: center;
     width: 80%;
     margin: auto;
 }
